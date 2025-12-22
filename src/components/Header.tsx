@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Globe } from 'lucide-react';
 
 const Header = () => {
   const { language, setLanguage, t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,10 +18,22 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  const handleNavigation = (path: string, sectionId?: string) => {
+    if (location.pathname !== path) {
+      navigate(path);
+      if (sectionId) {
+        setTimeout(() => {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      }
+    } else if (sectionId) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -28,13 +43,13 @@ const Header = () => {
     }`}>
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <div 
-            onClick={() => scrollToSection('home')}
+          <div
+            onClick={() => handleNavigation('/', 'home')}
             className="flex items-center space-x-2 group cursor-pointer"
           >
-            <img 
-              src="/AI and Tech (3).png" 
-              alt="AI & Tech" 
+            <img
+              src="/AI and Tech (3).png"
+              alt="AI & Tech"
               className="h-8 w-auto group-hover:opacity-80 transition-opacity"
             />
             <span className="text-xl font-bold group-hover:opacity-80 transition-opacity" style={{ color: '#d0224f' }}>
@@ -45,21 +60,28 @@ const Header = () => {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             <button
-              onClick={() => scrollToSection('challenges')}
+              onClick={() => handleNavigation('/', 'challenges')}
               className="text-gray-300 hover:text-cyan-400 transition-colors relative group"
             >
               {t('nav.challenges')}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
             </button>
             <button
-              onClick={() => scrollToSection('services')}
+              onClick={() => handleNavigation('/', 'services')}
               className="text-gray-300 hover:text-cyan-400 transition-colors relative group"
             >
               {t('nav.services')}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
             </button>
             <button
-              onClick={() => scrollToSection('about')}
+              onClick={() => handleNavigation('/trainings')}
+              className="text-gray-300 hover:text-cyan-400 transition-colors relative group"
+            >
+              {t('nav.trainings')}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+            </button>
+            <button
+              onClick={() => handleNavigation('/', 'about')}
               className="text-gray-300 hover:text-cyan-400 transition-colors relative group"
             >
               {t('nav.about')}
@@ -94,21 +116,21 @@ const Header = () => {
           </div>
 
           {/* Mobile Navigation */}
-          <div className="lg:hidden flex items-center space-x-4">
+          <div className="lg:hidden flex items-center space-x-3">
             <button
-              onClick={() => scrollToSection('challenges')}
-              className="text-gray-300 hover:text-cyan-400 transition-colors text-sm"
-            >
-              {t('nav.challenges').split(' ')[0]}
-            </button>
-            <button
-              onClick={() => scrollToSection('services')}
+              onClick={() => handleNavigation('/', 'services')}
               className="text-gray-300 hover:text-cyan-400 transition-colors text-sm"
             >
               {t('nav.services').split(' ')[0]}
             </button>
             <button
-              onClick={() => scrollToSection('about')}
+              onClick={() => handleNavigation('/trainings')}
+              className="text-gray-300 hover:text-cyan-400 transition-colors text-sm"
+            >
+              {t('nav.trainings')}
+            </button>
+            <button
+              onClick={() => handleNavigation('/', 'about')}
               className="text-gray-300 hover:text-cyan-400 transition-colors text-sm"
             >
               {t('nav.about').split(' ')[0]}

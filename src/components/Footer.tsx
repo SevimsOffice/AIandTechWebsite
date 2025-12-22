@@ -1,15 +1,30 @@
 import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Linkedin, Youtube, Instagram } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const Footer = () => {
   const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  const handleNavigation = (path: string, sectionId?: string) => {
+    if (location.pathname !== path) {
+      navigate(path);
+      if (sectionId) {
+        setTimeout(() => {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      }
+    } else if (sectionId) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -18,13 +33,13 @@ const Footer = () => {
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
-            <div 
-              onClick={() => scrollToSection('home')}
+            <div
+              onClick={() => handleNavigation('/', 'home')}
               className="flex items-center space-x-2 mb-4 cursor-pointer group"
             >
-              <img 
-                src="/AI and Tech (3).png" 
-                alt="AI & Tech" 
+              <img
+                src="/AI and Tech (3).png"
+                alt="AI & Tech"
                 className="h-8 w-auto group-hover:opacity-80 transition-opacity"
               />
               <span className="text-lg font-bold group-hover:opacity-80 transition-opacity" style={{ color: '#d0224f' }}>
@@ -39,26 +54,26 @@ const Footer = () => {
           <div>
             <h3 className="text-white font-semibold mb-4">{t('footer.links')}</h3>
             <div className="space-y-2">
-              <button 
-                onClick={() => scrollToSection('home')}
+              <button
+                onClick={() => handleNavigation('/', 'home')}
                 className="block text-gray-400 hover:text-cyan-400 transition-colors text-left"
               >
                 {t('common.home')}
               </button>
-              <button 
-                onClick={() => scrollToSection('services')}
+              <button
+                onClick={() => handleNavigation('/', 'services')}
                 className="block text-gray-400 hover:text-cyan-400 transition-colors text-left"
               >
                 {t('common.services')}
               </button>
-              <button 
-                onClick={() => scrollToSection('training')}
+              <button
+                onClick={() => handleNavigation('/trainings')}
                 className="block text-gray-400 hover:text-cyan-400 transition-colors text-left"
               >
-                {t('nav.training')}
+                {t('nav.trainings')}
               </button>
-              <button 
-                onClick={() => scrollToSection('about')}
+              <button
+                onClick={() => handleNavigation('/', 'about')}
                 className="block text-gray-400 hover:text-cyan-400 transition-colors text-left"
               >
                 {t('common.about')}

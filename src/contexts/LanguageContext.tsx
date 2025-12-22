@@ -13,6 +13,7 @@ const translations = {
     // Header
     'nav.challenges': 'Challenges We Solve',
     'nav.services': 'How We Help',
+    'nav.trainings': 'Trainings',
     'nav.about': 'About Us',
     'nav.training': 'Training',
     'nav.contact': 'Contact',
@@ -95,7 +96,26 @@ const translations = {
     'training.level.beginner': 'Beginner',
     'training.level.intermediate': 'Intermediate',
     'training.level.advanced': 'Advanced',
-    
+
+    // Trainings Page
+    'trainingsPage.title': 'Trainings',
+    'trainingsPage.intro.line1': 'Practical AI and Generative AI trainings delivered by me.',
+    'trainingsPage.intro.line2': 'Designed for business professionals and corporate teams.',
+    'trainingsPage.intro.line3': 'Online or on site delivery available.',
+    'trainingsPage.available.title': 'Available Courses',
+    'trainingsPage.course1.name': 'GenAI Kickstart. The Ultimate Beginner\'s Course in Generative AI',
+    'trainingsPage.course1.desc1': 'A beginner friendly introduction to Generative AI.',
+    'trainingsPage.course1.desc2': 'Focused on real business use cases.',
+    'trainingsPage.course1.desc3': 'Covers fundamentals, prompting, and productivity workflows.',
+    'trainingsPage.viewCourse': 'View Course',
+    'trainingsPage.corporate.title': 'Corporate Trainings',
+    'trainingsPage.corporate.desc1': 'Custom Generative AI and automation trainings for companies.',
+    'trainingsPage.corporate.desc2': 'Content is adapted to your team\'s role and business needs.',
+    'trainingsPage.corporate.offer1': 'Generative AI for business teams',
+    'trainingsPage.corporate.offer2': 'AI productivity and workflow automation',
+    'trainingsPage.corporate.offer3': 'AI and cloud foundations for non technical teams',
+    'trainingsPage.corporate.cta': 'Contact for corporate training',
+
     // Contact
     'contact.title': 'Get in',
     'contact.title.highlight': 'Touch',
@@ -139,6 +159,7 @@ const translations = {
     // Header
     'nav.challenges': 'Çözdüğümüz Sorunlar',
     'nav.services': 'Nasıl Yardım Ediyoruz',
+    'nav.trainings': 'Eğitimler',
     'nav.about': 'Hakkımızda',
     'nav.training': 'Eğitim',
     'nav.contact': 'İletişim',
@@ -221,7 +242,26 @@ const translations = {
     'training.level.beginner': 'Başlangıç',
     'training.level.intermediate': 'Orta',
     'training.level.advanced': 'İleri',
-    
+
+    // Trainings Page
+    'trainingsPage.title': 'Eğitimler',
+    'trainingsPage.intro.line1': 'Tarafımdan sunulan pratik AI ve Üretken AI eğitimleri.',
+    'trainingsPage.intro.line2': 'İş profesyonelleri ve kurumsal ekipler için tasarlandı.',
+    'trainingsPage.intro.line3': 'Online veya yerinde teslimat mevcuttur.',
+    'trainingsPage.available.title': 'Mevcut Kurslar',
+    'trainingsPage.course1.name': 'GenAI Kickstart. Üretken AI\'da Nihai Başlangıç Kursu',
+    'trainingsPage.course1.desc1': 'Üretken AI\'ya başlangıç dostu bir giriş.',
+    'trainingsPage.course1.desc2': 'Gerçek iş kullanım durumlarına odaklanmıştır.',
+    'trainingsPage.course1.desc3': 'Temelleri, istem oluşturmayı ve verimlilik iş akışlarını kapsar.',
+    'trainingsPage.viewCourse': 'Kursu Görüntüle',
+    'trainingsPage.corporate.title': 'Kurumsal Eğitimler',
+    'trainingsPage.corporate.desc1': 'Şirketler için özelleştirilmiş Üretken AI ve otomasyon eğitimleri.',
+    'trainingsPage.corporate.desc2': 'İçerik, ekibinizin rolüne ve iş ihtiyaçlarına göre uyarlanır.',
+    'trainingsPage.corporate.offer1': 'İş ekipleri için Üretken AI',
+    'trainingsPage.corporate.offer2': 'AI verimliliği ve iş akışı otomasyonu',
+    'trainingsPage.corporate.offer3': 'Teknik olmayan ekipler için AI ve bulut temelleri',
+    'trainingsPage.corporate.cta': 'Kurumsal eğitim için iletişime geçin',
+
     // Contact
     'contact.title': 'İletişime',
     'contact.title.highlight': 'Geçin',
