@@ -14,7 +14,7 @@ I would like to discuss corporate training.
 Company:
 Team size:
 Training topic:`);
-    window.location.href = `mailto:sevim@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:sevimdurmus@gmail.com?subject=${subject}&body=${body}`;
   };
 
   return (
