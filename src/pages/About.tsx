@@ -61,7 +61,7 @@ const About = () => {
           <div className="relative">
             <div className="bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-2xl p-8 backdrop-blur-sm border border-cyan-400/30">
               <img
-                src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg"
+                src="https://media.licdn.com/dms/image/v2/D4D03AQGH5zvdz_ZF2g/profile-displayphoto-scale_400_400/B4DZpJgR56GQAg-/0/1762169790903?e=1767830400&v=beta&t=w0wga1T_3OnVMm5FjRHIQaW7Te65mjz4FPyv7mlDeew"
                 alt="Sevim Durmus - Founder & AI Consultant"
                 className="w-full h-64 object-cover rounded-xl mb-6"
               />
