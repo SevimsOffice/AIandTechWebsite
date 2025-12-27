@@ -73,6 +73,18 @@ const Footer = () => {
                 {t('nav.trainings')}
               </button>
               <button
+                onClick={() => handleNavigation('/blogs')}
+                className="block text-gray-400 hover:text-cyan-400 transition-colors text-left"
+              >
+                {t('nav.blogs')}
+              </button>
+              <button
+                onClick={() => handleNavigation('/products')}
+                className="block text-gray-400 hover:text-cyan-400 transition-colors text-left"
+              >
+                {t('nav.products')}
+              </button>
+              <button
                 onClick={() => handleNavigation('/', 'about')}
                 className="block text-gray-400 hover:text-cyan-400 transition-colors text-left"
               >

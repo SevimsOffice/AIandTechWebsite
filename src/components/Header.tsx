@@ -81,6 +81,20 @@ const Header = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
             </button>
             <button
+              onClick={() => handleNavigation('/blogs')}
+              className="text-gray-300 hover:text-cyan-400 transition-colors relative group"
+            >
+              {t('nav.blogs')}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+            </button>
+            <button
+              onClick={() => handleNavigation('/products')}
+              className="text-gray-300 hover:text-cyan-400 transition-colors relative group"
+            >
+              {t('nav.products')}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+            </button>
+            <button
               onClick={() => handleNavigation('/', 'about')}
               className="text-gray-300 hover:text-cyan-400 transition-colors relative group"
             >
@@ -116,24 +130,24 @@ const Header = () => {
           </div>
 
           {/* Mobile Navigation */}
-          <div className="lg:hidden flex items-center space-x-3">
+          <div className="lg:hidden flex items-center space-x-2">
             <button
-              onClick={() => handleNavigation('/', 'services')}
-              className="text-gray-300 hover:text-cyan-400 transition-colors text-sm"
+              onClick={() => handleNavigation('/products')}
+              className="text-gray-300 hover:text-cyan-400 transition-colors text-xs px-2 py-1"
             >
-              {t('nav.services').split(' ')[0]}
+              {t('nav.products')}
             </button>
             <button
               onClick={() => handleNavigation('/trainings')}
-              className="text-gray-300 hover:text-cyan-400 transition-colors text-sm"
+              className="text-gray-300 hover:text-cyan-400 transition-colors text-xs px-2 py-1"
             >
               {t('nav.trainings')}
             </button>
             <button
-              onClick={() => handleNavigation('/', 'about')}
-              className="text-gray-300 hover:text-cyan-400 transition-colors text-sm"
+              onClick={() => handleNavigation('/blogs')}
+              className="text-gray-300 hover:text-cyan-400 transition-colors text-xs px-2 py-1"
             >
-              {t('nav.about').split(' ')[0]}
+              {t('nav.blogs')}
             </button>
             
             {/* Mobile Language Toggle */}
