@@ -31,8 +31,8 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 border-t border-gray-800">
       <div className="container mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="md:col-span-2">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
             <div
               onClick={() => handleNavigation('/', 'home')}
               className="flex items-center space-x-2 mb-4 cursor-pointer group"
@@ -46,47 +46,47 @@ const Footer = () => {
                 AI and Tech
               </span>
             </div>
-            <p className="text-gray-400 max-w-md">
+            <p className="text-gray-400 max-w-md text-sm">
               {t('footer.description')}
             </p>
           </div>
 
           <div>
             <h3 className="text-white font-semibold mb-4">{t('footer.links')}</h3>
-            <div className="space-y-2">
+            <div className="grid grid-cols-2 gap-2">
               <button
                 onClick={() => handleNavigation('/', 'home')}
-                className="block text-gray-400 hover:text-cyan-400 transition-colors text-left"
+                className="text-gray-400 hover:text-cyan-400 transition-colors text-left text-sm"
               >
                 {t('common.home')}
               </button>
               <button
                 onClick={() => handleNavigation('/', 'services')}
-                className="block text-gray-400 hover:text-cyan-400 transition-colors text-left"
+                className="text-gray-400 hover:text-cyan-400 transition-colors text-left text-sm"
               >
                 {t('common.services')}
               </button>
               <button
                 onClick={() => handleNavigation('/trainings')}
-                className="block text-gray-400 hover:text-cyan-400 transition-colors text-left"
+                className="text-gray-400 hover:text-cyan-400 transition-colors text-left text-sm"
               >
                 {t('nav.trainings')}
               </button>
               <button
                 onClick={() => handleNavigation('/blogs')}
-                className="block text-gray-400 hover:text-cyan-400 transition-colors text-left"
+                className="text-gray-400 hover:text-cyan-400 transition-colors text-left text-sm"
               >
                 {t('nav.blogs')}
               </button>
               <button
                 onClick={() => handleNavigation('/products')}
-                className="block text-gray-400 hover:text-cyan-400 transition-colors text-left"
+                className="text-gray-400 hover:text-cyan-400 transition-colors text-left text-sm"
               >
                 {t('nav.products')}
               </button>
               <button
                 onClick={() => handleNavigation('/', 'about')}
-                className="block text-gray-400 hover:text-cyan-400 transition-colors text-left"
+                className="text-gray-400 hover:text-cyan-400 transition-colors text-left text-sm"
               >
                 {t('common.about')}
               </button>
@@ -96,25 +96,25 @@ const Footer = () => {
           <div>
             <h3 className="text-white font-semibold mb-4">{t('footer.connect')}</h3>
             <div className="flex space-x-4">
-              <a 
-                href="https://linkedin.com" 
-                target="_blank" 
+              <a
+                href="https://linkedin.com"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-cyan-400 transition-colors"
               >
                 <Linkedin className="h-6 w-6" />
               </a>
-              <a 
-                href="https://youtube.com" 
-                target="_blank" 
+              <a
+                href="https://youtube.com"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-cyan-400 transition-colors"
               >
                 <Youtube className="h-6 w-6" />
               </a>
-              <a 
-                href="https://instagram.com" 
-                target="_blank" 
+              <a
+                href="https://instagram.com"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-cyan-400 transition-colors"
               >
