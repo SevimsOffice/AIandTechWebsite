@@ -125,6 +125,10 @@ const translations = {
     'blogsPage.article1.date': 'December 26, 2025',
     'blogsPage.article1.category': 'AI Agents',
     'blogsPage.article1.excerpt': 'Discover how AI agents are evolving from stateless chatbots to persistent, memory-retaining autonomous systems. Learn about the implications for enterprise operations and how organizations should prepare for this fundamental shift in AI capabilities.',
+    'blogsPage.article2.title': 'The Agentic AI Paradox: Why Turkish Companies Are Watching While Global Leaders Race to $2 Trillion',
+    'blogsPage.article2.date': 'December 30, 2025',
+    'blogsPage.article2.category': 'Market Analysis',
+    'blogsPage.article2.excerpt': 'While global enterprises deploy autonomous AI systems achieving significant efficiency gains, Turkish businesses remain stuck in pilot projects that rarely scale. Discover why organizational readiness, not technology, is the limiting factor for AI adoption.',
     'blogsPage.readMore': 'Read Full Article',
     'blogsPage.aboutAuthor': 'About the Author',
     'blogsPage.authorName': 'Sevim Durmus',
@@ -132,10 +136,6 @@ const translations = {
     'blogsPage.authorBio': 'AWS Community Builder with over a decade of experience in cloud technologies, AI implementation, and enterprise transformation. Passionate about helping organizations unlock the true potential of AI.',
     'blogsPage.followLabel': 'Follow on',
     'blogsPage.followLink': 'LinkedIn',
-    'blogsPage.moreArticles': 'More Articles Coming Soon',
-    'blogsPage.stayTuned': 'Stay tuned for more insights and articles',
-    'blogsPage.comingSoon': 'More Articles Coming Soon',
-    'blogsPage.stayTunedDesc': 'New articles coming soon. Stay tuned for more AI insights.',
 
     // Products Page
     'productsPage.title': 'Products',
@@ -306,6 +306,10 @@ const translations = {
     'blogsPage.article1.date': '26 Aralık 2025',
     'blogsPage.article1.category': 'AI Ajanları',
     'blogsPage.article1.excerpt': 'AI ajanlarının durumsuz chatbot\'lardan kalıcı belleğe sahip otonom sistemlere nasıl geliştiğini keşfedin. Kurumsal operasyonlar için çıkarımları ve organizasyonların bu temel AI yeteneği değişimine nasıl hazırlanması gerektiğini öğrenin.',
+    'blogsPage.article2.title': 'Agentic AI Paradoksu: Türk Şirketleri İzlerken Küresel Liderler 2 Trilyon Dolara Koşuyor',
+    'blogsPage.article2.date': '30 Aralık 2025',
+    'blogsPage.article2.category': 'Pazar Analizi',
+    'blogsPage.article2.excerpt': 'Küresel işletmeler önemli verimlilik kazançları elde eden otonom AI sistemlerini dağıtırken, Türk işletmeleri nadiren ölçeklendirilen pilot projelerine takılı kalmıştır. Teknoloji değil, örgütsel hazırlığın neden sınırlayıcı faktör olduğunu keşfedin.',
     'blogsPage.readMore': 'Tam Makaleyi Oku',
     'blogsPage.aboutAuthor': 'Yazar Hakkında',
     'blogsPage.authorName': 'Sevim Durmus',
@@ -313,10 +317,6 @@ const translations = {
     'blogsPage.authorBio': 'Bulut teknolojileri, AI uygulaması ve kurumsal dönüşümde on yılı aşkın deneyime sahip AWS Topluluk Oluşturucusu. AI\'nin gerçek potansiyelini ortaya çıkarmaya yardımcı olan organizasyonlara tutkulu.',
     'blogsPage.followLabel': 'LinkedIn\'de takip edin',
     'blogsPage.followLink': 'LinkedIn',
-    'blogsPage.moreArticles': 'Yakında Daha Fazla Makale',
-    'blogsPage.stayTuned': 'Daha fazla içgörü ve makale için bizi takip etmeye devam edin',
-    'blogsPage.comingSoon': 'Yakında Daha Fazla Makale',
-    'blogsPage.stayTunedDesc': 'Yakında yeni makaleler. Daha fazla AI içgörüsü için bizi takip etmeye devam edin.',
 
     // Products Page
     'productsPage.title': 'Ürünler',
