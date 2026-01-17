@@ -1,14 +1,20 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+'use strict';
 
-// https://vitejs.dev/config/
+import { defineConfig } from 'vite';
+
 export default defineConfig({
-  plugins: [react()],
   base: '/',
-  optimizeDeps: {
-    exclude: ['lucide-react'],
-  },
   build: {
     outDir: 'dist',
+    rollupOptions: {
+      // Customize Rollup options here
+      input: 'src/main.js',
+      output: {
+        format: 'es',
+      },
+    },
+  },
+  optimizeDeps: {
+    exclude: ['lucide-react'],
   },
 });
