@@ -151,6 +151,23 @@ const translations = {
     'productsPage.contact': 'Get in Touch',
     'productsPage.openInNewWindow': 'Open Marketplace',
 
+    // Vibe Coding
+    'vibecoding.title': 'Vibe Coding',
+    'vibecoding.hero.title': 'Surrender to the Vibe',
+    'vibecoding.hero.subtitle': 'Shift from writing syntax to managing intent. High-speed iteration, obsessive context management, and the boring stack.',
+    'vibecoding.principles.title': 'The Three Pillars',
+    'vibecoding.p1.title': 'The Loop is God',
+    'vibecoding.p1.desc': 'Generate. Run. Fail. Paste Error. Repeat. Speed of iteration beats perfect prompting every time.',
+    'vibecoding.p2.title': 'Manage Context',
+    'vibecoding.p2.desc': 'Keep the AI clean. Fresh chats, plan.md summaries, and aggressive context resetting.',
+    'vibecoding.p3.title': 'Boring Stack Wins',
+    'vibecoding.p3.desc': 'Use what the AI knows best. React, Tailwind, Python. Minimize hallucination by staying in the training set.',
+    'vibecoding.clinic.title': 'Vibe Clinic',
+    'vibecoding.clinic.bad': 'Bad Vibe: "Fix this bug."',
+    'vibecoding.clinic.good': 'Good Vibe: "I am getting X error at line Y in Z file. Here is the full context and my goal..."',
+    'vibecoding.generator.title': 'System Prompt Generator',
+    'vibecoding.generator.cta': 'Generate My System Prompt',
+
     // Contact
     'contact.title': 'Get in',
     'contact.title.highlight': 'Touch',
@@ -331,6 +348,23 @@ const translations = {
     'productsPage.needHelp': 'Özel Çözümlere mi İhtiyacınız Var?',
     'productsPage.contact': 'İletişime Geçin',
     'productsPage.openInNewWindow': 'Pazarı Aç',
+
+    // Vibe Coding
+    'vibecoding.title': 'Vibe Coding',
+    'vibecoding.hero.title': 'Vibe\'a Teslim Ol',
+    'vibecoding.hero.subtitle': 'Sözdizimi yazmaktan niyet yönetmeye geçin. Yüksek hızlı yineleme, takıntılı bağlam yönetimi ve sıkıcı teknoloji yığını.',
+    'vibecoding.principles.title': 'Üç Temel Direk',
+    'vibecoding.p1.title': 'Döngü Tanrıdır',
+    'vibecoding.p1.desc': 'Oluştur. Çalıştır. Başarısız Ol. Hatayı Yapıştır. Tekrarla. Yineleme hızı, her zaman mükemmel istem yazımını yener.',
+    'vibecoding.p2.title': 'Bağlamı Yönet',
+    'vibecoding.p2.desc': 'Yapay zekayı temiz tutun. Yeni sohbetler, plan.md özetleri ve agresif bağlam sıfırlama.',
+    'vibecoding.p3.title': 'Sıkıcı Yığın Kazanır',
+    'vibecoding.p3.desc': 'Yapay zekanın en iyi bildiği şeyleri kullanın. React, Tailwind, Python. Eğitim setinde kalarak halüsinasyonu en aza indirin.',
+    'vibecoding.clinic.title': 'Vibe Kliniği',
+    'vibecoding.clinic.bad': 'Kötü Vibe: "Şu hatayı düzelt."',
+    'vibecoding.clinic.good': 'İyi Vibe: "Z dosyasındaki Y satırında X hatası alıyorum. İşte tam bağlam ve hedefim..."',
+    'vibecoding.generator.title': 'Sistem İstemi Oluşturucu',
+    'vibecoding.generator.cta': 'Sistem İstemimi Oluştur',
 
     // Contact
     'contact.title': 'İletişime',

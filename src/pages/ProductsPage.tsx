@@ -19,6 +19,43 @@ const ProductsPage = () => {
               {t('productsPage.subtitle')}
             </p>
           </div>
+
+          {/* Vibe Coding Featured Card */}
+          <div className="max-w-5xl mx-auto mb-20">
+            <div className="group relative">
+              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+              <div className="relative bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden backdrop-blur-sm">
+                <div className="grid grid-cols-1 md:grid-cols-2">
+                  <div className="p-8 md:p-12 flex flex-col justify-center">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-medium mb-6 w-fit">
+                      <ShoppingCart size={14} />
+                      <span>Featured Product</span>
+                    </div>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
+                      {t('vibecoding.title')}
+                    </h2>
+                    <p className="text-gray-400 text-lg mb-8 leading-relaxed">
+                      {t('vibecoding.hero.subtitle')}
+                    </p>
+                    <a
+                      href="/vibecoding"
+                      className="inline-flex items-center justify-center bg-white text-gray-950 hover:bg-cyan-400 hover:text-white px-8 py-4 rounded-xl font-bold transition-all gap-2 w-fit"
+                    >
+                      Learn More
+                      <ExternalLink size={18} />
+                    </a>
+                  </div>
+                  <div className="bg-gradient-to-br from-cyan-900/20 to-purple-900/20 p-12 flex items-center justify-center relative overflow-hidden hidden md:flex">
+                    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
+                    <div className="relative z-10 text-9xl font-black text-white/5 select-none">VIBE</div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-32 h-32 bg-cyan-500 rounded-full blur-3xl opacity-20 animate-pulse"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         <section className="mb-20">

@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage';
 import TrainingsPage from './pages/TrainingsPage';
 import BlogsPage from './pages/BlogsPage';
 import ProductsPage from './pages/ProductsPage';
+import VibeCoding from './pages/VibeCoding';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
               <Route path="/trainings" element={<TrainingsPage />} />
               <Route path="/blogs" element={<BlogsPage />} />
               <Route path="/products" element={<ProductsPage />} />
+              <Route path="/vibecoding" element={<VibeCoding />} />
             </Routes>
           </main>
           <Footer />
