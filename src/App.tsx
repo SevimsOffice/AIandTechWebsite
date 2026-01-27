@@ -8,6 +8,7 @@ import TrainingsPage from './pages/TrainingsPage';
 import BlogsPage from './pages/BlogsPage';
 import ProductsPage from './pages/ProductsPage';
 import VibeCoding from './pages/VibeCoding';
+import NetWorthCalculator from './pages/NetWorthCalculator';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
               <Route path="/blogs" element={<BlogsPage />} />
               <Route path="/products" element={<ProductsPage />} />
               <Route path="/vibecoding" element={<VibeCoding />} />
+              <Route path="/products/ainetvalue" element={<NetWorthCalculator />} />
             </Routes>
           </main>
           <Footer />

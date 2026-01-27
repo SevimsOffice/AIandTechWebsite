@@ -16,10 +16,11 @@ const translations = {
     'nav.trainings': 'Trainings',
     'nav.blogs': 'Blogs',
     'nav.products': 'Products',
+    'nav.calculator': 'ROI Calculator',
     'nav.about': 'About Us',
     'nav.training': 'Training',
     'nav.contact': 'Contact',
-    
+
     // Home
     'home.badge': 'AI-Powered Transformation',
     'home.title': 'Reimagine your operations with',
@@ -27,7 +28,7 @@ const translations = {
     'home.subtitle': 'We build AI-powered systems, automation, and training that deliver measurable results.',
     'home.cta.contact': 'Get in Touch',
     'home.cta.training': 'Explore Training',
-    
+
     // Challenges
     'challenges.title': 'Challenges We',
     'challenges.title.highlight': 'Solve',
@@ -40,7 +41,7 @@ const translations = {
     'challenges.opportunities.desc': 'Limited insights preventing optimal decision-making and growth potential.',
     'challenges.adoption.title': 'Low Adoption',
     'challenges.adoption.desc': 'Technology solutions that fail to engage users and deliver expected ROI.',
-    
+
     // Services
     'services.title': 'How We',
     'services.title.highlight': 'Help',
@@ -56,7 +57,7 @@ const translations = {
     'services.automation.details': 'Ensure your AI investments deliver consistent value with professional monitoring and maintenance.',
     'services.cta': 'Start Your AI Transformation',
     'services.learn.more': 'Learn More',
-    
+
     // About
     'about.title': 'About',
     'about.title.highlight': 'AI & Tech',
@@ -76,7 +77,7 @@ const translations = {
     'about.achievement4.title': 'Industry Speaker',
     'about.achievement4.desc': 'Regular presenter at major tech conferences and events',
     'about.partners': 'Trusted by Industry Leaders',
-    
+
     // Training
     'training.title': 'Training',
     'training.title.highlight': 'Catalog',
@@ -193,13 +194,13 @@ const translations = {
     'contact.form.send': 'Send Message',
     'contact.form.sending': 'Sending...',
     'contact.form.required': '*',
-    
+
     // Footer
     'footer.description': 'We build AI-powered systems, automation, and training that deliver measurable results. Transform your business operations with cutting-edge AI solutions.',
     'footer.links': 'Quick Links',
     'footer.connect': 'Connect',
     'footer.copyright': 'AI & Tech. All rights reserved.',
-    
+
     // Common
     'common.home': 'Home',
     'common.services': 'Services',
@@ -214,10 +215,11 @@ const translations = {
     'nav.trainings': 'Eğitimler',
     'nav.blogs': 'Blog',
     'nav.products': 'Ürünler',
+    'nav.calculator': 'ROI Hesaplayıcı',
     'nav.about': 'Hakkımızda',
     'nav.training': 'Eğitim',
     'nav.contact': 'İletişim',
-    
+
     // Home
     'home.badge': 'AI Destekli Dönüşüm',
     'home.title': 'Operasyonlarınızı yeniden hayal edin',
@@ -225,7 +227,7 @@ const translations = {
     'home.subtitle': 'Ölçülebilir sonuçlar sunan AI destekli sistemler, otomasyon ve eğitim geliştiriyoruz.',
     'home.cta.contact': 'İletişime Geçin',
     'home.cta.training': 'Eğitimleri Keşfedin',
-    
+
     // Challenges
     'challenges.title': 'Çözdüğümüz',
     'challenges.title.highlight': 'Sorunlar',
@@ -238,7 +240,7 @@ const translations = {
     'challenges.opportunities.desc': 'Optimal karar vermeyi ve büyüme potansiyelini engelleyen sınırlı içgörüler.',
     'challenges.adoption.title': 'Düşük Benimseme',
     'challenges.adoption.desc': 'Kullanıcıları etkilemeyen ve beklenen ROI\'yi sağlamayan teknoloji çözümleri.',
-    
+
     // Services
     'services.title': 'Nasıl',
     'services.title.highlight': 'Yardım Ediyoruz',
@@ -254,7 +256,7 @@ const translations = {
     'services.automation.details': 'AI yatırımlarınızın profesyonel izleme ve bakımla tutarlı değer sunmasını sağlayın.',
     'services.cta': 'AI Dönüşümünüzü Başlatın',
     'services.learn.more': 'Daha Fazla Bilgi',
-    
+
     // About
     'about.title': 'Hakkımızda',
     'about.title.highlight': 'AI & Tech',
@@ -274,7 +276,7 @@ const translations = {
     'about.achievement4.title': 'Sektör Konuşmacısı',
     'about.achievement4.desc': 'Büyük teknoloji konferans ve etkinliklerinde düzenli sunum yapan',
     'about.partners': 'Sektör Liderlerinin Güvendiği',
-    
+
     // Training
     'training.title': 'Eğitim',
     'training.title.highlight': 'Kataloğu',
@@ -391,13 +393,13 @@ const translations = {
     'contact.form.send': 'Mesaj Gönder',
     'contact.form.sending': 'Gönderiliyor...',
     'contact.form.required': '*',
-    
+
     // Footer
     'footer.description': 'Ölçülebilir sonuçlar sunan AI destekli sistemler, otomasyon ve eğitim geliştiriyoruz. Son teknoloji AI çözümleriyle iş operasyonlarınızı dönüştürün.',
     'footer.links': 'Hızlı Bağlantılar',
     'footer.connect': 'Bağlantı',
     'footer.copyright': 'AI & Tech. Tüm hakları saklıdır.',
-    
+
     // Common
     'common.home': 'Ana Sayfa',
     'common.services': 'Hizmetler',
@@ -425,7 +427,9 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   const [language, setLanguage] = useState<Language>('en');
 
   const t = (key: string): string => {
-    return translations[language][key] || translations.en[key] || key;
+    const langData = (translations as Record<Language, Record<string, string>>)[language];
+    const enData = translations.en as Record<string, string>;
+    return langData[key] || enData[key] || key;
   };
 
   return (

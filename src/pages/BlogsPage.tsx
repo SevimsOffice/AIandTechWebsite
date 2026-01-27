@@ -13,7 +13,7 @@ const BlogsPage = () => {
       categoryKey: 'blogsPage.article1.category',
       excerptKey: 'blogsPage.article1.excerpt',
       url: 'https://www.linkedin.com/pulse/beyond-chatbot-era-ai-agents-never-forget-aiandtech-qtthf/',
-      image: 'https://images.pexels.com/photos/8348567/pexels-photo-8348567.jpeg',
+      image: '',
       tags: ['AI Agents', 'Memory Systems', 'Enterprise AI', 'Future of AI'],
     },
     {
@@ -23,7 +23,7 @@ const BlogsPage = () => {
       categoryKey: 'blogsPage.article2.category',
       excerptKey: 'blogsPage.article2.excerpt',
       url: 'https://www.linkedin.com/pulse/agentic-ai-paradox-why-turkish-companies-watching-while-global-4rzef/',
-      image: 'https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg',
+      image: 'https://media.licdn.com/dms/image/v2/D4D12AQE1iQKuRg1I5Q/article-cover_image-shrink_720_1280/B4DZtaWxo8G8AI-/0/1766747479491?e=1770854400&v=beta&t=_PcKapWDK8Cu7t8f-rOfORIPSURYaVxwTCmAX2XM7eM',
       tags: ['Agentic AI', 'Turkish Market', 'Competitive Strategy', 'Digital Transformation'],
     },
   ];

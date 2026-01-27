@@ -38,9 +38,8 @@ const Header = () => {
   };
 
   return (
-    <header className={`fixed w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-gray-950/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
-    }`}>
+    <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-gray-950/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
+      }`}>
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <div
@@ -95,13 +94,20 @@ const Header = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
             </button>
             <button
+              onClick={() => handleNavigation('/products/ainetvalue')}
+              className="text-gray-300 hover:text-cyan-400 transition-colors relative group"
+            >
+              {t('nav.calculator')}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+            </button>
+            <button
               onClick={() => handleNavigation('/', 'about')}
               className="text-gray-300 hover:text-cyan-400 transition-colors relative group"
             >
               {t('nav.about')}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
             </button>
-            
+
             {/* Language Toggle */}
             <div className="relative group">
               <button className="flex items-center text-gray-300 hover:text-cyan-400 transition-colors">
@@ -111,17 +117,15 @@ const Header = () => {
               <div className="absolute right-0 top-full mt-2 bg-gray-900 border border-gray-700 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                 <button
                   onClick={() => setLanguage('en')}
-                  className={`block w-full text-left px-4 py-2 text-sm hover:bg-gray-800 transition-colors ${
-                    language === 'en' ? 'text-cyan-400' : 'text-gray-300'
-                  }`}
+                  className={`block w-full text-left px-4 py-2 text-sm hover:bg-gray-800 transition-colors ${language === 'en' ? 'text-cyan-400' : 'text-gray-300'
+                    }`}
                 >
                   English
                 </button>
                 <button
                   onClick={() => setLanguage('tr')}
-                  className={`block w-full text-left px-4 py-2 text-sm hover:bg-gray-800 transition-colors ${
-                    language === 'tr' ? 'text-cyan-400' : 'text-gray-300'
-                  }`}
+                  className={`block w-full text-left px-4 py-2 text-sm hover:bg-gray-800 transition-colors ${language === 'tr' ? 'text-cyan-400' : 'text-gray-300'
+                    }`}
                 >
                   Türkçe
                 </button>
@@ -149,7 +153,7 @@ const Header = () => {
             >
               {t('nav.blogs')}
             </button>
-            
+
             {/* Mobile Language Toggle */}
             <div className="relative group">
               <button className="flex items-center text-gray-300 hover:text-cyan-400 transition-colors">
@@ -158,17 +162,15 @@ const Header = () => {
               <div className="absolute right-0 top-full mt-2 bg-gray-900 border border-gray-700 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                 <button
                   onClick={() => setLanguage('en')}
-                  className={`block w-full text-left px-3 py-2 text-xs hover:bg-gray-800 transition-colors ${
-                    language === 'en' ? 'text-cyan-400' : 'text-gray-300'
-                  }`}
+                  className={`block w-full text-left px-3 py-2 text-xs hover:bg-gray-800 transition-colors ${language === 'en' ? 'text-cyan-400' : 'text-gray-300'
+                    }`}
                 >
                   EN
                 </button>
                 <button
                   onClick={() => setLanguage('tr')}
-                  className={`block w-full text-left px-3 py-2 text-xs hover:bg-gray-800 transition-colors ${
-                    language === 'tr' ? 'text-cyan-400' : 'text-gray-300'
-                  }`}
+                  className={`block w-full text-left px-3 py-2 text-xs hover:bg-gray-800 transition-colors ${language === 'tr' ? 'text-cyan-400' : 'text-gray-300'
+                    }`}
                 >
                   TR
                 </button>
