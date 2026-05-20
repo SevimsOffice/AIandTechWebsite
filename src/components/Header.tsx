@@ -102,28 +102,13 @@ const Header = () => {
             </button>
 
             {/* Language Toggle */}
-            <div className="relative group">
-              <button className="flex items-center text-gray-300 hover:text-cyan-400 transition-colors">
-                <Globe className="h-4 w-4 mr-1" />
-                <span className="text-sm font-medium">{language.toUpperCase()}</span>
-              </button>
-              <div className="absolute right-0 top-full mt-2 bg-gray-900 border border-gray-700 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <button
-                  onClick={() => setLanguage('en')}
-                  className={`block w-full text-left px-4 py-2 text-sm hover:bg-gray-800 transition-colors ${language === 'en' ? 'text-cyan-400' : 'text-gray-300'
-                    }`}
-                >
-                  English
-                </button>
-                <button
-                  onClick={() => setLanguage('tr')}
-                  className={`block w-full text-left px-4 py-2 text-sm hover:bg-gray-800 transition-colors ${language === 'tr' ? 'text-cyan-400' : 'text-gray-300'
-                    }`}
-                >
-                  Türkçe
-                </button>
-              </div>
-            </div>
+            <button
+              onClick={() => setLanguage(language === 'en' ? 'tr' : 'en')}
+              className="flex items-center gap-1.5 text-gray-300 hover:text-cyan-400 transition-colors border border-gray-700 hover:border-cyan-400/50 rounded-lg px-3 py-1.5 text-sm font-semibold"
+            >
+              <Globe className="h-4 w-4" />
+              {language === 'en' ? 'TR' : 'EN'}
+            </button>
           </div>
 
           {/* Mobile Navigation */}
@@ -148,27 +133,13 @@ const Header = () => {
             </button>
 
             {/* Mobile Language Toggle */}
-            <div className="relative group">
-              <button className="flex items-center text-gray-300 hover:text-cyan-400 transition-colors">
-                <Globe className="h-4 w-4" />
-              </button>
-              <div className="absolute right-0 top-full mt-2 bg-gray-900 border border-gray-700 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <button
-                  onClick={() => setLanguage('en')}
-                  className={`block w-full text-left px-3 py-2 text-xs hover:bg-gray-800 transition-colors ${language === 'en' ? 'text-cyan-400' : 'text-gray-300'
-                    }`}
-                >
-                  EN
-                </button>
-                <button
-                  onClick={() => setLanguage('tr')}
-                  className={`block w-full text-left px-3 py-2 text-xs hover:bg-gray-800 transition-colors ${language === 'tr' ? 'text-cyan-400' : 'text-gray-300'
-                    }`}
-                >
-                  TR
-                </button>
-              </div>
-            </div>
+            <button
+              onClick={() => setLanguage(language === 'en' ? 'tr' : 'en')}
+              className="flex items-center gap-1 text-gray-300 hover:text-cyan-400 transition-colors text-xs font-semibold border border-gray-700 hover:border-cyan-400/50 rounded-md px-2 py-1"
+            >
+              <Globe className="h-3.5 w-3.5" />
+              {language === 'en' ? 'TR' : 'EN'}
+            </button>
           </div>
         </div>
       </nav>

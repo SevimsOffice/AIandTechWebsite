@@ -2,17 +2,15 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Clock, Users, ChevronRight, Calendar } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 import { featuredTrainings as trainings, journeyConfig, levelColors, type Training } from '../data/trainings';
 
-const FILTERS = [
-  { key: 'all',      label: 'Tumu' },
-  { key: 'bireysel', label: 'Bireysel' },
-  { key: 'takim',    label: 'Takim & Kurum' },
-  { key: 'donusum',  label: 'Derin Donusum' },
-] as const;
-
-function TrainingCard({ training }: { training: Training }) {
+function TrainingCard({ training, lang }: { training: Training; lang: string }) {
   const levelCls = levelColors[training.level];
+  const title      = lang === 'en' ? (training.en?.title      ?? training.title)      : training.title;
+  const hook       = lang === 'en' ? (training.en?.hook       ?? training.hook)       : training.hook;
+  const levelLabel = lang === 'en' ? (training.en?.levelLabel ?? training.levelLabel) : training.levelLabel;
+  const outcomes   = lang === 'en' ? (training.en?.outcomes   ?? training.outcomes)   : training.outcomes;
 
   return (
     <Link
@@ -20,7 +18,6 @@ function TrainingCard({ training }: { training: Training }) {
       className="group relative flex flex-col bg-gray-900/50 backdrop-blur-sm border border-gray-800 hover:border-cyan-400/50 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-cyan-500/5"
     >
       <div className="h-1 w-full bg-gradient-to-r from-cyan-500/60 to-teal-500/60 group-hover:from-cyan-400 group-hover:to-teal-400 transition-all" />
-
       <div className="p-6 flex flex-col flex-1">
         <div className="flex items-start justify-between gap-3 mb-4">
           <div className="flex items-center gap-2 flex-wrap">
@@ -32,19 +29,17 @@ function TrainingCard({ training }: { training: Training }) {
             )}
           </div>
           <span className={`text-xs font-semibold px-2.5 py-1 rounded-full border flex-shrink-0 ${levelCls}`}>
-            {training.levelLabel}
+            {levelLabel}
           </span>
         </div>
 
         <h3 className="text-lg font-bold text-white mb-2 leading-snug group-hover:text-cyan-300 transition-colors">
-          {training.title}
+          {title}
         </h3>
-        <p className="text-sm text-gray-400 mb-4 line-clamp-2 leading-relaxed">
-          {training.hook}
-        </p>
+        <p className="text-sm text-gray-400 mb-4 line-clamp-2 leading-relaxed">{hook}</p>
 
         <ul className="space-y-1.5 mb-5 flex-1">
-          {training.outcomes.slice(0, 3).map((o, i) => (
+          {outcomes.slice(0, 3).map((o, i) => (
             <li key={i} className="flex items-start gap-2 text-sm text-gray-300">
               <span className="text-cyan-400 mt-0.5 flex-shrink-0">&#10003;</span>
               <span className="line-clamp-1">{o}</span>
@@ -54,17 +49,16 @@ function TrainingCard({ training }: { training: Training }) {
 
         <div className="flex items-center justify-between pt-4 border-t border-gray-800">
           <div className="flex items-center gap-3 text-xs text-gray-500">
-            <span className="flex items-center gap-1">
-              <Clock size={12} />
-              {training.durationShort}
-            </span>
+            <span className="flex items-center gap-1"><Clock size={12} />{training.durationShort}</span>
             <span className="flex items-center gap-1">
               <Users size={12} />
-              {training.format.includes('Online') ? 'Online / Yuz yuze' : 'Yuz yuze'}
+              {training.format.includes('Online')
+                ? (lang === 'en' ? 'Online / In-person' : 'Online / Yüz yüze')
+                : (lang === 'en' ? 'In-person' : 'Yüz yüze')}
             </span>
           </div>
           <span className="flex items-center gap-1 text-xs font-semibold text-cyan-400 group-hover:gap-2 transition-all">
-            Detaylar <ChevronRight size={13} />
+            {lang === 'en' ? 'Details' : 'Detaylar'} <ChevronRight size={13} />
           </span>
         </div>
       </div>
@@ -73,11 +67,19 @@ function TrainingCard({ training }: { training: Training }) {
 }
 
 export default function TrainingsPage() {
+  const { language, t } = useLanguage();
   const [activeFilter, setActiveFilter] = useState<string>('all');
+
+  const FILTERS = [
+    { key: 'all',      label: t('trainings.catalog.filter.all') },
+    { key: 'bireysel', label: t('trainings.catalog.filter.individual') },
+    { key: 'takim',    label: t('trainings.catalog.filter.team') },
+    { key: 'donusum',  label: t('trainings.catalog.filter.transformation') },
+  ];
 
   const filtered = activeFilter === 'all'
     ? trainings
-    : trainings.filter((t) => t.journey === activeFilter);
+    : trainings.filter((tr) => tr.journey === activeFilter);
 
   const handleContact = () => {
     window.open('https://calendly.com/sevim/ai-for-business-discovery-call', '_blank');
@@ -89,7 +91,9 @@ export default function TrainingsPage() {
       {/* JOURNEY MAP */}
       <section className="px-4 pt-10 pb-8">
         <div className="max-w-5xl mx-auto">
-          <p className="text-center text-sm font-semibold text-gray-500 uppercase tracking-widest mb-6">Ogrenme Yollariniz</p>
+          <p className="text-center text-sm font-semibold text-gray-500 uppercase tracking-widest mb-6">
+            {t('trainings.catalog.journey.title')}
+          </p>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {Object.entries(journeyConfig).map(([key, cfg]) => (
               <button
@@ -102,8 +106,12 @@ export default function TrainingsPage() {
                 }`}
               >
                 <span className="text-2xl">{cfg.icon}</span>
-                <span className="text-xs font-bold leading-tight">{cfg.label}</span>
-                <span className="text-[11px] text-gray-500 leading-tight hidden sm:block">{cfg.desc}</span>
+                <span className="text-xs font-bold leading-tight">
+                  {language === 'en' ? cfg.labelEn : cfg.label}
+                </span>
+                <span className="text-[11px] text-gray-500 leading-tight hidden sm:block">
+                  {language === 'en' ? cfg.descEn : cfg.desc}
+                </span>
               </button>
             ))}
           </div>
@@ -126,12 +134,14 @@ export default function TrainingsPage() {
               {f.label}
               {f.key !== 'all' && (
                 <span className="ml-1.5 text-xs opacity-60">
-                  {trainings.filter((t) => t.journey === f.key).length}
+                  {trainings.filter((tr) => tr.journey === f.key).length}
                 </span>
               )}
             </button>
           ))}
-          <span className="ml-auto text-xs text-gray-600">{filtered.length} program</span>
+          <span className="ml-auto text-xs text-gray-600">
+            {filtered.length} {t('trainings.catalog.count')}
+          </span>
         </div>
       </section>
 
@@ -139,37 +149,42 @@ export default function TrainingsPage() {
       <section className="px-4 pb-20">
         <div className="max-w-5xl mx-auto">
           {filtered.length === 0 ? (
-            <div className="text-center py-20 text-gray-500">Bu kategoride program bulunamadi.</div>
+            <div className="text-center py-20 text-gray-500">{t('trainings.catalog.empty')}</div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {filtered.map((t) => (
-                <TrainingCard key={t.id} training={t} />
+              {filtered.map((tr) => (
+                <TrainingCard key={tr.id} training={tr} lang={language} />
               ))}
             </div>
           )}
         </div>
       </section>
 
-      {/* LEARNING PATH */}
+      {/* RECOMMENDED PATH */}
       <section className="px-4 py-16 border-t border-gray-800 bg-gray-900/30">
         <div className="max-w-4xl mx-auto text-center mb-10">
-          <p className="text-xs font-bold text-cyan-400 uppercase tracking-widest mb-3">Onerilen Yol</p>
-          <h2 className="text-2xl sm:text-3xl font-black text-white mb-3">Nereden Baslamalisiniz?</h2>
-          <p className="text-gray-400">Bireysel baslayip kurumsal donusume uzanin.</p>
+          <p className="text-xs font-bold text-cyan-400 uppercase tracking-widest mb-3">
+            {t('trainings.catalog.recommended.label')}
+          </p>
+          <h2 className="text-2xl sm:text-3xl font-black text-white mb-3">
+            {t('trainings.catalog.recommended.title')}
+          </h2>
+          <p className="text-gray-400">{t('trainings.catalog.recommended.desc')}</p>
         </div>
         <div className="max-w-4xl mx-auto flex items-center justify-center gap-2 flex-wrap">
           {['02', '03', '09'].map((num, i, arr) => {
-            const t = trainings.find((x) => x.id === num)!;
-            if (!t) return null;
+            const tr = trainings.find((x) => x.id === num);
+            if (!tr) return null;
+            const cardTitle = language === 'en' ? (tr.en?.title ?? tr.title) : tr.title;
             return (
               <div key={num} className="flex items-center gap-2">
                 <Link
-                  to={`/trainings/${t.slug}`}
+                  to={`/trainings/${tr.slug}`}
                   className="flex flex-col items-center gap-1 p-3 bg-gray-900 border border-gray-800 hover:border-cyan-500/50 rounded-xl text-center w-36 transition-all hover:-translate-y-0.5"
                 >
-                  <span className="text-xs font-mono text-gray-600">#{t.number}</span>
-                  <span className="text-xs font-bold text-white leading-tight text-center">{t.title}</span>
-                  <span className="text-[11px] text-gray-500 leading-tight">{t.durationShort}</span>
+                  <span className="text-xs font-mono text-gray-600">#{tr.number}</span>
+                  <span className="text-xs font-bold text-white leading-tight text-center">{cardTitle}</span>
+                  <span className="text-[11px] text-gray-500 leading-tight">{tr.durationShort}</span>
                 </Link>
                 {i < arr.length - 1 && <ArrowRight size={16} className="text-gray-600 flex-shrink-0" />}
               </div>
@@ -184,13 +199,15 @@ export default function TrainingsPage() {
           <div className="relative bg-gradient-to-br from-gray-900 to-gray-900/80 border border-gray-700 rounded-2xl p-10 text-center overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-teal-500/5 pointer-events-none" />
             <div className="relative">
-              <span className="text-xs font-bold text-cyan-400 uppercase tracking-widest">Kurumsal Egitim</span>
+              <span className="text-xs font-bold text-cyan-400 uppercase tracking-widest">
+                {t('trainings.catalog.corporate.badge')}
+              </span>
               <h2 className="text-2xl sm:text-3xl font-black text-white mt-3 mb-4">
-                Ekibiniz Icin Ozellestirilmis<br />Program Tasarlayalim
+                {t('trainings.catalog.corporate.title1')}<br />
+                {t('trainings.catalog.corporate.title2')}
               </h2>
               <p className="text-gray-400 mb-8 max-w-xl mx-auto leading-relaxed">
-                Tum programlar sektor, ekip buyuklugu ve organizasyonun ihtiyaclarina gore ozellestirilebilir.
-                Grup fiyatlandirmasi ve yerinde egitim secenekleri mevcuttur.
+                {t('trainings.catalog.corporate.desc')}
               </p>
               <div className="flex items-center justify-center gap-3 flex-wrap">
                 <button
@@ -198,11 +215,11 @@ export default function TrainingsPage() {
                   className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-gray-950 font-bold px-6 py-3 rounded-xl transition-all hover:-translate-y-0.5"
                 >
                   <Calendar size={16} />
-                  Keşif Görüşmesi Ayarla
+                  {t('trainings.catalog.corporate.cta')}
                 </button>
                 <div className="flex items-center gap-4 text-sm text-gray-500">
-                  <span>&#10003; On kesif gorusmesi ucretsiz</span>
-                  <span>&#10003; Icerik sektore ozel</span>
+                  <span>&#10003; {t('trainings.catalog.corporate.free')}</span>
+                  <span>&#10003; {t('trainings.catalog.corporate.custom')}</span>
                 </div>
               </div>
             </div>
