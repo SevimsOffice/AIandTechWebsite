@@ -86,38 +86,8 @@ export default function TrainingsPage() {
   return (
     <div className="min-h-screen bg-gray-950">
 
-      {/* HERO */}
-      <section className="relative overflow-hidden py-24 px-4">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-teal-500/5 pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="max-w-5xl mx-auto text-center relative">
-          <div className="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full px-4 py-1.5 text-xs font-semibold text-cyan-400 uppercase tracking-widest mb-8">
-            &#10022; Claude Egitim Katalogu 2026
-          </div>
-
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight mb-6">
-            3 Program. Bir Hedef:<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">
-              Yapay Zekaya Entegre Olun.
-            </span>
-          </h1>
-
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Bireysel verimlilikten kurumsal donusume, yogun pratik egitimden stratejik kocluğa.
-            Kendi rotanizi secin — her program somut ciktiyla biter.
-          </p>
-
-          <div className="flex items-center justify-center gap-6 flex-wrap text-sm text-gray-500">
-            <span className="flex items-center gap-2"><span className="w-2 h-2 bg-cyan-400 rounded-full"></span>Yerinde veya Online</span>
-            <span className="flex items-center gap-2"><span className="w-2 h-2 bg-teal-400 rounded-full"></span>Turkce &amp; Uygulamali</span>
-            <span className="flex items-center gap-2"><span className="w-2 h-2 bg-green-400 rounded-full"></span>Sektore Ozel Icerik</span>
-          </div>
-        </div>
-      </section>
-
       {/* JOURNEY MAP */}
-      <section className="px-4 pb-12">
+      <section className="px-4 pt-10 pb-8">
         <div className="max-w-5xl mx-auto">
           <p className="text-center text-sm font-semibold text-gray-500 uppercase tracking-widest mb-6">Ogrenme Yollariniz</p>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
