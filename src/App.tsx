@@ -3,11 +3,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { LanguageProvider } from './contexts/LanguageContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import HomePage from './pages/HomePage';
-import TrainingsPage from './pages/TrainingsPage';
-import BlogsPage from './pages/BlogsPage';
-import ProductsPage from './pages/ProductsPage';
-import VibeCoding from './pages/VibeCoding';
+import HomePage       from './pages/HomePage';
+import TrainingsPage  from './pages/TrainingsPage';
+import TrainingDetailPage from './pages/TrainingDetailPage';
+import BlogsPage      from './pages/BlogsPage';
+import ProductsPage   from './pages/ProductsPage';
+import VibeCoding     from './pages/VibeCoding';
 import NetWorthCalculator from './pages/NetWorthCalculator';
 
 function App() {
@@ -18,11 +19,12 @@ function App() {
           <Header />
           <main>
             <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/trainings" element={<TrainingsPage />} />
-              <Route path="/blogs" element={<BlogsPage />} />
-              <Route path="/products" element={<ProductsPage />} />
-              <Route path="/vibecoding" element={<VibeCoding />} />
+              <Route path="/"                    element={<HomePage />} />
+              <Route path="/trainings"           element={<TrainingsPage />} />
+              <Route path="/trainings/:slug"     element={<TrainingDetailPage />} />
+              <Route path="/blogs"               element={<BlogsPage />} />
+              <Route path="/products"            element={<ProductsPage />} />
+              <Route path="/vibecoding"          element={<VibeCoding />} />
               <Route path="/products/ainetvalue" element={<NetWorthCalculator />} />
             </Routes>
           </main>
