@@ -1,7 +1,7 @@
 // src/pages/TrainingsPage.tsx
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Clock, Users, ChevronRight, Mail } from 'lucide-react';
+import { ArrowRight, Clock, Users, ChevronRight, Calendar } from 'lucide-react';
 import { featuredTrainings as trainings, journeyConfig, levelColors, type Training } from '../data/trainings';
 
 const FILTERS = [
@@ -80,11 +80,7 @@ export default function TrainingsPage() {
     : trainings.filter((t) => t.journey === activeFilter);
 
   const handleContact = () => {
-    const subject = encodeURIComponent('Kurumsal Egitim Talebi — AI&TECH');
-    const body = encodeURIComponent(
-      'Merhaba Sevim Hanim,\n\nSirketimiz icin kurumsal egitim talebi hakkinda gorusmek istiyoruz.\n\nSirket adi:\nSektor:\nCalisanlar:\nIlgilendigimiz program:\n\nIyi calismalar.'
-    );
-    window.location.href = `mailto:info@aiandtech.cloud?subject=${subject}&body=${body}`;
+    window.open('https://calendly.com/sevim/ai-for-business-discovery-call', '_blank');
   };
 
   return (
@@ -231,8 +227,8 @@ export default function TrainingsPage() {
                   onClick={handleContact}
                   className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-gray-950 font-bold px-6 py-3 rounded-xl transition-all hover:-translate-y-0.5"
                 >
-                  <Mail size={16} />
-                  Teklif Isteyin
+                  <Calendar size={16} />
+                  Keşif Görüşmesi Ayarla
                 </button>
                 <div className="flex items-center gap-4 text-sm text-gray-500">
                   <span>&#10003; On kesif gorusmesi ucretsiz</span>

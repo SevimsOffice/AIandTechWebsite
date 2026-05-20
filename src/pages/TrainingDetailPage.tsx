@@ -1,6 +1,6 @@
 // src/pages/TrainingDetailPage.tsx
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { ArrowLeft, Clock, Monitor, CheckCircle2, Users, AlertTriangle, Mail, ChevronRight } from 'lucide-react';
+import { ArrowLeft, Clock, Monitor, CheckCircle2, Users, AlertTriangle, Calendar, ChevronRight } from 'lucide-react';
 import { getTrainingBySlug, levelColors, trainings } from '../data/trainings';
 
 export default function TrainingDetailPage() {
@@ -12,12 +12,7 @@ export default function TrainingDetailPage() {
   const otherCourses = trainings.filter((t) => t.id !== training.id).slice(0, 3);
 
   const handleContact = () => {
-    const subj = encodeURIComponent('Egitim Talebi: ' + training.title);
-    const body = encodeURIComponent(
-      'Merhaba Sevim Hanim,\n\n"' + training.title +
-      '" egitimi hakkinda bilgi almak istiyorum.\n\nAdim:\nSirket / Kurum:\nKatilimci sayisi:\nTercih ettigim tarih:\n\nIyi calismalar.'
-    );
-    window.location.href = 'mailto:info@aiandtech.cloud?subject=' + subj + '&body=' + body;
+    window.open('https://calendly.com/sevim/ai-for-business-discovery-call', '_blank');
   };
 
   return (
@@ -74,7 +69,7 @@ export default function TrainingDetailPage() {
             onClick={handleContact}
             className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-gray-950 font-bold px-7 py-3.5 rounded-xl transition-all hover:-translate-y-0.5 text-base"
           >
-            <Mail size={16} /> Egitim Hakkinda Bilgi Alin
+            <Calendar size={16} /> Keşif Görüşmesi Ayarla
           </button>
         </div>
       </section>
@@ -216,9 +211,9 @@ export default function TrainingDetailPage() {
               onClick={handleContact}
               className="w-full bg-cyan-500 hover:bg-cyan-400 text-gray-950 font-bold py-3 rounded-xl transition-all hover:-translate-y-0.5 flex items-center justify-center gap-2"
             >
-              <Mail size={15} /> Bilgi &amp; Kayit
+              <Calendar size={15} /> Randevu Al
             </button>
-            <p className="text-xs text-gray-600 text-center">Ucretsiz kesif gorusmesi mevcut</p>
+            <p className="text-xs text-gray-600 text-center">Ucretsiz · Yeni pencerede acilir</p>
           </div>
         </div>
       </div>
