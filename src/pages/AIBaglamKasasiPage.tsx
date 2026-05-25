@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { submitToSheets } from '../utils/submitToSheets';
-import { Download, CheckCircle, Lock, ChevronDown } from 'lucide-react';
+import { Download, CheckCircle, Lock } from 'lucide-react';
 
 const TEMPLATE_NAME = 'AI Bağlam Kasası';
 const DOWNLOAD_URL = 'https://drive.google.com/file/d/14DDvgGmJQy6IJwXw8528ug3H2uGIrO-u/view?usp=sharing';
@@ -106,44 +106,163 @@ const AIBaglamKasasiPage = () => {
     if (errors[field]) setErrors(prev => ({ ...prev, [field]: '' }));
   };
 
+  const downloadForm = (
+    <div className="bg-gray-900 border border-cyan-400/30 rounded-2xl p-8 md:p-10">
+      {!submitted ? (
+        <>
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-cyan-400/10 border border-cyan-400/30 mb-4">
+              <Download className="h-6 w-6 text-cyan-400" />
+            </div>
+            <h2 className="text-2xl font-bold mb-2">{labels.formTitle}</h2>
+            <p className="text-gray-400 text-sm">{labels.formDesc}</p>
+          </div>
+
+          <form onSubmit={handleSubmit} noValidate className="space-y-5">
+            <div>
+              <label className="block text-sm font-medium text-gray-300 mb-1.5">
+                {labels.firstName} <span className="text-red-400">*</span>
+              </label>
+              <input
+                type="text"
+                value={form.firstName}
+                onChange={e => handleChange('firstName', e.target.value)}
+                placeholder={labels.firstNamePlaceholder}
+                className={`w-full bg-gray-800 border rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 transition-colors ${
+                  errors.firstName ? 'border-red-500' : 'border-gray-700'
+                }`}
+              />
+              {errors.firstName && <p className="text-red-400 text-xs mt-1">{errors.firstName}</p>}
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-300 mb-1.5">
+                {labels.lastName} <span className="text-red-400">*</span>
+              </label>
+              <input
+                type="text"
+                value={form.lastName}
+                onChange={e => handleChange('lastName', e.target.value)}
+                placeholder={labels.lastNamePlaceholder}
+                className={`w-full bg-gray-800 border rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 transition-colors ${
+                  errors.lastName ? 'border-red-500' : 'border-gray-700'
+                }`}
+              />
+              {errors.lastName && <p className="text-red-400 text-xs mt-1">{errors.lastName}</p>}
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-300 mb-1.5">
+                {labels.email} <span className="text-red-400">*</span>
+              </label>
+              <input
+                type="email"
+                value={form.email}
+                onChange={e => handleChange('email', e.target.value)}
+                placeholder={labels.emailPlaceholder}
+                className={`w-full bg-gray-800 border rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 transition-colors ${
+                  errors.email ? 'border-red-500' : 'border-gray-700'
+                }`}
+              />
+              {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
+            </div>
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-cyan-400 hover:bg-cyan-300 disabled:opacity-60 text-gray-950 font-bold py-3.5 rounded-lg transition-colors flex items-center justify-center gap-2"
+            >
+              {loading ? (
+                <>
+                  <svg className="animate-spin h-4 w-4" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.4 0 0 5.4 0 12h4z" />
+                  </svg>
+                  {labels.submitting}
+                </>
+              ) : (
+                <>
+                  <Download className="h-4 w-4" />
+                  {labels.submit}
+                </>
+              )}
+            </button>
+
+            <p className="text-gray-500 text-xs text-center flex items-center justify-center gap-1.5">
+              <Lock className="h-3 w-3" />
+              {labels.privacy}
+            </p>
+          </form>
+        </>
+      ) : (
+        <div className="text-center py-4">
+          <CheckCircle className="h-16 w-16 text-cyan-400 mx-auto mb-4" />
+          <h2 className="text-2xl font-bold mb-3">{labels.successTitle}</h2>
+          <p className="text-gray-400 mb-8">{labels.successDesc}</p>
+          <a
+            href={DOWNLOAD_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-cyan-400 hover:bg-cyan-300 text-gray-950 font-bold px-8 py-4 rounded-lg transition-colors text-lg"
+          >
+            <Download className="h-5 w-5" />
+            {labels.downloadBtn}
+          </a>
+        </div>
+      )}
+    </div>
+  );
+
   return (
     <div className="min-h-screen bg-gray-950 text-white">
-      {/* Hero */}
+      {/* Hero + Form side by side on desktop, stacked on mobile */}
       <section className="pt-32 pb-16 px-6">
-        <div className="container mx-auto max-w-4xl text-center">
-          <span className="inline-block bg-cyan-400/10 text-cyan-400 text-sm font-semibold px-4 py-1.5 rounded-full mb-6 border border-cyan-400/20">
-            {labels.badge}
-          </span>
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">
-            <span className="text-white">{labels.title}</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto">
-            {labels.subtitle}
-          </p>
-          <p className="text-gray-400 text-sm">
-            Sevim Durmuş · <span className="text-cyan-400">aiandtech.cloud</span>
-          </p>
-        </div>
-      </section>
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            {/* Left: title & description */}
+            <div>
+              <span className="inline-block bg-cyan-400/10 text-cyan-400 text-sm font-semibold px-4 py-1.5 rounded-full mb-6 border border-cyan-400/20">
+                {labels.badge}
+              </span>
+              <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
+                {labels.title}
+              </h1>
+              <p className="text-xl text-gray-300 mb-6 leading-relaxed">
+                {labels.subtitle}
+              </p>
+              <p className="text-gray-500 text-sm mb-10">
+                Sevim Durmuş · <span className="text-cyan-400">aiandtech.cloud</span>
+              </p>
 
-      {/* Problem / Solution */}
-      <section className="py-16 px-6">
-        <div className="container mx-auto max-w-4xl grid md:grid-cols-2 gap-8">
-          <div className="bg-gray-900 border border-red-900/40 rounded-2xl p-8">
-            <div className="text-2xl mb-4">❌</div>
-            <h3 className="text-xl font-bold text-red-400 mb-3">{labels.problem}</h3>
-            <p className="text-gray-400 leading-relaxed">{labels.problemDesc}</p>
-          </div>
-          <div className="bg-gray-900 border border-cyan-400/30 rounded-2xl p-8">
-            <div className="text-2xl mb-4">✅</div>
-            <h3 className="text-xl font-bold text-cyan-400 mb-3">{labels.solution}</h3>
-            <p className="text-gray-400 leading-relaxed">{labels.solutionDesc}</p>
+              {/* Problem / Solution inline */}
+              <div className="space-y-4">
+                <div className="bg-gray-900 border border-red-900/40 rounded-xl p-5 flex gap-4">
+                  <span className="text-xl shrink-0">❌</span>
+                  <div>
+                    <p className="font-semibold text-red-400 mb-1">{labels.problem}</p>
+                    <p className="text-gray-400 text-sm leading-relaxed">{labels.problemDesc}</p>
+                  </div>
+                </div>
+                <div className="bg-gray-900 border border-cyan-400/30 rounded-xl p-5 flex gap-4">
+                  <span className="text-xl shrink-0">✅</span>
+                  <div>
+                    <p className="font-semibold text-cyan-400 mb-1">{labels.solution}</p>
+                    <p className="text-gray-400 text-sm leading-relaxed">{labels.solutionDesc}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: download form */}
+            <div className="lg:sticky lg:top-28">
+              {downloadForm}
+            </div>
           </div>
         </div>
       </section>
 
       {/* 8 Prompts */}
-      <section className="py-16 px-6">
+      <section className="py-16 px-6 border-t border-gray-800">
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-3xl font-bold text-center mb-3">{labels.inside}</h2>
           <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">{labels.insideDesc}</p>
@@ -160,128 +279,6 @@ const AIBaglamKasasiPage = () => {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Scroll indicator */}
-      <div className="flex flex-col items-center gap-2 py-4 text-gray-500 text-sm">
-        <ChevronDown className="h-5 w-5 animate-bounce" />
-        {isTr ? 'İndirmek için formu doldurun' : 'Fill the form below to download'}
-      </div>
-
-      {/* Download Form */}
-      <section id="download-form" className="py-16 px-6">
-        <div className="container mx-auto max-w-lg">
-          <div className="bg-gray-900 border border-gray-800 rounded-2xl p-8 md:p-10">
-            {!submitted ? (
-              <>
-                <div className="text-center mb-8">
-                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-cyan-400/10 border border-cyan-400/30 mb-4">
-                    <Download className="h-6 w-6 text-cyan-400" />
-                  </div>
-                  <h2 className="text-2xl font-bold mb-2">{labels.formTitle}</h2>
-                  <p className="text-gray-400 text-sm">{labels.formDesc}</p>
-                </div>
-
-                <form onSubmit={handleSubmit} noValidate className="space-y-5">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-1.5">
-                      {labels.firstName} <span className="text-red-400">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      value={form.firstName}
-                      onChange={e => handleChange('firstName', e.target.value)}
-                      placeholder={labels.firstNamePlaceholder}
-                      className={`w-full bg-gray-800 border rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 transition-colors ${
-                        errors.firstName ? 'border-red-500' : 'border-gray-700'
-                      }`}
-                    />
-                    {errors.firstName && (
-                      <p className="text-red-400 text-xs mt-1">{errors.firstName}</p>
-                    )}
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-1.5">
-                      {labels.lastName} <span className="text-red-400">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      value={form.lastName}
-                      onChange={e => handleChange('lastName', e.target.value)}
-                      placeholder={labels.lastNamePlaceholder}
-                      className={`w-full bg-gray-800 border rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 transition-colors ${
-                        errors.lastName ? 'border-red-500' : 'border-gray-700'
-                      }`}
-                    />
-                    {errors.lastName && (
-                      <p className="text-red-400 text-xs mt-1">{errors.lastName}</p>
-                    )}
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-1.5">
-                      {labels.email} <span className="text-red-400">*</span>
-                    </label>
-                    <input
-                      type="email"
-                      value={form.email}
-                      onChange={e => handleChange('email', e.target.value)}
-                      placeholder={labels.emailPlaceholder}
-                      className={`w-full bg-gray-800 border rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 transition-colors ${
-                        errors.email ? 'border-red-500' : 'border-gray-700'
-                      }`}
-                    />
-                    {errors.email && (
-                      <p className="text-red-400 text-xs mt-1">{errors.email}</p>
-                    )}
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="w-full bg-cyan-400 hover:bg-cyan-300 disabled:opacity-60 text-gray-950 font-bold py-3.5 rounded-lg transition-colors flex items-center justify-center gap-2"
-                  >
-                    {loading ? (
-                      <>
-                        <svg className="animate-spin h-4 w-4" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.4 0 0 5.4 0 12h4z" />
-                        </svg>
-                        {labels.submitting}
-                      </>
-                    ) : (
-                      <>
-                        <Download className="h-4 w-4" />
-                        {labels.submit}
-                      </>
-                    )}
-                  </button>
-
-                  <p className="text-gray-500 text-xs text-center flex items-center justify-center gap-1.5">
-                    <Lock className="h-3 w-3" />
-                    {labels.privacy}
-                  </p>
-                </form>
-              </>
-            ) : (
-              <div className="text-center py-4">
-                <CheckCircle className="h-16 w-16 text-cyan-400 mx-auto mb-4" />
-                <h2 className="text-2xl font-bold mb-3">{labels.successTitle}</h2>
-                <p className="text-gray-400 mb-8">{labels.successDesc}</p>
-                <a
-                  href={DOWNLOAD_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-cyan-400 hover:bg-cyan-300 text-gray-950 font-bold px-8 py-4 rounded-lg transition-colors text-lg"
-                >
-                  <Download className="h-5 w-5" />
-                  {labels.downloadBtn}
-                </a>
-              </div>
-            )}
           </div>
         </div>
       </section>
