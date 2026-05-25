@@ -20,6 +20,7 @@ const translations = {
     'nav.about': 'About Us',
     'nav.training': 'Training',
     'nav.contact': 'Contact',
+    'nav.templates': 'Templates',
 
     // Home
     'home.badge': 'AI-Powered Transformation',
@@ -265,6 +266,7 @@ const translations = {
     'nav.about': 'Hakkımızda',
     'nav.training': 'Eğitim',
     'nav.contact': 'İletişim',
+    'nav.templates': 'Şablonlar',
 
     // Home
     'home.badge': 'AI Destekli Dönüşüm',

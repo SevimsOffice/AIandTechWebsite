@@ -85,6 +85,12 @@ const Footer = () => {
                 {t('nav.products')}
               </button>
               <button
+                onClick={() => handleNavigation('/templates')}
+                className="text-gray-400 hover:text-cyan-400 transition-colors text-left text-sm"
+              >
+                {t('nav.templates')}
+              </button>
+              <button
                 onClick={() => handleNavigation('/', 'about')}
                 className="text-gray-400 hover:text-cyan-400 transition-colors text-left text-sm"
               >

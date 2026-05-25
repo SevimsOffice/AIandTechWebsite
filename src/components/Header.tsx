@@ -94,6 +94,13 @@ const Header = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
             </button>
             <button
+              onClick={() => handleNavigation('/templates')}
+              className="text-gray-300 hover:text-cyan-400 transition-colors relative group"
+            >
+              {t('nav.templates')}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+            </button>
+            <button
               onClick={() => handleNavigation('/', 'about')}
               className="text-gray-300 hover:text-cyan-400 transition-colors relative group"
             >

@@ -10,6 +10,8 @@ import BlogsPage      from './pages/BlogsPage';
 import ProductsPage   from './pages/ProductsPage';
 import VibeCoding     from './pages/VibeCoding';
 import NetWorthCalculator from './pages/NetWorthCalculator';
+import TemplatesPage  from './pages/TemplatesPage';
+import AIBaglamKasasiPage from './pages/AIBaglamKasasiPage';
 
 function App() {
   return (
@@ -19,13 +21,15 @@ function App() {
           <Header />
           <main>
             <Routes>
-              <Route path="/"                    element={<HomePage />} />
-              <Route path="/trainings"           element={<TrainingsPage />} />
-              <Route path="/trainings/:slug"     element={<TrainingDetailPage />} />
-              <Route path="/blogs"               element={<BlogsPage />} />
-              <Route path="/products"            element={<ProductsPage />} />
-              <Route path="/vibecoding"          element={<VibeCoding />} />
-              <Route path="/products/ainetvalue" element={<NetWorthCalculator />} />
+              <Route path="/"                          element={<HomePage />} />
+              <Route path="/trainings"                 element={<TrainingsPage />} />
+              <Route path="/trainings/:slug"           element={<TrainingDetailPage />} />
+              <Route path="/blogs"                     element={<BlogsPage />} />
+              <Route path="/products"                  element={<ProductsPage />} />
+              <Route path="/vibecoding"                element={<VibeCoding />} />
+              <Route path="/products/ainetvalue"       element={<NetWorthCalculator />} />
+              <Route path="/templates"                 element={<TemplatesPage />} />
+              <Route path="/templates/ai-baglam-kasasi" element={<AIBaglamKasasiPage />} />
             </Routes>
           </main>
           <Footer />
