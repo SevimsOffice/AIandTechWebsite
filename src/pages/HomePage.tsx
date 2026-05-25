@@ -4,6 +4,7 @@ import Challenges from './Challenges';
 import Services from './Services';
 import About from './About';
 import Training from './Training';
+import TemplatesSection from '../components/TemplatesSection';
 import Contact from './Contact';
 
 const HomePage = () => {
@@ -14,6 +15,7 @@ const HomePage = () => {
       <Services />
       <About />
       <Training />
+      <TemplatesSection />
       <Contact />
     </>
   );
