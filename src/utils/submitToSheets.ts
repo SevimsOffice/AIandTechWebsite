@@ -40,13 +40,15 @@ export const submitToSheets = async (data: TemplateDownloadData): Promise<void> 
   }
 
   try {
+    // Must use text/plain — no-cors mode silently drops application/json,
+    // causing Apps Script to receive an empty body.
     await fetch(GOOGLE_APPS_SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify(data),
     });
   } catch {
-    // no-cors mode may throw, but data is still saved
+    // opaque response in no-cors — request still reaches Apps Script
   }
 };
