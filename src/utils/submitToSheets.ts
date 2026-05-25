@@ -23,7 +23,8 @@
 //    - Who has access: Anyone
 // 5. Copy the Web App URL and replace GOOGLE_APPS_SCRIPT_URL below
 
-export const GOOGLE_APPS_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+export const GOOGLE_APPS_SCRIPT_URL =
+  'https://script.google.com/macros/s/AKfycby7xAbUuk_jZSNYiLU9mhYedCKjkWOv4kpuHsetJe2blO8BveLUAK6BtnQrxeta0TY/exec';
 
 export interface TemplateDownloadData {
   firstName: string;
