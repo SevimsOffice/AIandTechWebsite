@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Danışma Kurulu — aiandtech.cloud</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #fff;
+    color: #111;
+    font-size: 11pt;
+    line-height: 1.6;
+  }
+
+  /* ── PAGE BREAKS ── */
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    padding: 14mm 16mm;
+    page-break-after: always;
+    position: relative;
+    overflow: hidden;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .page { margin: 0; box-shadow: none; }
+  }
+
+  /* ── COLORS ── */
+  :root {
+    --brand: #d0224f;
+    --dark: #0a0a0f;
+    --cyan: #22d3ee;
+    --gray: #6b7280;
+    --light: #f9fafb;
+    --border: #e5e7eb;
+  }
+
+  /* ── COVER PAGE ── */
+  .cover {
+    background: linear-gradient(135deg, #0a0a0f 0%, #111827 60%, #0f1f2e 100%);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16mm 18mm;
+  }
+
+  .cover-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8mm;
+  }
+  .cover-logo-dot {
+    width: 32px; height: 32px;
+    background: var(--brand);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 14px; color: #fff;
+  }
+  .cover-logo-text {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--brand);
+    letter-spacing: -0.3px;
+  }
+
+  .cover-badge {
+    display: inline-block;
+    background: rgba(34,211,238,0.12);
+    color: var(--cyan);
+    border: 1px solid rgba(34,211,238,0.3);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 9pt;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 8mm;
+  }
+
+  .cover-title-small {
+    font-size: 13pt;
+    color: rgba(255,255,255,0.5);
+    font-weight: 500;
+    margin-bottom: 3mm;
+  }
+
+  .cover-title {
+    font-size: 42pt;
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 6mm;
+  }
+  .cover-title span { color: var(--cyan); }
+
+  .cover-subtitle {
+    font-size: 14pt;
+    color: rgba(255,255,255,0.7);
+    font-weight: 400;
+    line-height: 1.5;
+    max-width: 140mm;
+    margin-bottom: 10mm;
+  }
+
+  .cover-stat-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(208,34,79,0.12);
+    border: 1px solid rgba(208,34,79,0.3);
+    border-radius: 12px;
+    padding: 10px 16px;
+    margin-bottom: 12mm;
+  }
+  .cover-stat-number {
+    font-size: 32pt;
+    font-weight: 900;
+    color: var(--brand);
+    line-height: 1;
+  }
+  .cover-stat-text {
+    font-size: 9pt;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.4;
+    max-width: 80mm;
+  }
+
+  .cover-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 6mm;
+    margin-top: 0;
+  }
+  .cover-author { color: rgba(255,255,255,0.6); font-size: 9pt; }
+  .cover-author strong { color: #fff; display: block; font-size: 10pt; }
+  .cover-url { color: var(--cyan); font-size: 9pt; font-weight: 600; }
+
+  /* ── SECTION PAGES ── */
+  .section-header {
+    border-left: 4px solid var(--brand);
+    padding-left: 12px;
+    margin-bottom: 8mm;
+  }
+  .section-label {
+    font-size: 8pt;
+    font-weight: 700;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 3px;
+  }
+  .section-title {
+    font-size: 22pt;
+    font-weight: 800;
+    line-height: 1.15;
+    color: #0a0a0f;
+    letter-spacing: -0.5px;
+  }
+  .section-title span { color: var(--brand); }
+
+  .section-intro {
+    color: #374151;
+    font-size: 10.5pt;
+    line-height: 1.7;
+    margin-bottom: 7mm;
+  }
+
+  /* ── CALLOUT BOXES ── */
+  .callout {
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 5mm;
+    font-size: 10pt;
+    line-height: 1.6;
+  }
+  .callout-red {
+    background: #fff1f2;
+    border: 1px solid #fecdd3;
+    border-left: 4px solid #e11d48;
+    color: #881337;
+  }
+  .callout-cyan {
+    background: #ecfeff;
+    border: 1px solid #a5f3fc;
+    border-left: 4px solid var(--cyan);
+    color: #164e63;
+  }
+  .callout-dark {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #475569;
+    color: #1e293b;
+  }
+  .callout-title {
+    font-weight: 700;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10.5pt;
+  }
+
+  /* ── ADVISER CARDS ── */
+  .adviser-num {
+    font-size: 9pt;
+    font-weight: 700;
+    color: var(--gray);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .adviser-title {
+    font-size: 17pt;
+    font-weight: 800;
+    color: #0a0a0f;
+    letter-spacing: -0.5px;
+    margin-bottom: 4px;
+  }
+  .adviser-title span { color: var(--brand); }
+  .adviser-tagline {
+    font-size: 10pt;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 5mm;
+    font-style: italic;
+  }
+  .adviser-body {
+    color: #374151;
+    font-size: 10.5pt;
+    line-height: 1.7;
+    margin-bottom: 4mm;
+  }
+  .adviser-asks {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-top: 3mm;
+  }
+  .adviser-asks-title {
+    font-size: 8.5pt;
+    font-weight: 700;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .adviser-asks ul {
+    list-style: none;
+    padding: 0;
+  }
+  .adviser-asks ul li {
+    font-size: 10pt;
+    color: #374151;
+    padding: 2px 0 2px 16px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .adviser-asks ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--brand);
+    font-size: 9pt;
+  }
+
+  .adviser-divider {
+    border: none;
+    border-top: 1px dashed #e2e8f0;
+    margin: 6mm 0;
+  }
+
+  /* ── PROMPT BOX ── */
+  .prompt-box {
+    background: #0f172a;
+    color: #e2e8f0;
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-family: 'Courier New', monospace;
+    font-size: 8.5pt;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    word-break: break-word;
+    border: 1px solid #1e293b;
+    margin-bottom: 5mm;
+  }
+  .prompt-box .ph { color: #67e8f9; font-weight: bold; }
+  .prompt-box .kw { color: #a78bfa; font-weight: bold; }
+  .prompt-box .step { color: #34d399; font-weight: bold; }
+
+  /* ── STEPS ── */
+  .steps { counter-reset: step; }
+  .step-item {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 5mm;
+    align-items: flex-start;
+  }
+  .step-num {
+    width: 28px; height: 28px;
+    min-width: 28px;
+    background: var(--brand);
+    color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800;
+    font-size: 10pt;
+  }
+  .step-content { flex: 1; }
+  .step-title { font-weight: 700; font-size: 10.5pt; color: #111; margin-bottom: 2px; }
+  .step-desc { font-size: 10pt; color: #4b5563; line-height: 1.6; }
+
+  /* ── COUNCIL TABLE ── */
+  .council-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 6mm;
+    font-size: 9.5pt;
+  }
+  .council-table th {
+    background: #0a0a0f;
+    color: #fff;
+    padding: 8px 10px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 8.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+  .council-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #e5e7eb;
+    vertical-align: top;
+    color: #374151;
+    line-height: 1.5;
+  }
+  .council-table tr:nth-child(even) td { background: #f9fafb; }
+  .role-tag {
+    display: inline-block;
+    background: #fee2e2;
+    color: #991b1b;
+    border-radius: 4px;
+    padding: 2px 7px;
+    font-size: 8pt;
+    font-weight: 700;
+  }
+
+  /* ── PAGE FOOTER ── */
+  .page-footer {
+    position: absolute;
+    bottom: 10mm;
+    left: 16mm;
+    right: 16mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 8pt;
+    color: #9ca3af;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 4mm;
+  }
+  .page-footer .brand { color: var(--brand); font-weight: 600; }
+
+  /* ── QUOTE ── */
+  .quote {
+    border-left: 3px solid var(--cyan);
+    padding: 8px 14px;
+    background: #f0fdfe;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 10.5pt;
+    color: #164e63;
+    margin: 5mm 0;
+  }
+
+  /* ── TAG CHIPS ── */
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 5mm; }
+  .chip {
+    background: #f3f4f6;
+    color: #374151;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 8.5pt;
+    font-weight: 600;
+  }
+
+  /* ── HIGHLIGHT ── */
+  .hl { color: var(--brand); font-weight: 700; }
+  .hl-cyan { color: #0891b2; font-weight: 700; }
+  strong { font-weight: 700; }
+
+  /* ── WARNING BOX ── */
+  .warning {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-left: 4px solid #f59e0b;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 10pt;
+    color: #78350f;
+    margin-bottom: 5mm;
+  }
+  .warning strong { color: #92400e; }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     PAGE 1 — COVER
+════════════════════════════════════════════ -->
+<div class="page cover">
+  <div>
+    <div class="cover-header">
+      <div class="cover-logo-dot">A</div>
+      <div class="cover-logo-text">AI and Tech</div>
+    </div>
+
+    <div class="cover-badge">Ücretsiz Kaynak · Free Resource</div>
+
+    <div class="cover-title-small">Yapay Zeka Sizi Onaylıyor.</div>
+    <h1 class="cover-title">
+      AI Danışma<br><span>Kurulu</span>
+    </h1>
+    <p class="cover-subtitle">
+      Claude'a sormayı bırakın. Kurulu çalıştırın.<br>
+      Tek bir sohbette 5 farklı bakış açısı, anonim değerlendirme ve net karar.
+    </p>
+
+    <div class="cover-stat-box">
+      <div class="cover-stat-number">%49</div>
+      <div class="cover-stat-text">
+        Stanford araştırması: Claude ve büyük dil modelleri,<br>
+        bir insandan <strong>%49 daha fazla sizi onaylıyor.</strong><br>
+        <span style="opacity:0.7;font-size:8pt">Science dergisi, 11 model, 2.400 katılımcı</span>
+      </div>
+    </div>
+
+    <p style="color:rgba(255,255,255,0.5);font-size:9pt;margin-bottom:4mm;">
+      Kaynak: Andrej Karpathy — LLM Council (GitHub) &amp; Stanford Sycophancy Çalışması (Fortune, 2026)
+    </p>
+  </div>
+
+  <div class="cover-footer">
+    <div class="cover-author">
+      <strong>Sevim Durmuş</strong>
+      Cloud &amp; AI Çözümleri Mimarı · Bursa
+    </div>
+    <div class="cover-url">aiandtech.cloud</div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 2 — PROBLEM
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-label">Problem</div>
+    <h2 class="section-title">AI Sizi <span>Onaylıyor</span></h2>
+  </div>
+
+  <p class="section-intro">
+    Claude'a zor bir karar için danıştığınızda — işe alım, ürün stratejisi, ortaklık, büyük yatırım — size geri gelen cevap aslında büyük ölçüde kendi düşüncenizdir. Onaylanmış, cilâlanmış ve güven verici bir ambalaja sarılmış hâliyle.
+  </p>
+
+  <div class="callout callout-red">
+    <div class="callout-title">🔬 Stanford Araştırması — Science Dergisi, 2026</div>
+    11 büyük dil modeli test edildi (Claude, ChatGPT, Gemini dahil). Sonuç: AI asistanları, kullanıcı kararlarını bir insandan <strong>%49 daha fazla onaylıyor</strong> — açıkça yanlış davranışlarda bile. 2.400 katılımcı ile yapılan takip deneyinde, dalkavukça AI tavsiyesi alan kişiler daha da haklı hissetti, yanlış olduklarında özür dileme olasılıkları azaldı ve iltifat eden AI'yı daha güvenilir buldu.
+  </div>
+
+  <div class="callout callout-dark">
+    <div class="callout-title">💡 Ne Anlama Geliyor?</div>
+    Zor bir karar için Claude'dan tavsiye istediğinizde, yaklaşık yarı ihtimalle o sessizce sizi onaylamak için başını sallıyor. Kurabiye tarifi için sorun değil. Ürün stratejisi, işe alım, hisse dağılımı, işten çıkarma ya da gerçekten birinin sizi geri itmesine ihtiyaç duyduğunuz her şey için tehlikeli.
+  </div>
+
+  <div class="quote">
+    "Sycophancy en çok en önemli kararlarınızda zarar verir."
+  </div>
+
+  <div class="section-header" style="margin-top:7mm;">
+    <div class="section-label">Çözüm</div>
+    <h2 class="section-title">Kurulu <span>Kurun</span></h2>
+  </div>
+
+  <p class="section-intro">
+    Andrej Karpathy (OpenAI'ın kurucu üyesi, şu an Anthropic'te), bunu çözmek için <strong>LLM Council</strong> adlı açık kaynaklı bir araç geliştirdi. Orijinali birden fazla AI modeli üzerinde çalışır: sorgulama, eş değerlendirme, anonimleştirilmiş sıralama, başkan sentezi. Aynı konsepti tek bir Claude sohbeti içinde çalıştırabilirsiniz.
+  </p>
+
+  <div class="callout callout-cyan">
+    <div class="callout-title">⚡ Nasıl Çalışır?</div>
+    Claude'dan 5 farklı danışman olarak cevap vermesini istiyorsunuz — farklı teşvikler, kör noktalar ve öncelikler. Sonra her danışman diğerlerinin cevabını anonim olarak değerlendiriyor. En sona başkan tüm cevapları ve tüm değerlendirmeleri okuyarak tek, net, eyleme geçirilebilir bir öneri yazıyor.
+  </div>
+
+  <div class="page-footer">
+    <span class="brand">aiandtech.cloud</span>
+    <span>AI Danışma Kurulu</span>
+    <span>Sevim Durmuş</span>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 3 — HOW IT WORKS / COUNCIL OVERVIEW
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-label">Nasıl Çalışır?</div>
+    <h2 class="section-title">5 Danışman, <span>1 Başkan</span></h2>
+  </div>
+
+  <p class="section-intro">
+    Kurulun amacı <strong>sürtüşme</strong> yaratmak. Beş "uzman"a danışıp hepsi aynı şekilde düşünürse, beş isimle bir uzmanınız olur. Kurulu, Claude'u beş temel olarak farklı rolde yanıt vermeye zorlar.
+  </p>
+
+  <table class="council-table">
+    <tr>
+      <th>#</th>
+      <th>Danışman</th>
+      <th>Odak Noktası</th>
+      <th>Soru Sorduğu Şey</th>
+    </tr>
+    <tr>
+      <td>01</td>
+      <td><strong>Karşı Görüşçü</strong></td>
+      <td>Başarısızlık noktaları</td>
+      <td>Ne yanlış gidecek, ne ilk kırılacak?</td>
+    </tr>
+    <tr>
+      <td>02</td>
+      <td><strong>Temel Prensipler Düşünürü</strong></td>
+      <td>Varsayımları yıkmak</td>
+      <td>Gerçekte ne biliyoruz? Sıfırdan ne yapardık?</td>
+    </tr>
+    <tr>
+      <td>03</td>
+      <td><strong>Genişletici</strong></td>
+      <td>Kaçırılan yükseli</td>
+      <td>Bu işe yararsa açılan daha büyük fırsat ne?</td>
+    </tr>
+    <tr>
+      <td>04</td>
+      <td><strong>Dışarıdan Bakan</strong></td>
+      <td>Sektör körlüğü</td>
+      <td>İçeridekilerin artık sormayı bıraktığı "aptal" sorular</td>
+    </tr>
+    <tr>
+      <td>05</td>
+      <td><strong>Uygulayıcı</strong></td>
+      <td>Pazartesi sabahı</td>
+      <td>Bu hafta tam olarak ne yapıyoruz?</td>
+    </tr>
+  </table>
+
+  <div class="section-header" style="margin-top:6mm;">
+    <div class="section-label">Süreç</div>
+    <h2 class="section-title">3 <span>Adım</span></h2>
+  </div>
+
+  <div class="steps">
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <div class="step-title">Her danışman ayrı ayrı yanıt verir</div>
+        <div class="step-desc">Beş danışmanın her biri kendi bakış açısından, kendi dilinde ve kendi öncelikleriyle yanıt yazar. Claude birini diğerlerine karıştırmaz.</div>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <div class="step-title">Anonim eş değerlendirme</div>
+        <div class="step-desc">Her danışman, diğer dördünün yanıtını değerlendirir — ancak kimin yazdığını bilmeden. "Yanıt A", "Yanıt B" şeklinde. <strong>Bu adım çoğu insanın atladığı ve en önemli olandır.</strong> LLM kendi yanıtını değerlendirdiğini bilmediğinde dürüstçe değerlendirir.</div>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <div class="step-title">Başkan'ın nihai kararı</div>
+        <div class="step-desc">Başkan, beş orijinal yanıtı ve beş anonim değerlendirmeyi okur. Net bir öneri yazar: hedging yok, "her iki tarafın da argümanları" yok. Pazartesi sabahı uygulayabileceğiniz somut bir sonraki adım.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="brand">aiandtech.cloud</span>
+    <span>AI Danışma Kurulu</span>
+    <span>Sevim Durmuş</span>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 4 — THE 5 ADVISERS (Part 1)
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-label">5 Danışman</div>
+    <h2 class="section-title">Danışmanları <span>Tanıyın</span></h2>
+  </div>
+
+  <!-- ADVISER 1 -->
+  <div class="adviser-num">Danışman 01</div>
+  <div class="adviser-title"><span>Karşı Görüşçü</span></div>
+  <div class="adviser-tagline">"Dengelemiyorum. Neyin başarısız olacağını arıyorum."</div>
+  <p class="adviser-body">
+    Sadece başarısız olacak olanı arar. Dengeli olmaya çalışmaz. Bu kararın neden yanlış olduğunu, neyin ilk kırılacağını ve en kötü makul sonucun nasıl göründüğünü listeler.
+  </p>
+  <div class="adviser-asks">
+    <div class="adviser-asks-title">Sorduğu Sorular</div>
+    <ul>
+      <li>Bu planın en zayıf halkası nerede?</li>
+      <li>Bu kararın ilk 90 günde nasıl batacağını düşünebilirsiniz?</li>
+      <li>En kötü makul senaryo ne?</li>
+      <li>Hangi varsayım yanlış çıkarsa her şey dağılır?</li>
+    </ul>
+  </div>
+
+  <hr class="adviser-divider" />
+
+  <!-- ADVISER 2 -->
+  <div class="adviser-num">Danışman 02</div>
+  <div class="adviser-title"><span>Temel Prensipler Düşünürü</span></div>
+  <div class="adviser-tagline">"Varsayımlarınızı parçalara ayırıyorum."</div>
+  <p class="adviser-body">
+    Varsayımlarınızı parçalar. Açık çerçeveleri kullanamıyor olsaydınız ne yapardınız? Problemi fiziksel temellere indirger ve sıfırdan yeniden inşa eder.
+  </p>
+  <div class="adviser-asks">
+    <div class="adviser-asks-title">Sorduğu Sorular</div>
+    <ul>
+      <li>Gerçekten kanıtlanmış olan ne, sadece varsaydığınız ne?</li>
+      <li>Sektörünüze dair hangi "doğru" aslında sadece gelenek?</li>
+      <li>Sıfırdan başlıyor olsaydınız bu yapıyı kurar mıydınız?</li>
+      <li>Standart çerçeveleri kullanamasaydınız bu problemi nasıl çözerdiniz?</li>
+    </ul>
+  </div>
+
+  <hr class="adviser-divider" />
+
+  <!-- ADVISER 3 -->
+  <div class="adviser-num">Danışman 03</div>
+  <div class="adviser-title"><span>Genişletici</span></div>
+  <div class="adviser-tagline">"Kaçırdığınız yükseliyi görüyorum."</div>
+  <p class="adviser-body">
+    Gözden kaçırdığınız potansiyeli bulur. Bu bahsin daha büyük versiyonuna bakar. İşe yararsa ne açılır? Asimetrik çıktılar neler?
+  </p>
+  <div class="adviser-asks">
+    <div class="adviser-asks-title">Sorduğu Sorular</div>
+    <ul>
+      <li>Bu işe yararsa açılan daha büyük oyun nedir?</li>
+      <li>Hangi yükselişi küçümsüyorsunuz?</li>
+      <li>Bu karar 10x daha büyük olsaydı nasıl görünürdü?</li>
+      <li>Asimetrik kazanç nerede?</li>
+    </ul>
+  </div>
+
+  <div class="page-footer">
+    <span class="brand">aiandtech.cloud</span>
+    <span>AI Danışma Kurulu</span>
+    <span>Sevim Durmuş</span>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 5 — THE 5 ADVISERS (Part 2) + CHAIRMAN
+════════════════════════════════════════════ -->
+<div class="page">
+
+  <!-- ADVISER 4 -->
+  <div class="adviser-num">Danışman 04</div>
+  <div class="adviser-title"><span>Dışarıdan Bakan</span></div>
+  <div class="adviser-tagline">"Sektörünüz hakkında hiçbir şey bilmiyorum — bu yüzden değerliyim."</div>
+  <p class="adviser-body">
+    Sektörünüz hakkında hiçbir şey bilmez. Sadece bir dışarıdan bakanın sorabileceği "aptal" soruları sorar — bunlar genellikle sektörün içindekilerinin artık sormayı bıraktığı sorulardır.
+  </p>
+  <div class="adviser-asks">
+    <div class="adviser-asks-title">Sorduğu Sorular</div>
+    <ul>
+      <li>Herkes bunu neden bu şekilde yapıyor?</li>
+      <li>Bu sektör dışarıdan saçma görünen hangi alışkanlıkları sürdürüyor?</li>
+      <li>Bambaşka bir sektörden biri bu problemi nasıl çözerdi?</li>
+      <li>"Hep böyle yapıldı" dediğinizde gerçekte ne demek istiyorsunuz?</li>
+    </ul>
+  </div>
+
+  <hr class="adviser-divider" />
+
+  <!-- ADVISER 5 -->
+  <div class="adviser-num">Danışman 05</div>
+  <div class="adviser-title"><span>Uygulayıcı</span></div>
+  <div class="adviser-tagline">"Strateji umurumda değil. Pazartesi sabahı umurumda."</div>
+  <p class="adviser-body">
+    Stratejiyi umursamaz. Pazartesi sabahını umursar. Bu hafta tam olarak ne yapıyorsunuz — gönderilecek e-posta, yapılacak görüşme, oluşturulacak dosya, ertelenecek karar.
+  </p>
+  <div class="adviser-asks">
+    <div class="adviser-asks-title">Sorduğu Sorular</div>
+    <ul>
+      <li>Yarın sabah tam olarak ne yapıyorsunuz?</li>
+      <li>Bu hafta kiminle konuşmanız gerekiyor?</li>
+      <li>Hangi dosyayı yaratmanız, hangi e-postayı göndermeniz lazım?</li>
+      <li>Hangi kararı erteleyebilir, hangisini bugün almanız gerekiyor?</li>
+    </ul>
+  </div>
+
+  <hr class="adviser-divider" />
+
+  <!-- CHAIRMAN -->
+  <div class="adviser-num">Başkan</div>
+  <div class="adviser-title">Anonim Değerlendirme + <span>Sentez</span></div>
+  <div class="adviser-tagline">"Her iki taraf da" yok. Net karar."</div>
+  <p class="adviser-body">
+    Tüm danışmanlar cevap verdikten sonra Claude ikinci bir turdan geçer. Her danışman, diğerlerinin cevabını kimin yazdığını bilmeden değerlendirir. LLM kendi önceki cevabını değerlendirdiğini bilmediğinde dürüstçe değerlendirir; bildiğinde savunur.
+  </p>
+  <div class="callout callout-cyan">
+    <div class="callout-title">📋 Başkan'ın Çıktısı (250 kelime altında)</div>
+    <ul style="padding-left:16px;color:#164e63;font-size:10pt;line-height:1.8;">
+      <li><strong>Doğru karar</strong> gerçekte nedir</li>
+      <li>Bunun için <strong>en güçlü bir sebep</strong></li>
+      <li>İzlenecek <strong>en büyük bir risk</strong></li>
+      <li>Önümüzdeki 7 gün içinde atacağınız <strong>somut sonraki adım</strong></li>
+    </ul>
+  </div>
+
+  <div class="page-footer">
+    <span class="brand">aiandtech.cloud</span>
+    <span>AI Danışma Kurulu</span>
+    <span>Sevim Durmuş</span>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 6 — THE FULL PROMPT
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-label">Hazır Prompt</div>
+    <h2 class="section-title">Kopyala, <span>Yapıştır, Çalıştır</span></h2>
+  </div>
+
+  <p class="section-intro">
+    Yeni bir Claude sohbeti açın. Aşağıdaki promptu yapıştırın. En üstteki köşeli parantezi gerçek kararınızla değiştirin. Ne kadar spesifik olursanız, kurulun çıktısı o kadar iyi olur.
+  </p>
+
+  <div class="warning">
+    <strong>⚠️ Not:</strong> Promptu İngilizce kullanın — Claude'un İngilizce zincir düşünme (chain-of-thought) kalitesi Türkçe'den daha yüksektir. Çıktıyı Türkçe istiyorsanız prompta "Please write all responses in Turkish" ekleyin.
+  </div>
+
+<div class="prompt-box"><span class="ph">DECISION I'M STUCK ON:</span>
+<span class="ph">[Replace this with your specific decision or question.
+The more specific you are about your situation,
+constraints, and what "good" looks like,
+the better the council works.]</span>
+
+<span class="kw">I want you to act as a five-person decision council.
+Do not skip steps. Do not blend the advisers together.
+Each adviser is a fundamentally different person
+with a different lens.</span>
+
+<span class="step">STEP 1 — Each adviser answers separately.</span>
+
+For each of the five advisers below, write a labeled
+section with their answer. Stay in character.
+Different language, different priorities, different blind spots.
+
+<span class="kw">Adviser 1 — THE CONTRARIAN.</span>
+Looks only for what will fail. Does not balance.
+Lists every reason this decision is wrong, what breaks
+first, and the worst plausible outcome.
+
+<span class="kw">Adviser 2 — THE FIRST-PRINCIPLES THINKER.</span>
+Rips apart my assumptions. Asks what I would do if I
+couldn't use any obvious framework. Strips the problem
+down to fundamentals and rebuilds.
+
+<span class="kw">Adviser 3 — THE EXPANSIONIST.</span>
+Finds the upside I'm missing. Looks at the asymmetric
+outcome if this works. What does the bigger version
+of this open up?
+
+<span class="kw">Adviser 4 — THE OUTSIDER.</span>
+Knows nothing about my industry. Asks the dumb questions
+only an outsider asks. Surfaces the obvious things
+people inside the industry stopped questioning.
+
+<span class="kw">Adviser 5 — THE EXECUTOR.</span>
+Doesn't care about strategy. Cares about Monday morning.
+Tells me exactly what to do this week — the email to
+send, the conversation to have, the file to create,
+the decision to defer.
+
+<span class="step">STEP 2 — Anonymous peer review.</span>
+
+Now, for each adviser, write a short review of the
+OTHER FOUR responses — but anonymize them. Refer to
+them only as "Response A," "Response B," etc.
+Do not let an adviser know which response is which.
+Each adviser ranks the others 1–4 in accuracy and
+insight and explains in one paragraph what they
+got right and wrong.
+
+<span class="step">STEP 3 — The Chairman's final call.</span>
+
+Finally, act as the Chairman. You have read all five
+original answers and all five anonymous reviews.
+Synthesize a single clear recommendation. No hedging.
+No "both sides." Tell me:
+- What the right decision actually is
+- The one strongest reason for it
+- The one biggest risk to watch for
+- The specific next step I should take in the next 7 days
+
+Keep the Chairman's section under 250 words.
+Sharper is better.</div>
+
+  <div class="page-footer">
+    <span class="brand">aiandtech.cloud</span>
+    <span>AI Danışma Kurulu</span>
+    <span>Sevim Durmuş</span>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 7 — HOW TO USE IT
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-header">
+    <div class="section-label">Kullanım Kılavuzu</div>
+    <h2 class="section-title">Ne Zaman, <span>Nasıl Kullanırsınız?</span></h2>
+  </div>
+
+  <div class="callout callout-red">
+    <div class="callout-title">🚫 Kurulu Kolay Kararlar İçin Harcamayın</div>
+    Kolay kararlar için kurulu kullanmayın. Yanlış gitmesinin maliyeti gerçek olan kararlar için saklayın: işe alım, işten çıkarma, hisse dağılımı, büyük lansmanlar, bir işi bırakmak, ortaklığı sona erdirmek. Dalkavukluk en çok önemli kararlarınızda zarar verir.
+  </div>
+
+  <div class="section-header" style="margin-top:7mm;">
+    <div class="section-label">İpuçları</div>
+    <h2 class="section-title">Maksimum <span>Çıktı</span></h2>
+  </div>
+
+  <div class="steps">
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <div class="step-title">Spesifik olun</div>
+        <div class="step-desc">Promptun en üstüne kararınızı spesifik şekilde yazın: bağlamınız, kısıtlarınız ve "iyi sonuç" sizin için nasıl görünür. Belirsiz girdi = belirsiz çıktı.</div>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <div class="step-title">Opus 4 ile çalıştırın (varsa)</div>
+        <div class="step-desc">Sentez adımı, daha zeki modelde belirgin biçimde daha iyi çıkıyor. Sonnet da çalışır; Başkan aşaması daha az keskin olur.</div>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <div class="step-title">Taze sohbet açın</div>
+        <div class="step-desc">Önceki konuşmaların bağlamı kurulun tarafsızlığını bozabilir. Her kurulu yeni bir sohbette çalıştırın.</div>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <div class="step-title">Türkçe istiyorsanız ekleyin</div>
+        <div class="step-desc">Promptun sonuna <em>"Please write all responses in Turkish."</em> ekleyin. Ancak zincir düşünme kalitesi İngilizce'de daha yüksektir.</div>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <div class="step-title">Başkan'ı okuyun, savunmayın</div>
+        <div class="step-desc">Başkan'ın önerisi sizi rahatsız ediyorsa — iyi işaret. Zaten bildiğinizi onaylamak için değil, görmediğinizi bulmak için çalıştırıyorsunuz.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chips">
+    <span class="chip">İşe alım kararları</span>
+    <span class="chip">Ürün stratejisi</span>
+    <span class="chip">Ortaklık / hisse</span>
+    <span class="chip">Fiyatlandırma</span>
+    <span class="chip">İşten ayrılma</span>
+    <span class="chip">Büyük lansmanlar</span>
+    <span class="chip">Yatırım kararları</span>
+    <span class="chip">Pivot kararları</span>
+  </div>
+
+  <div class="callout callout-dark" style="margin-top:4mm;">
+    <div class="callout-title">📖 Kaynak</div>
+    Bu kaynak Andrej Karpathy'nin açık kaynak <strong>LLM Council</strong> projesine (GitHub) ve Stanford Üniversitesi'nin Science dergisinde yayınlanan <strong>sycophancy araştırmasına</strong> dayanmaktadır. Tüm içerik aiandtech.cloud markası altında Türkçe olarak uyarlanmıştır.
+  </div>
+
+  <div class="page-footer">
+    <span class="brand">aiandtech.cloud</span>
+    <span>AI Danışma Kurulu</span>
+    <span>Sevim Durmuş</span>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 8 — BACK COVER
+════════════════════════════════════════════ -->
+<div class="page cover" style="justify-content:center;align-items:center;text-align:center;">
+  <div>
+    <div class="cover-header" style="justify-content:center;margin-bottom:8mm;">
+      <div class="cover-logo-dot">A</div>
+      <div class="cover-logo-text">AI and Tech</div>
+    </div>
+
+    <p style="color:rgba(255,255,255,0.4);font-size:10pt;margin-bottom:6mm;">
+      Daha fazla ücretsiz kaynak için
+    </p>
+    <p style="color:var(--cyan);font-size:24pt;font-weight:800;letter-spacing:-1px;margin-bottom:8mm;">
+      aiandtech.cloud/templates
+    </p>
+
+    <p style="color:rgba(255,255,255,0.5);font-size:10pt;line-height:1.8;max-width:120mm;margin:0 auto 10mm;">
+      Sevim Durmuş — Cloud &amp; AI Çözümleri Mimarı.<br>
+      Claude ve AI araçları eğitimleri · aiandtech.cloud
+    </p>
+
+    <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:6mm;color:rgba(255,255,255,0.3);font-size:8.5pt;">
+      Bu belge aiandtech.cloud'a aittir. Kaynak gösterilerek paylaşılabilir.
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
