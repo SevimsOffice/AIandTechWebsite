@@ -12,6 +12,7 @@ import VibeCoding     from './pages/VibeCoding';
 import NetWorthCalculator from './pages/NetWorthCalculator';
 import TemplatesPage  from './pages/TemplatesPage';
 import AIBaglamKasasiPage from './pages/AIBaglamKasasiPage';
+import AIDanismaKuruluPage from './pages/AIDanismaKuruluPage';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
               <Route path="/products/ainetvalue"       element={<NetWorthCalculator />} />
               <Route path="/templates"                 element={<TemplatesPage />} />
               <Route path="/templates/ai-baglam-kasasi" element={<AIBaglamKasasiPage />} />
+              <Route path="/templates/ai-danisma-kurulu" element={<AIDanismaKuruluPage />} />
             </Routes>
           </main>
           <Footer />
