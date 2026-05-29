@@ -11,9 +11,18 @@ const templates = [
     descTr: 'Claude\'un gerçekten sizi anlamasını sağlayacak 8 kopyala-yapıştır prompt. Bağlam belgeleri oluşturun, AI\'yı stratejik iş ortağınıza dönüştürün.',
     descEn: '8 copy-paste prompts that make Claude truly understand you. Build context documents and transform AI into your strategic partner.',
     badge: 'Ücretsiz · Free',
-    color: 'cyan',
     pages: 14,
     prompts: 8,
+  },
+  {
+    slug: 'ai-danisma-kurulu',
+    titleTr: 'AI Danışma Kurulu',
+    titleEn: 'AI Advisory Council',
+    descTr: 'Claude\'a sormayı bırakın, kurulu çalıştırın. 5 farklı danışman, anonim eş değerlendirme ve başkanın net kararı — tek sohbette.',
+    descEn: 'Stop asking Claude. Run the council. 5 distinct advisers, anonymous peer review, and the chairman\'s clear call — all in one chat.',
+    badge: 'Ücretsiz · Free',
+    pages: 8,
+    prompts: 1,
   },
 ];
 
@@ -93,7 +102,7 @@ const TemplatesPage = () => {
             ))}
 
             {/* Coming soon placeholder */}
-            <div className="bg-gray-900/50 border border-dashed border-gray-700 rounded-2xl p-7 flex flex-col items-center justify-center text-center min-h-[220px]">
+            <div className="bg-gray-900/50 border border-dashed border-gray-700 rounded-2xl p-7 flex flex-col items-center justify-center text-center min-h-[220px] md:col-span-2">
               <div className="text-3xl mb-3">🔜</div>
               <h3 className="text-white font-semibold mb-2">{labels.more}</h3>
               <p className="text-gray-500 text-sm">{labels.moreDesc}</p>
