@@ -5,6 +5,16 @@ import { Download, ArrowRight } from 'lucide-react';
 
 const templates = [
   {
+    slug: 'founders-guide-to-claude',
+    titleTr: 'Kurucunun Claude Rehberi',
+    titleEn: "The Founder's Guide to Claude",
+    descTr: 'Modeller, kurulum, prompting, araçlar ve her şeyi tıklatan ifadeler. İlk günden doğru kullanmak için yazıldı.',
+    descEn: 'Models, setup, prompting, tools, and the phrases that make it all click. Written to get it right from day one.',
+    badge: 'Ücretsiz · Free',
+    pages: 30,
+    prompts: 12,
+  },
+  {
     slug: 'ai-baglam-kasasi',
     titleTr: 'AI Bağlam Kasası',
     titleEn: 'AI Context Vault',
