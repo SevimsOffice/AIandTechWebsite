@@ -13,6 +13,8 @@ import NetWorthCalculator from './pages/NetWorthCalculator';
 import TemplatesPage  from './pages/TemplatesPage';
 import AIBaglamKasasiPage from './pages/AIBaglamKasasiPage';
 import AIDanismaKuruluPage from './pages/AIDanismaKuruluPage';
+import FoundersGuidePage from './pages/FoundersGuidePage';
+import ClaudeEcosystemAuditPage from './pages/ClaudeEcosystemAuditPage';
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
               <Route path="/templates"                 element={<TemplatesPage />} />
               <Route path="/templates/ai-baglam-kasasi" element={<AIBaglamKasasiPage />} />
               <Route path="/templates/ai-danisma-kurulu" element={<AIDanismaKuruluPage />} />
+              <Route path="/templates/founders-guide-to-claude" element={<FoundersGuidePage />} />
+              <Route path="/templates/claude-ecosystem-audit" element={<ClaudeEcosystemAuditPage />} />
             </Routes>
           </main>
           <Footer />

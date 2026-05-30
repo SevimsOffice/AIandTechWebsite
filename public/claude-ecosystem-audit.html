@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Claude Ecosystem Audit Prompt — aiandtech.cloud</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    background: #ffffff;
+    color: #111827;
+    font-size: 11pt;
+    line-height: 1.6;
+  }
+
+  /* ─── Cover Page ─── */
+  .cover {
+    page-break-after: always;
+    min-height: 100vh;
+    background: linear-gradient(160deg, #0f172a 0%, #1e293b 60%, #0e7490 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px 72px;
+    color: #fff;
+  }
+  .cover-badge {
+    background: rgba(34,211,238,0.15);
+    border: 1px solid rgba(34,211,238,0.4);
+    color: #22d3ee;
+    font-size: 10pt;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 100px;
+    display: inline-block;
+    margin-bottom: 32px;
+  }
+  .cover h1 {
+    font-size: 40pt;
+    font-weight: 900;
+    line-height: 1.08;
+    margin-bottom: 24px;
+    color: #ffffff;
+  }
+  .cover h1 span { color: #22d3ee; }
+  .cover-sub {
+    font-size: 14pt;
+    color: #94a3b8;
+    max-width: 560px;
+    margin-bottom: 56px;
+    line-height: 1.6;
+  }
+  .cover-meta {
+    margin-top: auto;
+    padding-top: 48px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .cover-meta-left p { color: #94a3b8; font-size: 10pt; margin-top: 4px; }
+  .cover-meta-left strong { color: #e2e8f0; font-size: 12pt; }
+  .cover-stats {
+    display: flex;
+    gap: 32px;
+  }
+  .cover-stat { text-align: center; }
+  .cover-stat .num {
+    font-size: 26pt;
+    font-weight: 900;
+    color: #22d3ee;
+    display: block;
+  }
+  .cover-stat .lbl {
+    font-size: 9pt;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* ─── Inner Pages ─── */
+  .page {
+    padding: 56px 72px;
+    page-break-after: always;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* Header bar on inner pages */
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 36px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #e5e7eb;
+  }
+  .page-header .brand { font-size: 9pt; color: #9ca3af; font-weight: 500; }
+  .page-header .section-label {
+    font-size: 9pt;
+    color: #0e7490;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  h2 {
+    font-size: 22pt;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  h2 span { color: #0e7490; }
+  h3 {
+    font-size: 13pt;
+    font-weight: 700;
+    color: #1e293b;
+    margin-top: 28px;
+    margin-bottom: 10px;
+  }
+  p { color: #374151; margin-bottom: 12px; }
+  .lead {
+    font-size: 12pt;
+    color: #475569;
+    margin-bottom: 28px;
+    line-height: 1.7;
+  }
+
+  /* ─── Section badge ─── */
+  .section-badge {
+    display: inline-block;
+    background: #ecfeff;
+    border: 1px solid #a5f3fc;
+    color: #0e7490;
+    font-size: 9pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 4px 14px;
+    border-radius: 100px;
+    margin-bottom: 14px;
+  }
+
+  /* ─── Warning / Info box ─── */
+  .box {
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 20px 0;
+  }
+  .box-cyan {
+    background: #ecfeff;
+    border-left: 4px solid #22d3ee;
+  }
+  .box-dark {
+    background: #0f172a;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 20px 0;
+  }
+  .box-dark p, .box-dark li { color: #e2e8f0; }
+  .box-dark strong { color: #22d3ee; }
+  .box-amber {
+    background: #fffbeb;
+    border-left: 4px solid #f59e0b;
+  }
+  .box-amber p { color: #78350f; }
+  .box-amber strong { color: #92400e; }
+
+  /* ─── Prompt block ─── */
+  .prompt-block {
+    background: #0f172a;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin: 24px 0;
+  }
+  .prompt-block .prompt-label {
+    font-size: 9pt;
+    font-weight: 700;
+    color: #22d3ee;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .prompt-block .prompt-label::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #22d3ee;
+    border-radius: 50%;
+  }
+  .prompt-block p {
+    color: #e2e8f0;
+    font-size: 10pt;
+    line-height: 1.75;
+    margin-bottom: 10px;
+  }
+  .prompt-block p:last-child { margin-bottom: 0; }
+  .prompt-block .placeholder {
+    color: #67e8f9;
+    font-weight: 700;
+    font-style: italic;
+  }
+
+  /* ─── Section list ─── */
+  .section-list {
+    list-style: none;
+    margin: 0 0 16px 0;
+  }
+  .section-list li {
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f1f5f9;
+    align-items: flex-start;
+  }
+  .section-list li:last-child { border-bottom: none; }
+  .section-list .num {
+    font-size: 9pt;
+    font-weight: 800;
+    color: #22d3ee;
+    background: #ecfeff;
+    border: 1px solid #a5f3fc;
+    border-radius: 6px;
+    padding: 2px 8px;
+    white-space: nowrap;
+    margin-top: 2px;
+  }
+  .section-list .title {
+    font-weight: 700;
+    color: #1e293b;
+    font-size: 11pt;
+  }
+  .section-list .desc {
+    color: #64748b;
+    font-size: 10pt;
+    margin-top: 3px;
+  }
+
+  /* ─── Customization table ─── */
+  .custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px 0;
+    font-size: 10pt;
+  }
+  .custom-table th {
+    background: #0f172a;
+    color: #22d3ee;
+    text-align: left;
+    padding: 10px 14px;
+    font-size: 9pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+  }
+  .custom-table th:first-child { border-radius: 8px 0 0 0; }
+  .custom-table th:last-child { border-radius: 0 8px 0 0; }
+  .custom-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #e5e7eb;
+    color: #374151;
+    vertical-align: top;
+  }
+  .custom-table tr:nth-child(even) td { background: #f9fafb; }
+  .custom-table .placeholder { color: #0e7490; font-weight: 700; font-style: italic; }
+  .custom-table .example { color: #64748b; }
+
+  /* ─── Tips grid ─── */
+  .tips-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .tip-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+  .tip-card .tip-num {
+    font-size: 10pt;
+    font-weight: 800;
+    color: #22d3ee;
+    margin-bottom: 6px;
+  }
+  .tip-card .tip-text {
+    font-size: 10pt;
+    color: #475569;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* ─── Footer ─── */
+  .footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer p {
+    font-size: 9pt;
+    color: #9ca3af;
+    margin: 0;
+  }
+  .footer .brand-footer { color: #0e7490; font-weight: 700; }
+
+  /* ─── Highlight quote ─── */
+  .quote-block {
+    border-left: 4px solid #22d3ee;
+    padding: 14px 20px;
+    margin: 24px 0;
+    background: #f0fdfe;
+    border-radius: 0 8px 8px 0;
+  }
+  .quote-block p {
+    font-size: 12pt;
+    font-style: italic;
+    color: #1e293b;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  @media print {
+    .cover { min-height: 100vh; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════
+     COVER PAGE
+════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-badge">Free Template · aiandtech.cloud</div>
+
+  <h1>Claude Ecosystem<br/><span>Audit Prompt</span></h1>
+
+  <p class="cover-sub">
+    One prompt. A McKinsey-grade strategic intelligence report on exactly how you're using Claude —
+    and where you're leaving leverage on the table.
+  </p>
+
+  <div class="cover-meta">
+    <div class="cover-meta-left">
+      <strong>Sevim Durmuş</strong>
+      <p>AI Educator &amp; Consultant · aiandtech.cloud</p>
+    </div>
+    <div class="cover-stats">
+      <div class="cover-stat">
+        <span class="num">10</span>
+        <span class="lbl">Sections</span>
+      </div>
+      <div class="cover-stat">
+        <span class="num">5K+</span>
+        <span class="lbl">Word Report</span>
+      </div>
+      <div class="cover-stat">
+        <span class="num">1</span>
+        <span class="lbl">Prompt</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════
+     PAGE 2 — WHAT IS THIS?
+════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="brand">aiandtech.cloud</span>
+    <span class="section-label">Overview</span>
+  </div>
+
+  <div class="section-badge">What Is This?</div>
+  <h2>One Prompt.<br/><span>Your Complete Claude Diagnosis.</span></h2>
+
+  <p class="lead">
+    Most people who use Claude daily — even power users — are operating at 20–30% of what
+    the full ecosystem can do. Not because they're not smart. Because no one has mapped
+    the whole stack for them.
+  </p>
+  <p class="lead">
+    This prompt changes that. Paste it into Claude and get a 5,000+ word,
+    operator-grade strategic report that diagnoses your current usage, maps every surface
+    you're underusing, and gives you a week-by-week implementation roadmap.
+  </p>
+
+  <div class="quote-block">
+    <p>"The gap between a Claude user and a Claude <em>operator</em> isn't intelligence —
+    it's systems. This prompt forces Claude to show you the systems you're missing."</p>
+  </div>
+
+  <h3>What Claude Will Produce For You</h3>
+  <ul class="section-list">
+    <li>
+      <span class="num">01</span>
+      <div>
+        <div class="title">Executive Diagnosis Table</div>
+        <div class="desc">Exactly what your usage pattern looks like to a senior Claude strategist — with a severity rating for each gap.</div>
+      </div>
+    </li>
+    <li>
+      <span class="num">02</span>
+      <div>
+        <div class="title">Per-Surface Underuse Analysis</div>
+        <div class="desc">Projects, Cowork, Dispatch, Scheduled Tasks, Skills, Design, Deep Research, Claude Code — Current / Ideal / Impact for each.</div>
+      </div>
+    </li>
+    <li>
+      <span class="num">03</span>
+      <div>
+        <div class="title">Top 20 Highest-ROI Use Cases</div>
+        <div class="desc">Ranked table with surfaces, frequency, type, and the key result each use case produces.</div>
+      </div>
+    </li>
+    <li>
+      <span class="num">04</span>
+      <div>
+        <div class="title">Daily &amp; Weekly Operating Model</div>
+        <div class="desc">Your ideal schedule, per-client project template, and a 7-step decision framework.</div>
+      </div>
+    </li>
+    <li>
+      <span class="num">05</span>
+      <div>
+        <div class="title">4-Week Implementation Roadmap</div>
+        <div class="desc">Foundation → Automation → Scale → Compound. Week-by-week actions to reach full stack leverage.</div>
+      </div>
+    </li>
+  </ul>
+
+  <div class="box box-amber">
+    <p><strong>Heads-up:</strong> This report will feel uncomfortably accurate. Claude will identify patterns in your usage and surface gaps you didn't realise were there. That's the point — no flattery, just the honest diagnosis.</p>
+  </div>
+
+  <div class="footer">
+    <p>Claude Ecosystem Audit Prompt · <span class="brand-footer">aiandtech.cloud</span></p>
+    <p>Page 2</p>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════
+     PAGE 3 — HOW TO USE
+════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="brand">aiandtech.cloud</span>
+    <span class="section-label">Instructions</span>
+  </div>
+
+  <div class="section-badge">How To Use This Prompt</div>
+  <h2>3 Steps to<br/><span>Your Full Diagnosis</span></h2>
+
+  <p class="lead">The prompt is on the next two pages. Here's how to get the most out of it.</p>
+
+  <h3>Step 1 — Fill In Your Context</h3>
+  <p>Find the two placeholders in the prompt and replace them with your real information. The more specific you are, the more accurate and actionable your report will be.</p>
+
+  <table class="custom-table">
+    <tr>
+      <th>Placeholder</th>
+      <th>What to Write</th>
+      <th>Example</th>
+    </tr>
+    <tr>
+      <td class="placeholder">[Agency / Business]</td>
+      <td>Your business type and what you primarily use Claude for</td>
+      <td class="example">Boutique HR consulting firm. I use Claude for compensation benchmarking, interview design, org strategy, and client reports.</td>
+    </tr>
+    <tr>
+      <td class="placeholder">[Agency / Business] (second use)</td>
+      <td>Same — Claude will use this to personalize section-level recommendations</td>
+      <td class="example">Same as above, or be more specific: "10-person fractional CMO agency serving Series A–C startups."</td>
+    </tr>
+  </table>
+
+  <h3>Step 2 — Paste Into Claude</h3>
+  <p>Open a <strong>new chat in Claude</strong> (claude.ai) and paste the entire prompt at once. Do not break it into pieces — the report structure depends on the full prompt being in a single message.</p>
+
+  <div class="box box-cyan">
+    <p><strong>Tip:</strong> Use Claude Sonnet or Opus for this. Haiku will produce a noticeably shorter and less detailed report. For maximum depth, use Opus with Extended Thinking enabled if you have access.</p>
+  </div>
+
+  <h3>Step 3 — Read, Highlight, Implement</h3>
+  <p>Your report will be 5,000+ words. Read it in full once. Then:</p>
+
+  <div class="tips-grid">
+    <div class="tip-card">
+      <div class="tip-num">Highlight</div>
+      <p class="tip-text">Mark every gap that feels uncomfortably accurate. Those are your highest-leverage starting points.</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">Save It</div>
+      <p class="tip-text">Save the report as a Claude Project document. Reference it during your weekly review.</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">Week 1 Only</div>
+      <p class="tip-text">Don't try to implement everything. Pick the single highest-ROI use case from Section 4 and start there.</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">Re-Run Monthly</div>
+      <p class="tip-text">Your Claude usage will evolve. Re-run this prompt once a month to get an updated diagnosis.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Claude Ecosystem Audit Prompt · <span class="brand-footer">aiandtech.cloud</span></p>
+    <p>Page 3</p>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════
+     PAGE 4 — THE PROMPT (PART 1)
+════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="brand">aiandtech.cloud</span>
+    <span class="section-label">The Prompt</span>
+  </div>
+
+  <div class="section-badge">Copy This Prompt</div>
+  <h2>The Full Audit Prompt<br/><span>(Paste Into Claude)</span></h2>
+
+  <p style="color:#64748b; margin-bottom:20px;">Replace the two <span style="color:#0e7490;font-weight:700;font-style:italic;">[Agency / Business]</span> placeholders with your own context before pasting.</p>
+
+  <div class="prompt-block">
+    <div class="prompt-label">Prompt — Part 1 of 2</div>
+    <p>I want you to act as a senior Claude ecosystem strategist producing a confidential strategic intelligence report for my <span class="placeholder">[Agency / Business]</span>.</p>
+    <p>Context about me and my usage: I run <span class="placeholder">[Agency / Business]</span>. I use Claude daily as a strategic thought partner — compensation framework design, adversarial sales audits, prospect pipelines, interview systems, policy documents, geopolitical analysis, multi-stakeholder decisions. I'm in the top 1–2% of Claude users globally by sophistication.</p>
+    <p>What I want: A comprehensive, no-flattery, brutally honest blueprint titled <strong style="color:#22d3ee;">"Claude Ecosystem Supremacy Blueprint — How to Use the Full Claude Stack at 1000% Leverage."</strong> Format it as a professional .docx strategic intelligence report.</p>
+    <p>Required sections (in order):</p>
+    <p>1. Executive Diagnosis (with a "What Your Usage Pattern Actually Looks Like" table: Pattern / Description / Severity)</p>
+    <p>2. Where You Are Underusing the Ecosystem — one subsection per surface (Projects, Cowork, Dispatch, Scheduled Tasks, Skills, Claude Design, Deep Research, Claude Code), each with a Current / Ideal / Impact table</p>
+    <p>3. Chat-Only vs. Ecosystem-Maximized — across all business areas</p>
+    <p>4. Top 20 Highest-ROI Use Cases — ranked table (#, Use Case, Surfaces, Type, Frequency, Key Result)</p>
+  </div>
+
+  <div class="box box-amber">
+    <p><strong>Continued on the next page.</strong> Copy both parts together as one single message before pasting into Claude.</p>
+  </div>
+
+  <div class="footer">
+    <p>Claude Ecosystem Audit Prompt · <span class="brand-footer">aiandtech.cloud</span></p>
+    <p>Page 4</p>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════
+     PAGE 5 — THE PROMPT (PART 2)
+════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="brand">aiandtech.cloud</span>
+    <span class="section-label">The Prompt</span>
+  </div>
+
+  <div class="section-badge">Copy This Prompt</div>
+  <h2>The Full Audit Prompt<br/><span>(Continued)</span></h2>
+
+  <div class="prompt-block">
+    <div class="prompt-label">Prompt — Part 2 of 2</div>
+    <p>5. Ideal Claude Ecosystem Stack — Architecture Overview (Founder Layer / Execution Layer / Knowledge Layer / Integration Layer) + Surface-to-Function Mapping</p>
+    <p>6. Daily &amp; Weekly Operating Model — Daily schedule, Weekly schedule, Per-Client Project Template, Per-Decision 7-step Framework</p>
+    <p>7. Your Likely Weaknesses as a Claude Power User — 8 gap callouts, no flattery</p>
+    <p>8. How to Beat the Top 0.1% of AI Users — Speed / Depth / Systems / Client Results / Decision Quality</p>
+    <p>9. Implementation Roadmap — 4-week plan (Foundation / Automation / Scale / Compound)</p>
+    <p>10. Final Blueprint — Skills Library build order, Project Structure, Automation Layer, Fastest Wins This Week, 5 Behavior Changes to Make Immediately</p>
+    <p>Tone: Analytical, operator-grade, McKinsey-meets-founder-coach. No flattery. Treat me like a peer operator who needs the honest diagnosis, not encouragement. Target: 5,000+ words, multiple tables per section. Deliver as a .docx file.</p>
+  </div>
+
+  <div class="box box-cyan">
+    <p><strong>That's the complete prompt.</strong> Select and copy everything inside both prompt blocks (Parts 1 and 2), fill in your two placeholders, then paste the whole thing into a new Claude chat. Hit send and wait — this report usually takes 2–4 minutes to generate.</p>
+  </div>
+
+  <h3>What to Do With Your Report</h3>
+  <ul class="section-list">
+    <li>
+      <span class="num">→</span>
+      <div>
+        <div class="title">Save as a Project Document</div>
+        <div class="desc">In Claude, create a new Project and upload the report as a context document. Reference it for strategy conversations.</div>
+      </div>
+    </li>
+    <li>
+      <span class="num">→</span>
+      <div>
+        <div class="title">Start Week 1 of the Roadmap Today</div>
+        <div class="desc">Section 9 gives you a 4-week plan. Don't wait — begin Foundation Week this week.</div>
+      </div>
+    </li>
+    <li>
+      <span class="num">→</span>
+      <div>
+        <div class="title">Re-run Every 30 Days</div>
+        <div class="desc">As your usage grows, the report will identify new gaps. Treat it as a recurring diagnostic, not a one-time exercise.</div>
+      </div>
+    </li>
+  </ul>
+
+  <div class="footer">
+    <p>Claude Ecosystem Audit Prompt · <span class="brand-footer">aiandtech.cloud</span></p>
+    <p>Page 5</p>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════
+     PAGE 6 — WHAT EACH SECTION COVERS
+════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="brand">aiandtech.cloud</span>
+    <span class="section-label">Report Breakdown</span>
+  </div>
+
+  <div class="section-badge">Inside Your Report</div>
+  <h2>What Claude Will<br/><span>Write For You</span></h2>
+
+  <p class="lead">Here's exactly what each of the 10 sections delivers.</p>
+
+  <ul class="section-list">
+    <li>
+      <span class="num">01</span>
+      <div>
+        <div class="title">Executive Diagnosis</div>
+        <div class="desc">A pattern analysis of your current Claude usage with severity ratings: High / Medium / Low. Identifies your dominant mode (chat-only, project-lite, ecosystem-agnostic) and what it's costing you.</div>
+      </div>
+    </li>
+    <li>
+      <span class="num">02</span>
+      <div>
+        <div class="title">Per-Surface Underuse Analysis</div>
+        <div class="desc">Projects · Cowork · Dispatch · Scheduled Tasks · Skills · Claude Design · Deep Research · Claude Code — each mapped with your current usage vs. ideal usage vs. business impact.</div>
+      </div>
+    </li>
+    <li>
+      <span class="num">03</span>
+      <div>
+        <div class="title">Chat-Only vs. Ecosystem-Maximized</div>
+        <div class="desc">A side-by-side comparison showing what each business area looks like when you use only chat vs. the full ecosystem. The gap will surprise you.</div>
+      </div>
+    </li>
+    <li>
+      <span class="num">04</span>
+      <div>
+        <div class="title">Top 20 Highest-ROI Use Cases</div>
+        <div class="desc">Ranked table with use case, surfaces used, task type, recommended frequency, and the specific business result each produces for your type of business.</div>
+      </div>
+    </li>
+    <li>
+      <span class="num">05</span>
+      <div>
+        <div class="title">Ideal Ecosystem Architecture</div>
+        <div class="desc">A four-layer stack model: Founder Layer (decisions) / Execution Layer (delivery) / Knowledge Layer (memory &amp; context) / Integration Layer (automation). With surface-to-function mapping.</div>
+      </div>
+    </li>
+    <li>
+      <span class="num">06</span>
+      <div>
+        <div class="title">Daily &amp; Weekly Operating Model</div>
+        <div class="desc">Time-blocked schedule, per-client project template with folder structure, and a 7-step framework for running any strategic decision through Claude correctly.</div>
+      </div>
+    </li>
+    <li>
+      <span class="num">07</span>
+      <div>
+        <div class="title">Your Likely Weaknesses as a Power User</div>
+        <div class="desc">8 gap callouts specific to your business type. No flattery — these are the blind spots that even sophisticated Claude users consistently miss.</div>
+      </div>
+    </li>
+    <li>
+      <span class="num">08</span>
+      <div>
+        <div class="title">How to Beat the Top 0.1%</div>
+        <div class="desc">Speed · Depth · Systems · Client Results · Decision Quality. What the best Claude operators do differently and how to replicate it in your workflow.</div>
+      </div>
+    </li>
+    <li>
+      <span class="num">09</span>
+      <div>
+        <div class="title">4-Week Implementation Roadmap</div>
+        <div class="desc">Week 1: Foundation. Week 2: Automation. Week 3: Scale. Week 4: Compound. Specific actions for each week tailored to your business context.</div>
+      </div>
+    </li>
+    <li>
+      <span class="num">10</span>
+      <div>
+        <div class="title">Final Blueprint</div>
+        <div class="desc">Skills Library build order · Project structure · Automation layer setup · Fastest wins this week · 5 behavior changes to make immediately. Your complete implementation checklist.</div>
+      </div>
+    </li>
+  </ul>
+
+  <div class="footer">
+    <p>Claude Ecosystem Audit Prompt · <span class="brand-footer">aiandtech.cloud</span></p>
+    <p>Page 6</p>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════
+     PAGE 7 — CLOSING / CTA
+════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="brand">aiandtech.cloud</span>
+    <span class="section-label">Get Started</span>
+  </div>
+
+  <div class="section-badge">Ready?</div>
+  <h2>Run Your Audit.<br/><span>Know Your Gaps. Fix Them.</span></h2>
+
+  <p class="lead">
+    The prompt is on pages 4–5. Fill in your context, paste it into Claude, and read your report end-to-end.
+    Then come back and start Week 1 of the roadmap.
+  </p>
+
+  <div class="box box-dark">
+    <p style="font-size:12pt; font-weight:700; color:#fff; margin-bottom:12px;">Quick-Start Checklist</p>
+    <p>☐ &nbsp; Open a new Claude chat (Sonnet or Opus recommended)</p>
+    <p>☐ &nbsp; Copy the full prompt from pages 4–5</p>
+    <p>☐ &nbsp; Replace both <strong>[Agency / Business]</strong> placeholders</p>
+    <p>☐ &nbsp; Paste and send — wait for the full report</p>
+    <p>☐ &nbsp; Read the report in full without skipping</p>
+    <p>☐ &nbsp; Highlight your 3 highest-severity gaps</p>
+    <p>☐ &nbsp; Begin Week 1 of the 4-week roadmap today</p>
+    <p>☐ &nbsp; Save the report as a Claude Project document</p>
+    <p>☐ &nbsp; Re-run in 30 days to measure your progress</p>
+  </div>
+
+  <div class="quote-block">
+    <p>"Every week you operate at 20% of the Claude stack is a week your competitors — who figured it out — are compounding faster than you."</p>
+  </div>
+
+  <h3>More Free Resources</h3>
+  <p>Find more prompt templates, guides, and AI strategy resources at <strong style="color:#0e7490;">aiandtech.cloud</strong></p>
+  <ul style="list-style:none; margin-top:8px;">
+    <li style="padding:6px 0; color:#374151;">→ &nbsp;<strong>AI Context Vault</strong> — 8 prompts that make Claude truly understand your business</li>
+    <li style="padding:6px 0; color:#374151;">→ &nbsp;<strong>AI Advisory Council</strong> — Run a 5-person expert council in a single Claude chat</li>
+    <li style="padding:6px 0; color:#374151;">→ &nbsp;<strong>Founder's Guide to Claude</strong> — Models, setup, prompting, tools — everything in one place</li>
+  </ul>
+
+  <div class="footer">
+    <p>© 2025 Sevim Durmuş · <span class="brand-footer">aiandtech.cloud</span> · All rights reserved</p>
+    <p>Page 7</p>
+  </div>
+</div>
+
+</body>
+</html>

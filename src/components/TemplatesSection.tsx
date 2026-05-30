@@ -5,6 +5,24 @@ import { Download, ArrowRight } from 'lucide-react';
 
 const templateCards = [
   {
+    slug: 'claude-ecosystem-audit',
+    titleTr: 'Claude Ekosistem Denetimi',
+    titleEn: 'Claude Ecosystem Audit',
+    descTr: 'Tek prompt ile 5.000+ kelimelik stratejik rapor. Claude\'u tam kapasiteyle kullanıyor musunuz?',
+    descEn: 'One prompt. A 5,000+ word strategic report. Are you using Claude at full capacity?',
+    metaTr: '10 bölüm · 1 prompt',
+    metaEn: '10 sections · 1 prompt',
+  },
+  {
+    slug: 'founders-guide-to-claude',
+    titleTr: 'Kurucunun Claude Rehberi',
+    titleEn: "The Founder's Guide to Claude",
+    descTr: 'Modeller, kurulum, prompting ve her şeyi tıklatan 12 ifade. İlk günden doğru kullanmak için.',
+    descEn: 'Models, setup, prompting, and 12 phrases that make it all click. Get it right from day one.',
+    metaTr: '30 sayfa · 12 ifade',
+    metaEn: '30 pages · 12 phrases',
+  },
+  {
     slug: 'ai-baglam-kasasi',
     titleTr: 'AI Bağlam Kasası',
     titleEn: 'AI Context Vault',
@@ -58,10 +76,10 @@ const TemplatesSection = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 mb-10">
-          {templateCards.map(tpl => (
+          {templateCards.map((tpl, idx) => (
             <div
               key={tpl.slug}
-              className="bg-gray-900 border border-gray-800 hover:border-cyan-400/40 rounded-2xl p-8 transition-all group cursor-pointer"
+              className={`bg-gray-900 border border-gray-800 hover:border-cyan-400/40 rounded-2xl p-8 transition-all group cursor-pointer${idx === 0 ? ' md:col-span-2' : ''}`}
               onClick={() => navigate(`/templates/${tpl.slug}`)}
             >
               <div className="flex items-start justify-between mb-6">
