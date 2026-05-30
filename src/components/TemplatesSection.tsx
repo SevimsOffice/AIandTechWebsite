@@ -5,6 +5,15 @@ import { Download, ArrowRight } from 'lucide-react';
 
 const templateCards = [
   {
+    slug: 'claude-ecosystem-audit',
+    titleTr: 'Claude Ekosistem Denetimi',
+    titleEn: 'Claude Ecosystem Audit',
+    descTr: 'Tek prompt ile 5.000+ kelimelik stratejik rapor. Claude\'u tam kapasiteyle kullanıyor musunuz?',
+    descEn: 'One prompt. A 5,000+ word strategic report. Are you using Claude at full capacity?',
+    metaTr: '10 bölüm · 1 prompt',
+    metaEn: '10 sections · 1 prompt',
+  },
+  {
     slug: 'founders-guide-to-claude',
     titleTr: 'Kurucunun Claude Rehberi',
     titleEn: "The Founder's Guide to Claude",

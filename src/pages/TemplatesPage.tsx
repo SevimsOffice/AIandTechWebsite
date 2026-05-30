@@ -5,6 +5,16 @@ import { Download, ArrowRight } from 'lucide-react';
 
 const templates = [
   {
+    slug: 'claude-ecosystem-audit',
+    titleTr: 'Claude Ekosistem Denetimi',
+    titleEn: 'Claude Ecosystem Audit',
+    descTr: 'Claude\'u %100 kapasiteyle kullanıyor musunuz? Tek bir prompt ile 5.000+ kelimelik stratejik rapor alın.',
+    descEn: 'Are you using Claude at full capacity? One prompt delivers a 5,000+ word strategic intelligence report.',
+    badge: 'Ücretsiz · Free',
+    pages: 7,
+    prompts: 1,
+  },
+  {
     slug: 'founders-guide-to-claude',
     titleTr: 'Kurucunun Claude Rehberi',
     titleEn: "The Founder's Guide to Claude",
