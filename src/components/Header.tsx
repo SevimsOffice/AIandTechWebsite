@@ -80,24 +80,10 @@ const Header = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
             </button>
             <button
-              onClick={() => handleNavigation('/blogs')}
-              className="text-gray-300 hover:text-cyan-400 transition-colors relative group"
-            >
-              {t('nav.blogs')}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
-            </button>
-            <button
               onClick={() => handleNavigation('/products')}
               className="text-gray-300 hover:text-cyan-400 transition-colors relative group"
             >
               {t('nav.products')}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
-            </button>
-            <button
-              onClick={() => handleNavigation('/templates')}
-              className="text-gray-300 hover:text-cyan-400 transition-colors relative group"
-            >
-              {t('nav.templates')}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
             </button>
             <button
@@ -131,12 +117,6 @@ const Header = () => {
               className="text-gray-300 hover:text-cyan-400 transition-colors text-xs px-2 py-1"
             >
               {t('nav.trainings')}
-            </button>
-            <button
-              onClick={() => handleNavigation('/blogs')}
-              className="text-gray-300 hover:text-cyan-400 transition-colors text-xs px-2 py-1"
-            >
-              {t('nav.blogs')}
             </button>
 
             {/* Mobile Language Toggle */}
