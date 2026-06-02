@@ -4,7 +4,7 @@ import { submitToSheets } from '../utils/submitToSheets';
 import { Copy, CheckCircle, Lock, Check } from 'lucide-react';
 
 const TEMPLATE_NAME = 'Content Creation Prompt Pack';
-const DOWNLOAD_URL = 'PLACEHOLDER_DRIVE_URL';
+const DOWNLOAD_URL = 'https://drive.google.com/file/d/19cEsZSGgZcvsuMurx9ZJAALdZkVUxeQ7/view?usp=sharing';
 
 const prompts = [
   {
