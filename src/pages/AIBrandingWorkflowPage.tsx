@@ -4,7 +4,7 @@ import { submitToSheets } from '../utils/submitToSheets';
 import { Download, CheckCircle, Lock, Check } from 'lucide-react';
 
 const TEMPLATE_NAME = 'Full AI Branding Workflow';
-const DOWNLOAD_URL = 'PLACEHOLDER_DRIVE_URL';
+const DOWNLOAD_URL = 'https://drive.google.com/file/d/1pXFmL7f7IAJ2DJCVEM3WHJ-K86idL7ux/view?usp=sharing';
 
 const steps = [
   {

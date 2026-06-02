@@ -4,7 +4,7 @@ import { submitToSheets } from '../utils/submitToSheets';
 import { Download, CheckCircle, Lock, Check } from 'lucide-react';
 
 const TEMPLATE_NAME = 'The /goal Operator Pack';
-const DOWNLOAD_URL = 'PLACEHOLDER_DRIVE_URL';
+const DOWNLOAD_URL = 'https://drive.google.com/file/d/1r1920_XmkSdghUWSztpZPIMuVs4eGtSi/view?usp=sharing';
 
 const sections = [
   {
