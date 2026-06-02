@@ -40,6 +40,24 @@ const templateCards = [
     metaTr: '8 sayfa · 1 prompt',
     metaEn: '8 pages · 1 prompt',
   },
+  {
+    slug: 'goal-operator-pack',
+    titleTr: '/goal Operatör Paketi',
+    titleEn: 'The /goal Operator Pack',
+    descTr: 'Claude Code ile otonom çalıştırma. Koşul oluşturucu prompt ve 5 hazır şablon.',
+    descEn: 'Autonomous Claude Code /goal sessions. Condition builder and 5 ready-to-paste templates.',
+    metaTr: '7 sayfa · 5 şablon',
+    metaEn: '7 pages · 5 templates',
+  },
+  {
+    slug: 'ai-branding-workflow',
+    titleTr: 'Tam AI Marka İş Akışı',
+    titleEn: 'Full AI Branding Workflow',
+    descTr: 'Sadece logodan premium marka kimliği, sosyal medya ve sinematik reklam. ChatGPT + Seedance 2.0.',
+    descEn: 'From one logo to brand identity, social media creatives, and a cinematic ad. ChatGPT + Seedance 2.0.',
+    metaTr: '6 sayfa · 3 prompt',
+    metaEn: '6 pages · 3 prompts',
+  },
 ];
 
 const TemplatesSection = () => {

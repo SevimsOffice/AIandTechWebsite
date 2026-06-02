@@ -21,6 +21,7 @@ const translations = {
     'nav.training': 'Training',
     'nav.contact': 'Contact',
     'nav.templates': 'Templates',
+    'nav.prompts': 'Prompts',
 
     // Home
     'home.badge': 'AI-Powered Transformation',
@@ -267,6 +268,7 @@ const translations = {
     'nav.training': 'Eğitim',
     'nav.contact': 'İletişim',
     'nav.templates': 'Şablonlar',
+    'nav.prompts': 'Promptlar',
 
     // Home
     'home.badge': 'AI Destekli Dönüşüm',
