@@ -5,6 +5,7 @@ import Services from './Services';
 import About from './About';
 import Training from './Training';
 import TemplatesSection from '../components/TemplatesSection';
+import PromptsSection from '../components/PromptsSection';
 import Contact from './Contact';
 
 const HomePage = () => {
@@ -16,6 +17,7 @@ const HomePage = () => {
       <About />
       <Training />
       <TemplatesSection />
+      <PromptsSection />
       <Contact />
     </>
   );

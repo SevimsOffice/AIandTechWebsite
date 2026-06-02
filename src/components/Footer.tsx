@@ -91,6 +91,12 @@ const Footer = () => {
                 {t('nav.templates')}
               </button>
               <button
+                onClick={() => handleNavigation('/prompts')}
+                className="text-gray-400 hover:text-cyan-400 transition-colors text-left text-sm"
+              >
+                {t('nav.prompts')}
+              </button>
+              <button
                 onClick={() => handleNavigation('/', 'about')}
                 className="text-gray-400 hover:text-cyan-400 transition-colors text-left text-sm"
               >

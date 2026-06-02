@@ -15,6 +15,11 @@ import AIBaglamKasasiPage from './pages/AIBaglamKasasiPage';
 import AIDanismaKuruluPage from './pages/AIDanismaKuruluPage';
 import FoundersGuidePage from './pages/FoundersGuidePage';
 import ClaudeEcosystemAuditPage from './pages/ClaudeEcosystemAuditPage';
+import GoalOperatorPackPage from './pages/GoalOperatorPackPage';
+import AIBrandingWorkflowPage from './pages/AIBrandingWorkflowPage';
+import PromptsPage from './pages/PromptsPage';
+import ManusInstagramPage from './pages/ManusInstagramPage';
+import ContentCreationPromptsPage from './pages/ContentCreationPromptsPage';
 
 function App() {
   return (
@@ -36,6 +41,11 @@ function App() {
               <Route path="/templates/ai-danisma-kurulu" element={<AIDanismaKuruluPage />} />
               <Route path="/templates/founders-guide-to-claude" element={<FoundersGuidePage />} />
               <Route path="/templates/claude-ecosystem-audit" element={<ClaudeEcosystemAuditPage />} />
+              <Route path="/templates/goal-operator-pack" element={<GoalOperatorPackPage />} />
+              <Route path="/templates/ai-branding-workflow" element={<AIBrandingWorkflowPage />} />
+              <Route path="/prompts"                   element={<PromptsPage />} />
+              <Route path="/prompts/manus-instagram-strategy" element={<ManusInstagramPage />} />
+              <Route path="/prompts/content-creation-prompts" element={<ContentCreationPromptsPage />} />
             </Routes>
           </main>
           <Footer />
