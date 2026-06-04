@@ -22,6 +22,15 @@ const prompts = [
     toolTr: 'Araç: ChatGPT, Claude veya herhangi bir AI',
     toolEn: 'Tool: ChatGPT, Claude, or any AI',
   },
+  {
+    slug: 'claude-md-compounding',
+    titleTr: 'CLAUDE.md Bileşik Mühendislik Rehberi',
+    titleEn: 'CLAUDE.md Compounding Engineering Guide',
+    descTr: 'Claude Code\'un hatalarından öğrenmesini sağlayan sistem. 4 bölümlü şablon, 14 günlük ritüel ve "Update CLAUDE.md so you don\'t repeat this." cümlesi.',
+    descEn: 'The system that makes Claude Code learn from its own mistakes. 4-section template, 14-day ritual, and the one sentence that turns errors into permanent memory.',
+    toolTr: 'Araç: Claude Code',
+    toolEn: 'Tool: Claude Code',
+  },
 ];
 
 const PromptsPage = () => {
