@@ -22,6 +22,15 @@ const promptCards = [
     metaTr: 'Araç: ChatGPT veya Claude',
     metaEn: 'Tool: ChatGPT or Claude',
   },
+  {
+    slug: 'claude-md-compounding',
+    titleTr: 'CLAUDE.md Bileşik Mühendislik',
+    titleEn: 'CLAUDE.md Compounding Engineering',
+    descTr: 'Claude Code\'un hatalarından öğrenmesini sağlayan sistem. 1 cümle, 14 gün, sonsuza kadar çalışır.',
+    descEn: 'The system that makes Claude Code learn from its mistakes. 1 sentence, 14 days, runs forever.',
+    metaTr: 'Araç: Claude Code',
+    metaEn: 'Tool: Claude Code',
+  },
 ];
 
 const PromptsSection = () => {
