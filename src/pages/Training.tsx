@@ -102,7 +102,7 @@ const Training = () => {
           {courses.map((course) => (
             <div
               key={course.id}
-              className="group bg-gray-900/50 backdrop-blur-sm border border-gray-800 hover:border-cyan-400/50 rounded-xl overflow-hidden transition-all duration-300 hover:transform hover:scale-105"
+              className="group bg-gray-900/50 backdrop-blur-sm border border-gray-800 hover:border-brand/50 rounded-xl overflow-hidden transition-all duration-300 hover:transform hover:scale-105"
             >
               <div className="relative overflow-hidden">
                 <img
@@ -119,7 +119,7 @@ const Training = () => {
               </div>
 
               <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors line-clamp-2">
+                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-brand-light transition-colors line-clamp-2">
                   {course.title}
                 </h3>
                 
@@ -154,8 +154,8 @@ const Training = () => {
         </div>
 
         <div className="text-center mt-16">
-          <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-400/30 rounded-full">
-            <span className="text-cyan-400 font-semibold">{t('training.custom')}</span>
+          <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-brand/30 rounded-full">
+            <span className="text-brand font-semibold">{t('training.custom')}</span>
           </div>
         </div>
       </div>

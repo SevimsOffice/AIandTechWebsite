@@ -59,14 +59,14 @@ const About = () => {
           </div>
           
           <div className="relative">
-            <div className="bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-2xl p-8 backdrop-blur-sm border border-cyan-400/30">
+            <div className="bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-2xl p-8 backdrop-blur-sm border border-brand/30">
               <img
                 src="/sevim-profile.png"
                 alt="Sevim Durmus - Founder & AI Consultant"
                 className="w-full h-64 object-cover rounded-xl mb-6"
               />
               <h4 className="text-2xl font-bold text-white mb-2">{t('about.founder.name')}</h4>
-              <p className="text-cyan-400 font-semibold mb-3">{t('about.founder.title')}</p>
+              <p className="text-brand font-semibold mb-3">{t('about.founder.title')}</p>
               <p className="text-gray-400">
                 {t('about.founder.desc')}
               </p>
@@ -82,9 +82,9 @@ const About = () => {
               className="text-center group"
             >
               <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-xl mb-4 mx-auto group-hover:from-cyan-500/30 group-hover:to-blue-600/30 transition-all duration-300">
-                <achievement.icon className="h-8 w-8 text-cyan-400" />
+                <achievement.icon className="h-8 w-8 text-brand" />
               </div>
-              <h4 className="text-lg font-semibold text-white mb-2 group-hover:text-cyan-300 transition-colors">
+              <h4 className="text-lg font-semibold text-white mb-2 group-hover:text-brand-light transition-colors">
                 {achievement.title}
               </h4>
               <p className="text-gray-400 text-sm">

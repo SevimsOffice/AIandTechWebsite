@@ -48,7 +48,7 @@ const BlogsPage = () => {
           {articles.map((article) => (
             <div
               key={article.id}
-              className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-sm border border-gray-700 rounded-2xl overflow-hidden group hover:border-cyan-400/50 transition-all duration-300"
+              className="bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-sm border border-gray-700 rounded-2xl overflow-hidden group hover:border-brand/50 transition-all duration-300"
             >
               <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
                 <div className="relative overflow-hidden h-64 md:h-auto md:col-span-1">
@@ -63,7 +63,7 @@ const BlogsPage = () => {
                 <div className="p-8 md:col-span-2 flex flex-col justify-between">
                   <div>
                     <div className="mb-4 flex items-center gap-2">
-                      <span className="px-3 py-1 bg-cyan-500/10 text-cyan-400 text-sm font-medium rounded-full border border-cyan-500/20">
+                      <span className="px-3 py-1 bg-cyan-500/10 text-brand text-sm font-medium rounded-full border border-cyan-500/20">
                         {t(article.categoryKey)}
                       </span>
                     </div>
@@ -119,11 +119,11 @@ const BlogsPage = () => {
 
             <div className="flex items-start gap-6 mb-6">
               <div className="w-20 h-20 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-full flex items-center justify-center flex-shrink-0">
-                <span className="text-4xl font-bold text-cyan-400">S</span>
+                <span className="text-4xl font-bold text-brand">S</span>
               </div>
               <div>
                 <p className="text-xl font-semibold text-white">{t('blogsPage.authorName')}</p>
-                <p className="text-cyan-400 font-medium">{t('blogsPage.authorTitle')}</p>
+                <p className="text-brand font-medium">{t('blogsPage.authorTitle')}</p>
               </div>
             </div>
 
@@ -135,7 +135,7 @@ const BlogsPage = () => {
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center text-cyan-400 hover:text-cyan-300 transition-colors font-semibold gap-2"
+              className="inline-flex items-center text-brand hover:text-brand-light transition-colors font-semibold gap-2"
             >
               {t('blogsPage.followLabel')} {t('blogsPage.followLink')}
               <ExternalLink className="h-4 w-4" />

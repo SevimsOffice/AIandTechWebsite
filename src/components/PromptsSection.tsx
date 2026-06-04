@@ -54,12 +54,12 @@ const PromptsSection = () => {
     <section id="prompts" className="py-24 px-6 bg-gray-900">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-14">
-          <span className="inline-block bg-cyan-400/10 text-cyan-400 text-sm font-semibold px-4 py-1.5 rounded-full mb-4 border border-cyan-400/20">
+          <span className="inline-block bg-brand/10 text-brand text-sm font-semibold px-4 py-1.5 rounded-full mb-4 border border-brand/20">
             {labels.badge}
           </span>
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
             {labels.title}{' '}
-            <span className="text-cyan-400">{labels.titleHighlight}</span>
+            <span className="text-brand">{labels.titleHighlight}</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
             {labels.subtitle}
@@ -70,19 +70,19 @@ const PromptsSection = () => {
           {promptCards.map((p, idx) => (
             <div
               key={p.slug}
-              className={`bg-gray-800 border border-gray-700 hover:border-cyan-400/40 rounded-2xl p-8 transition-all group cursor-pointer${idx === 0 && promptCards.length === 1 ? ' md:col-span-2 max-w-2xl mx-auto w-full' : ''}`}
+              className={`bg-gray-800 border border-gray-700 hover:border-brand/40 rounded-2xl p-8 transition-all group cursor-pointer${idx === 0 && promptCards.length === 1 ? ' md:col-span-2 max-w-2xl mx-auto w-full' : ''}`}
               onClick={() => navigate(`/prompts/${p.slug}`)}
             >
               <div className="flex items-start justify-between mb-6">
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-cyan-400/10 border border-cyan-400/20">
-                  <Copy className="h-6 w-6 text-cyan-400" />
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-brand/10 border border-brand/20">
+                  <Copy className="h-6 w-6 text-brand" />
                 </div>
-                <span className="text-xs font-bold text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 px-3 py-1 rounded-full">
+                <span className="text-xs font-bold text-brand bg-brand/10 border border-brand/20 px-3 py-1 rounded-full">
                   {labels.free}
                 </span>
               </div>
 
-              <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
+              <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-brand transition-colors">
                 {isTr ? p.titleTr : p.titleEn}
               </h3>
               <p className="text-gray-400 leading-relaxed mb-6">
@@ -93,7 +93,7 @@ const PromptsSection = () => {
                 <span className="text-gray-500 text-sm">{isTr ? p.metaTr : p.metaEn}</span>
                 <button
                   onClick={e => { e.stopPropagation(); navigate(`/prompts/${p.slug}`); }}
-                  className="flex items-center gap-2 bg-cyan-400 hover:bg-cyan-300 text-gray-950 font-bold px-5 py-2.5 rounded-lg transition-colors text-sm"
+                  className="flex items-center gap-2 bg-brand hover:bg-brand-light text-gray-950 font-bold px-5 py-2.5 rounded-lg transition-colors text-sm"
                 >
                   <Copy className="h-4 w-4" />
                   {labels.get}
@@ -106,7 +106,7 @@ const PromptsSection = () => {
         <div className="text-center">
           <button
             onClick={() => navigate('/prompts')}
-            className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-semibold transition-colors"
+            className="inline-flex items-center gap-2 text-brand hover:text-brand-light font-semibold transition-colors"
           >
             {labels.all} <ArrowRight className="h-4 w-4" />
           </button>

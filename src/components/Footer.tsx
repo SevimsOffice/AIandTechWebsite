@@ -56,49 +56,49 @@ const Footer = () => {
             <div className="grid grid-cols-2 gap-2">
               <button
                 onClick={() => handleNavigation('/', 'home')}
-                className="text-gray-400 hover:text-cyan-400 transition-colors text-left text-sm"
+                className="text-gray-400 hover:text-brand transition-colors text-left text-sm"
               >
                 {t('common.home')}
               </button>
               <button
                 onClick={() => handleNavigation('/', 'services')}
-                className="text-gray-400 hover:text-cyan-400 transition-colors text-left text-sm"
+                className="text-gray-400 hover:text-brand transition-colors text-left text-sm"
               >
                 {t('common.services')}
               </button>
               <button
                 onClick={() => handleNavigation('/trainings')}
-                className="text-gray-400 hover:text-cyan-400 transition-colors text-left text-sm"
+                className="text-gray-400 hover:text-brand transition-colors text-left text-sm"
               >
                 {t('nav.trainings')}
               </button>
               <button
                 onClick={() => handleNavigation('/blogs')}
-                className="text-gray-400 hover:text-cyan-400 transition-colors text-left text-sm"
+                className="text-gray-400 hover:text-brand transition-colors text-left text-sm"
               >
                 {t('nav.blogs')}
               </button>
               <button
                 onClick={() => handleNavigation('/products')}
-                className="text-gray-400 hover:text-cyan-400 transition-colors text-left text-sm"
+                className="text-gray-400 hover:text-brand transition-colors text-left text-sm"
               >
                 {t('nav.products')}
               </button>
               <button
                 onClick={() => handleNavigation('/templates')}
-                className="text-gray-400 hover:text-cyan-400 transition-colors text-left text-sm"
+                className="text-gray-400 hover:text-brand transition-colors text-left text-sm"
               >
                 {t('nav.templates')}
               </button>
               <button
                 onClick={() => handleNavigation('/prompts')}
-                className="text-gray-400 hover:text-cyan-400 transition-colors text-left text-sm"
+                className="text-gray-400 hover:text-brand transition-colors text-left text-sm"
               >
                 {t('nav.prompts')}
               </button>
               <button
                 onClick={() => handleNavigation('/', 'about')}
-                className="text-gray-400 hover:text-cyan-400 transition-colors text-left text-sm"
+                className="text-gray-400 hover:text-brand transition-colors text-left text-sm"
               >
                 {t('common.about')}
               </button>
@@ -112,7 +112,7 @@ const Footer = () => {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-cyan-400 transition-colors"
+                className="text-gray-400 hover:text-brand transition-colors"
               >
                 <Linkedin className="h-6 w-6" />
               </a>
@@ -120,7 +120,7 @@ const Footer = () => {
                 href="https://youtube.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-cyan-400 transition-colors"
+                className="text-gray-400 hover:text-brand transition-colors"
               >
                 <Youtube className="h-6 w-6" />
               </a>
@@ -128,7 +128,7 @@ const Footer = () => {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-cyan-400 transition-colors"
+                className="text-gray-400 hover:text-brand transition-colors"
               >
                 <Instagram className="h-6 w-6" />
               </a>

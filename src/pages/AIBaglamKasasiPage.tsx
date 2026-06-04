@@ -107,12 +107,12 @@ const AIBaglamKasasiPage = () => {
   };
 
   const downloadForm = (
-    <div className="bg-gray-900 border border-cyan-400/30 rounded-2xl p-8 md:p-10">
+    <div className="bg-gray-900 border border-brand/30 rounded-2xl p-8 md:p-10">
       {!submitted ? (
         <>
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-cyan-400/10 border border-cyan-400/30 mb-4">
-              <Download className="h-6 w-6 text-cyan-400" />
+            <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-brand/10 border border-brand/30 mb-4">
+              <Download className="h-6 w-6 text-brand" />
             </div>
             <h2 className="text-2xl font-bold mb-2">{labels.formTitle}</h2>
             <p className="text-gray-400 text-sm">{labels.formDesc}</p>
@@ -128,7 +128,7 @@ const AIBaglamKasasiPage = () => {
                 value={form.firstName}
                 onChange={e => handleChange('firstName', e.target.value)}
                 placeholder={labels.firstNamePlaceholder}
-                className={`w-full bg-gray-800 border rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 transition-colors ${
+                className={`w-full bg-gray-800 border rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand/50 transition-colors ${
                   errors.firstName ? 'border-red-500' : 'border-gray-700'
                 }`}
               />
@@ -144,7 +144,7 @@ const AIBaglamKasasiPage = () => {
                 value={form.lastName}
                 onChange={e => handleChange('lastName', e.target.value)}
                 placeholder={labels.lastNamePlaceholder}
-                className={`w-full bg-gray-800 border rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 transition-colors ${
+                className={`w-full bg-gray-800 border rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand/50 transition-colors ${
                   errors.lastName ? 'border-red-500' : 'border-gray-700'
                 }`}
               />
@@ -160,7 +160,7 @@ const AIBaglamKasasiPage = () => {
                 value={form.email}
                 onChange={e => handleChange('email', e.target.value)}
                 placeholder={labels.emailPlaceholder}
-                className={`w-full bg-gray-800 border rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 transition-colors ${
+                className={`w-full bg-gray-800 border rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand/50 transition-colors ${
                   errors.email ? 'border-red-500' : 'border-gray-700'
                 }`}
               />
@@ -170,7 +170,7 @@ const AIBaglamKasasiPage = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-cyan-400 hover:bg-cyan-300 disabled:opacity-60 text-gray-950 font-bold py-3.5 rounded-lg transition-colors flex items-center justify-center gap-2"
+              className="w-full bg-brand hover:bg-brand-light disabled:opacity-60 text-gray-950 font-bold py-3.5 rounded-lg transition-colors flex items-center justify-center gap-2"
             >
               {loading ? (
                 <>
@@ -196,14 +196,14 @@ const AIBaglamKasasiPage = () => {
         </>
       ) : (
         <div className="text-center py-4">
-          <CheckCircle className="h-16 w-16 text-cyan-400 mx-auto mb-4" />
+          <CheckCircle className="h-16 w-16 text-brand mx-auto mb-4" />
           <h2 className="text-2xl font-bold mb-3">{labels.successTitle}</h2>
           <p className="text-gray-400 mb-8">{labels.successDesc}</p>
           <a
             href={DOWNLOAD_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-cyan-400 hover:bg-cyan-300 text-gray-950 font-bold px-8 py-4 rounded-lg transition-colors text-lg"
+            className="inline-flex items-center gap-2 bg-brand hover:bg-brand-light text-gray-950 font-bold px-8 py-4 rounded-lg transition-colors text-lg"
           >
             <Download className="h-5 w-5" />
             {labels.downloadBtn}
@@ -221,7 +221,7 @@ const AIBaglamKasasiPage = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Left: title & description */}
             <div>
-              <span className="inline-block bg-cyan-400/10 text-cyan-400 text-sm font-semibold px-4 py-1.5 rounded-full mb-6 border border-cyan-400/20">
+              <span className="inline-block bg-brand/10 text-brand text-sm font-semibold px-4 py-1.5 rounded-full mb-6 border border-brand/20">
                 {labels.badge}
               </span>
               <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
@@ -231,7 +231,7 @@ const AIBaglamKasasiPage = () => {
                 {labels.subtitle}
               </p>
               <p className="text-gray-500 text-sm mb-10">
-                Sevim Durmuş · <span className="text-cyan-400">aiandtech.cloud</span>
+                Sevim Durmuş · <span className="text-brand">aiandtech.cloud</span>
               </p>
 
               {/* Problem / Solution inline */}
@@ -243,10 +243,10 @@ const AIBaglamKasasiPage = () => {
                     <p className="text-gray-400 text-sm leading-relaxed">{labels.problemDesc}</p>
                   </div>
                 </div>
-                <div className="bg-gray-900 border border-cyan-400/30 rounded-xl p-5 flex gap-4">
+                <div className="bg-gray-900 border border-brand/30 rounded-xl p-5 flex gap-4">
                   <span className="text-xl shrink-0">✅</span>
                   <div>
-                    <p className="font-semibold text-cyan-400 mb-1">{labels.solution}</p>
+                    <p className="font-semibold text-brand mb-1">{labels.solution}</p>
                     <p className="text-gray-400 text-sm leading-relaxed">{labels.solutionDesc}</p>
                   </div>
                 </div>
@@ -270,9 +270,9 @@ const AIBaglamKasasiPage = () => {
             {prompts.map(p => (
               <div
                 key={p.num}
-                className="flex items-start gap-4 bg-gray-900 border border-gray-800 rounded-xl p-5 hover:border-cyan-400/40 transition-colors"
+                className="flex items-start gap-4 bg-gray-900 border border-gray-800 rounded-xl p-5 hover:border-brand/40 transition-colors"
               >
-                <span className="text-cyan-400 font-bold text-lg w-8 shrink-0">{p.num}</span>
+                <span className="text-brand font-bold text-lg w-8 shrink-0">{p.num}</span>
                 <div>
                   <div className="font-semibold text-white mb-1">{p.title}</div>
                   <div className="text-gray-400 text-sm">{p.desc}</div>

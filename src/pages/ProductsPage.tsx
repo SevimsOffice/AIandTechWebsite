@@ -57,7 +57,7 @@ const ProductsPage = () => {
                 />
               </div>
               <div className="p-6 flex flex-col flex-grow">
-                <h2 className="text-xl font-bold mb-3 text-white group-hover:text-cyan-400 transition-colors">
+                <h2 className="text-xl font-bold mb-3 text-white group-hover:text-brand transition-colors">
                   {product.title}
                 </h2>
                 <p className="text-gray-400 text-sm mb-6 flex-grow">

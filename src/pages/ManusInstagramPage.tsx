@@ -130,12 +130,12 @@ const ManusInstagramPage = () => {
   };
 
   const formBox = (
-    <div className="bg-gray-900 border border-cyan-400/30 rounded-2xl p-8 md:p-10">
+    <div className="bg-gray-900 border border-brand/30 rounded-2xl p-8 md:p-10">
       {!submitted ? (
         <>
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-cyan-400/10 border border-cyan-400/30 mb-4">
-              <Copy className="h-6 w-6 text-cyan-400" />
+            <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-brand/10 border border-brand/30 mb-4">
+              <Copy className="h-6 w-6 text-brand" />
             </div>
             <h2 className="text-2xl font-bold mb-2">{labels.formTitle}</h2>
             <p className="text-gray-400 text-sm">{labels.formDesc}</p>
@@ -150,7 +150,7 @@ const ManusInstagramPage = () => {
                 value={form.firstName}
                 onChange={e => handleChange('firstName', e.target.value)}
                 placeholder={labels.firstNamePlaceholder}
-                className={`w-full bg-gray-800 border rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 transition-colors ${errors.firstName ? 'border-red-500' : 'border-gray-700'}`}
+                className={`w-full bg-gray-800 border rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand/50 transition-colors ${errors.firstName ? 'border-red-500' : 'border-gray-700'}`}
               />
               {errors.firstName && <p className="text-red-400 text-xs mt-1">{errors.firstName}</p>}
             </div>
@@ -163,7 +163,7 @@ const ManusInstagramPage = () => {
                 value={form.lastName}
                 onChange={e => handleChange('lastName', e.target.value)}
                 placeholder={labels.lastNamePlaceholder}
-                className={`w-full bg-gray-800 border rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 transition-colors ${errors.lastName ? 'border-red-500' : 'border-gray-700'}`}
+                className={`w-full bg-gray-800 border rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand/50 transition-colors ${errors.lastName ? 'border-red-500' : 'border-gray-700'}`}
               />
               {errors.lastName && <p className="text-red-400 text-xs mt-1">{errors.lastName}</p>}
             </div>
@@ -176,14 +176,14 @@ const ManusInstagramPage = () => {
                 value={form.email}
                 onChange={e => handleChange('email', e.target.value)}
                 placeholder={labels.emailPlaceholder}
-                className={`w-full bg-gray-800 border rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 transition-colors ${errors.email ? 'border-red-500' : 'border-gray-700'}`}
+                className={`w-full bg-gray-800 border rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand/50 transition-colors ${errors.email ? 'border-red-500' : 'border-gray-700'}`}
               />
               {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
             </div>
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-cyan-400 hover:bg-cyan-300 disabled:opacity-60 text-gray-950 font-bold py-3.5 rounded-lg transition-colors flex items-center justify-center gap-2"
+              className="w-full bg-brand hover:bg-brand-light disabled:opacity-60 text-gray-950 font-bold py-3.5 rounded-lg transition-colors flex items-center justify-center gap-2"
             >
               {loading ? (
                 <>
@@ -206,7 +206,7 @@ const ManusInstagramPage = () => {
       ) : (
         <div>
           <div className="text-center mb-6">
-            <CheckCircle className="h-12 w-12 text-cyan-400 mx-auto mb-3" />
+            <CheckCircle className="h-12 w-12 text-brand mx-auto mb-3" />
             <h2 className="text-2xl font-bold mb-2">{labels.promptTitle}</h2>
             <p className="text-gray-400 text-sm">{labels.promptDesc}</p>
           </div>
@@ -220,7 +220,7 @@ const ManusInstagramPage = () => {
             className={`w-full flex items-center justify-center gap-2 font-bold py-3.5 rounded-lg transition-all ${
               copied
                 ? 'bg-green-500 text-white'
-                : 'bg-cyan-400 hover:bg-cyan-300 text-gray-950'
+                : 'bg-brand hover:bg-brand-light text-gray-950'
             }`}
           >
             {copied ? (
@@ -241,7 +241,7 @@ const ManusInstagramPage = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Left */}
             <div>
-              <span className="inline-block bg-cyan-400/10 text-cyan-400 text-sm font-semibold px-4 py-1.5 rounded-full mb-6 border border-cyan-400/20">
+              <span className="inline-block bg-brand/10 text-brand text-sm font-semibold px-4 py-1.5 rounded-full mb-6 border border-brand/20">
                 {labels.badge}
               </span>
               <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
@@ -251,12 +251,12 @@ const ManusInstagramPage = () => {
                 {labels.subtitle}
               </p>
               <p className="text-gray-500 text-sm mb-8">
-                Sevim Durmuş · <span className="text-cyan-400">aiandtech.cloud</span>
+                Sevim Durmuş · <span className="text-brand">aiandtech.cloud</span>
               </p>
 
               {/* What you'll get */}
-              <div className="bg-gray-900 border border-cyan-400/30 rounded-xl p-5 mb-8">
-                <p className="font-semibold text-cyan-400 mb-2">{labels.what}</p>
+              <div className="bg-gray-900 border border-brand/30 rounded-xl p-5 mb-8">
+                <p className="font-semibold text-brand mb-2">{labels.what}</p>
                 <p className="text-gray-400 text-sm leading-relaxed">{labels.whatDesc}</p>
               </div>
 
@@ -265,7 +265,7 @@ const ManusInstagramPage = () => {
               <div className="space-y-4">
                 {steps.map(s => (
                   <div key={s.num} className="flex gap-4 items-start">
-                    <span className="text-cyan-400 font-bold text-lg w-8 shrink-0">{s.num}</span>
+                    <span className="text-brand font-bold text-lg w-8 shrink-0">{s.num}</span>
                     <div>
                       <div className="font-semibold text-white mb-0.5">{isTr ? s.titleTr : s.titleEn}</div>
                       <div className="text-gray-400 text-sm">{isTr ? s.descTr : s.descEn}</div>
