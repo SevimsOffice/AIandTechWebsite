@@ -40,6 +40,15 @@ const promptCards = [
     metaTr: 'Kaynak: Anthropic',
     metaEn: 'Source: Anthropic',
   },
+  {
+    slug: 'prompt-generator',
+    titleTr: 'Prompt Üreticisi',
+    titleEn: 'Prompt Generator',
+    descTr: 'Her konuda yapılandırılmış prompt oluşturan meta-prompt. 6 ilke, uzman personalar, halüsinasyon minimizasyonu.',
+    descEn: 'A meta-prompt that builds structured prompts for any topic. 6 principles, expert personas, hallucination minimization.',
+    metaTr: 'Araç: Claude · ChatGPT',
+    metaEn: 'Tool: Claude · ChatGPT',
+  },
 ];
 
 const PromptsSection = () => {
