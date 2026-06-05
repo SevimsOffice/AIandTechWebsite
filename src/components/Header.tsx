@@ -60,44 +60,44 @@ const Header = () => {
           <div className="hidden lg:flex items-center space-x-8">
             <button
               onClick={() => handleNavigation('/', 'challenges')}
-              className="text-gray-300 hover:text-cyan-400 transition-colors relative group"
+              className="text-gray-300 hover:text-brand transition-colors relative group"
             >
               {t('nav.challenges')}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand group-hover:w-full transition-all duration-300"></span>
             </button>
             <button
               onClick={() => handleNavigation('/', 'services')}
-              className="text-gray-300 hover:text-cyan-400 transition-colors relative group"
+              className="text-gray-300 hover:text-brand transition-colors relative group"
             >
               {t('nav.services')}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand group-hover:w-full transition-all duration-300"></span>
             </button>
             <button
               onClick={() => handleNavigation('/trainings')}
-              className="text-gray-300 hover:text-cyan-400 transition-colors relative group"
+              className="text-gray-300 hover:text-brand transition-colors relative group"
             >
               {t('nav.trainings')}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand group-hover:w-full transition-all duration-300"></span>
             </button>
             <button
               onClick={() => handleNavigation('/products')}
-              className="text-gray-300 hover:text-cyan-400 transition-colors relative group"
+              className="text-gray-300 hover:text-brand transition-colors relative group"
             >
               {t('nav.products')}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand group-hover:w-full transition-all duration-300"></span>
             </button>
             <button
               onClick={() => handleNavigation('/', 'about')}
-              className="text-gray-300 hover:text-cyan-400 transition-colors relative group"
+              className="text-gray-300 hover:text-brand transition-colors relative group"
             >
               {t('nav.about')}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand group-hover:w-full transition-all duration-300"></span>
             </button>
 
             {/* Language Toggle */}
             <button
               onClick={() => setLanguage(language === 'en' ? 'tr' : 'en')}
-              className="flex items-center gap-1.5 text-gray-300 hover:text-cyan-400 transition-colors border border-gray-700 hover:border-cyan-400/50 rounded-lg px-3 py-1.5 text-sm font-semibold"
+              className="flex items-center gap-1.5 text-gray-300 hover:text-brand transition-colors border border-gray-700 hover:border-brand/50 rounded-lg px-3 py-1.5 text-sm font-semibold"
             >
               <Globe className="h-4 w-4" />
               {language === 'en' ? 'TR' : 'EN'}
@@ -108,13 +108,13 @@ const Header = () => {
           <div className="lg:hidden flex items-center space-x-2">
             <button
               onClick={() => handleNavigation('/products')}
-              className="text-gray-300 hover:text-cyan-400 transition-colors text-xs px-2 py-1"
+              className="text-gray-300 hover:text-brand transition-colors text-xs px-2 py-1"
             >
               {t('nav.products')}
             </button>
             <button
               onClick={() => handleNavigation('/trainings')}
-              className="text-gray-300 hover:text-cyan-400 transition-colors text-xs px-2 py-1"
+              className="text-gray-300 hover:text-brand transition-colors text-xs px-2 py-1"
             >
               {t('nav.trainings')}
             </button>
@@ -122,7 +122,7 @@ const Header = () => {
             {/* Mobile Language Toggle */}
             <button
               onClick={() => setLanguage(language === 'en' ? 'tr' : 'en')}
-              className="flex items-center gap-1 text-gray-300 hover:text-cyan-400 transition-colors text-xs font-semibold border border-gray-700 hover:border-cyan-400/50 rounded-md px-2 py-1"
+              className="flex items-center gap-1 text-gray-300 hover:text-brand transition-colors text-xs font-semibold border border-gray-700 hover:border-brand/50 rounded-md px-2 py-1"
             >
               <Globe className="h-3.5 w-3.5" />
               {language === 'en' ? 'TR' : 'EN'}

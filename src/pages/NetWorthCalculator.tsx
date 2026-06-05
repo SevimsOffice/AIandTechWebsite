@@ -128,7 +128,7 @@ const NetWorthCalculator = () => {
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Input Panel */}
           <div className="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 shadow-xl">
-            <h2 className="text-xl font-semibold mb-6 flex items-center gap-2 text-cyan-400">
+            <h2 className="text-xl font-semibold mb-6 flex items-center gap-2 text-brand">
               <Calculator className="h-5 w-5" />
               AI Agent Parameters
             </h2>
@@ -137,7 +137,7 @@ const NetWorthCalculator = () => {
               <div>
                 <label className="block text-sm font-medium text-gray-400 mb-2 flex justify-between">
                   <span>Development Cost (One-time)</span>
-                  <span className="text-cyan-400 font-bold">${devCost.toLocaleString()}</span>
+                  <span className="text-brand font-bold">${devCost.toLocaleString()}</span>
                 </label>
                 <input
                   type="range"
@@ -153,7 +153,7 @@ const NetWorthCalculator = () => {
               <div>
                 <label className="block text-sm font-medium text-gray-400 mb-2 flex justify-between">
                   <span>Monthly Maintenance (APIs, Hosting)</span>
-                  <span className="text-cyan-400 font-bold">${maintCost.toLocaleString()}</span>
+                  <span className="text-brand font-bold">${maintCost.toLocaleString()}</span>
                 </label>
                 <input
                   type="range"
@@ -169,7 +169,7 @@ const NetWorthCalculator = () => {
               <div>
                 <label className="block text-sm font-medium text-gray-400 mb-2 flex justify-between">
                   <span>Hours Saved Per Month</span>
-                  <span className="text-cyan-400 font-bold">{hoursSaved} hrs</span>
+                  <span className="text-brand font-bold">{hoursSaved} hrs</span>
                 </label>
                 <input
                   type="range"
@@ -185,7 +185,7 @@ const NetWorthCalculator = () => {
               <div>
                 <label className="block text-sm font-medium text-gray-400 mb-2 flex justify-between">
                   <span>Hourly Value of Task ($)</span>
-                  <span className="text-cyan-400 font-bold">${hourlyRate}/hr</span>
+                  <span className="text-brand font-bold">${hourlyRate}/hr</span>
                 </label>
                 <input
                   type="range"
@@ -201,7 +201,7 @@ const NetWorthCalculator = () => {
               <div>
                 <label className="block text-sm font-medium text-gray-400 mb-2 flex justify-between">
                   <span>Projection Period (Months)</span>
-                  <span className="text-cyan-400 font-bold">{projectionMonths} Mo</span>
+                  <span className="text-brand font-bold">{projectionMonths} Mo</span>
                 </label>
                 <input
                   type="range"
@@ -232,7 +232,7 @@ const NetWorthCalculator = () => {
                 <div className="text-xs text-gray-500 uppercase tracking-wider mt-1">ROI</div>
               </div>
               <div className="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-4 text-center">
-                <div className="text-2xl font-bold text-cyan-400">
+                <div className="text-2xl font-bold text-brand">
                   {breakEven > 0 && breakEven < Infinity ? `${breakEven.toFixed(1)} Mo` : 'Never'}
                 </div>
                 <div className="text-xs text-gray-500 uppercase tracking-wider mt-1">Break-even Point</div>

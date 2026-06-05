@@ -159,12 +159,12 @@ const FoundersGuidePage = () => {
   };
 
   const downloadForm = (
-    <div className="bg-gray-900 border border-cyan-400/30 rounded-2xl p-8 md:p-10">
+    <div className="bg-gray-900 border border-brand/30 rounded-2xl p-8 md:p-10">
       {!submitted ? (
         <>
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-cyan-400/10 border border-cyan-400/30 mb-4">
-              <Download className="h-6 w-6 text-cyan-400" />
+            <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-brand/10 border border-brand/30 mb-4">
+              <Download className="h-6 w-6 text-brand" />
             </div>
             <h2 className="text-2xl font-bold mb-2">{labels.formTitle}</h2>
             <p className="text-gray-400 text-sm">{labels.formDesc}</p>
@@ -177,7 +177,7 @@ const FoundersGuidePage = () => {
               { num: labels.tools, label: labels.toolsLabel },
             ].map(s => (
               <div key={s.label} className="bg-gray-800 rounded-xl p-3 text-center">
-                <div className="text-2xl font-black text-cyan-400">{s.num}</div>
+                <div className="text-2xl font-black text-brand">{s.num}</div>
                 <div className="text-gray-400 text-xs mt-0.5">{s.label}</div>
               </div>
             ))}
@@ -192,7 +192,7 @@ const FoundersGuidePage = () => {
                 value={form.firstName}
                 onChange={e => handleChange('firstName', e.target.value)}
                 placeholder={labels.firstNamePlaceholder}
-                className={`w-full bg-gray-800 border rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 transition-colors ${errors.firstName ? 'border-red-500' : 'border-gray-700'}`}
+                className={`w-full bg-gray-800 border rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand/50 transition-colors ${errors.firstName ? 'border-red-500' : 'border-gray-700'}`}
               />
               {errors.firstName && <p className="text-red-400 text-xs mt-1">{errors.firstName}</p>}
             </div>
@@ -205,7 +205,7 @@ const FoundersGuidePage = () => {
                 value={form.lastName}
                 onChange={e => handleChange('lastName', e.target.value)}
                 placeholder={labels.lastNamePlaceholder}
-                className={`w-full bg-gray-800 border rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 transition-colors ${errors.lastName ? 'border-red-500' : 'border-gray-700'}`}
+                className={`w-full bg-gray-800 border rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand/50 transition-colors ${errors.lastName ? 'border-red-500' : 'border-gray-700'}`}
               />
               {errors.lastName && <p className="text-red-400 text-xs mt-1">{errors.lastName}</p>}
             </div>
@@ -218,14 +218,14 @@ const FoundersGuidePage = () => {
                 value={form.email}
                 onChange={e => handleChange('email', e.target.value)}
                 placeholder={labels.emailPlaceholder}
-                className={`w-full bg-gray-800 border rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 transition-colors ${errors.email ? 'border-red-500' : 'border-gray-700'}`}
+                className={`w-full bg-gray-800 border rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand/50 transition-colors ${errors.email ? 'border-red-500' : 'border-gray-700'}`}
               />
               {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
             </div>
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-cyan-400 hover:bg-cyan-300 disabled:opacity-60 text-gray-950 font-bold py-3.5 rounded-lg transition-colors flex items-center justify-center gap-2"
+              className="w-full bg-brand hover:bg-brand-light disabled:opacity-60 text-gray-950 font-bold py-3.5 rounded-lg transition-colors flex items-center justify-center gap-2"
             >
               {loading ? (
                 <>
@@ -247,14 +247,14 @@ const FoundersGuidePage = () => {
         </>
       ) : (
         <div className="text-center py-4">
-          <CheckCircle className="h-16 w-16 text-cyan-400 mx-auto mb-4" />
+          <CheckCircle className="h-16 w-16 text-brand mx-auto mb-4" />
           <h2 className="text-2xl font-bold mb-3">{labels.successTitle}</h2>
           <p className="text-gray-400 mb-8">{labels.successDesc}</p>
           <a
             href={DOWNLOAD_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-cyan-400 hover:bg-cyan-300 text-gray-950 font-bold px-8 py-4 rounded-lg transition-colors text-lg"
+            className="inline-flex items-center gap-2 bg-brand hover:bg-brand-light text-gray-950 font-bold px-8 py-4 rounded-lg transition-colors text-lg"
           >
             <Download className="h-5 w-5" />
             {labels.downloadBtn}
@@ -271,7 +271,7 @@ const FoundersGuidePage = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Left */}
             <div>
-              <span className="inline-block bg-cyan-400/10 text-cyan-400 text-sm font-semibold px-4 py-1.5 rounded-full mb-6 border border-cyan-400/20">
+              <span className="inline-block bg-brand/10 text-brand text-sm font-semibold px-4 py-1.5 rounded-full mb-6 border border-brand/20">
                 {labels.badge}
               </span>
               <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
@@ -281,11 +281,11 @@ const FoundersGuidePage = () => {
                 {labels.subtitle}
               </p>
               <p className="text-gray-500 text-sm mb-8">
-                Sevim Durmuş · <span className="text-cyan-400">aiandtech.cloud</span>
+                Sevim Durmuş · <span className="text-brand">aiandtech.cloud</span>
               </p>
 
               {/* Quote */}
-              <div className="border-l-4 border-cyan-400 pl-4 mb-6">
+              <div className="border-l-4 border-brand pl-4 mb-6">
                 <p className="text-gray-300 italic text-base leading-relaxed">{labels.quote}</p>
               </div>
 
@@ -298,10 +298,10 @@ const FoundersGuidePage = () => {
                     <p className="text-gray-400 text-sm leading-relaxed">{labels.problemDesc}</p>
                   </div>
                 </div>
-                <div className="bg-gray-900 border border-cyan-400/30 rounded-xl p-5 flex gap-4">
+                <div className="bg-gray-900 border border-brand/30 rounded-xl p-5 flex gap-4">
                   <span className="text-xl shrink-0">✅</span>
                   <div>
-                    <p className="font-semibold text-cyan-400 mb-1">{labels.solution}</p>
+                    <p className="font-semibold text-brand mb-1">{labels.solution}</p>
                     <p className="text-gray-400 text-sm leading-relaxed">{labels.solutionDesc}</p>
                   </div>
                 </div>
@@ -325,9 +325,9 @@ const FoundersGuidePage = () => {
             {chapters.map(c => (
               <div
                 key={c.num}
-                className="flex items-start gap-4 bg-gray-900 border border-gray-800 rounded-xl p-5 hover:border-cyan-400/40 transition-colors"
+                className="flex items-start gap-4 bg-gray-900 border border-gray-800 rounded-xl p-5 hover:border-brand/40 transition-colors"
               >
-                <span className="text-cyan-400 font-bold text-lg w-8 shrink-0">{c.num}</span>
+                <span className="text-brand font-bold text-lg w-8 shrink-0">{c.num}</span>
                 <div>
                   <div className="font-semibold text-white mb-1">{isTr ? c.titleTr : c.titleEn}</div>
                   <div className="text-gray-400 text-sm">{isTr ? c.descTr : c.descEn}</div>

@@ -49,12 +49,12 @@ const Challenges = () => {
           {challenges.map((challenge, index) => (
             <div
               key={index}
-              className="group bg-gray-900/50 backdrop-blur-sm border border-gray-800 hover:border-cyan-400/50 rounded-xl p-8 transition-all duration-300 hover:transform hover:scale-105"
+              className="group bg-gray-900/50 backdrop-blur-sm border border-gray-800 hover:border-brand/50 rounded-xl p-8 transition-all duration-300 hover:transform hover:scale-105"
             >
               <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-xl mb-6 group-hover:from-cyan-500/30 group-hover:to-blue-600/30 transition-all duration-300">
-                <challenge.icon className="h-8 w-8 text-cyan-400" />
+                <challenge.icon className="h-8 w-8 text-brand" />
               </div>
-              <h3 className="text-xl font-semibold text-white mb-4 group-hover:text-cyan-300 transition-colors">
+              <h3 className="text-xl font-semibold text-white mb-4 group-hover:text-brand-light transition-colors">
                 {challenge.title}
               </h3>
               <p className="text-gray-400 leading-relaxed">

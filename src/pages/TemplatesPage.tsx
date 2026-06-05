@@ -92,7 +92,7 @@ const TemplatesPage = () => {
       <section className="pt-32 pb-16 px-6">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-14">
-            <span className="inline-block bg-cyan-400/10 text-cyan-400 text-sm font-semibold px-4 py-1.5 rounded-full mb-6 border border-cyan-400/20">
+            <span className="inline-block bg-brand/10 text-brand text-sm font-semibold px-4 py-1.5 rounded-full mb-6 border border-brand/20">
               {labels.badge}
             </span>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
@@ -107,19 +107,19 @@ const TemplatesPage = () => {
             {templates.map(tpl => (
               <div
                 key={tpl.slug}
-                className="bg-gray-900 border border-gray-800 hover:border-cyan-400/40 rounded-2xl p-7 transition-all group cursor-pointer"
+                className="bg-gray-900 border border-gray-800 hover:border-brand/40 rounded-2xl p-7 transition-all group cursor-pointer"
                 onClick={() => navigate(`/templates/${tpl.slug}`)}
               >
                 <div className="flex items-start justify-between mb-5">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-cyan-400/10 border border-cyan-400/20">
-                    <Download className="h-5 w-5 text-cyan-400" />
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-brand/10 border border-brand/20">
+                    <Download className="h-5 w-5 text-brand" />
                   </div>
-                  <span className="text-xs font-semibold text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 px-3 py-1 rounded-full">
+                  <span className="text-xs font-semibold text-brand bg-brand/10 border border-brand/20 px-3 py-1 rounded-full">
                     {labels.free}
                   </span>
                 </div>
 
-                <h2 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
+                <h2 className="text-xl font-bold text-white mb-3 group-hover:text-brand transition-colors">
                   {isTr ? tpl.titleTr : tpl.titleEn}
                 </h2>
                 <p className="text-gray-400 text-sm leading-relaxed mb-5">
@@ -133,7 +133,7 @@ const TemplatesPage = () => {
                   </div>
                   <button
                     onClick={e => { e.stopPropagation(); navigate(`/templates/${tpl.slug}`); }}
-                    className="flex items-center gap-1.5 text-cyan-400 text-sm font-semibold hover:gap-3 transition-all"
+                    className="flex items-center gap-1.5 text-brand text-sm font-semibold hover:gap-3 transition-all"
                   >
                     {labels.download} <ArrowRight className="h-4 w-4" />
                   </button>
