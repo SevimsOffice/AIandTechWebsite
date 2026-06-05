@@ -21,6 +21,7 @@ import PromptsPage from './pages/PromptsPage';
 import ManusInstagramPage from './pages/ManusInstagramPage';
 import ContentCreationPromptsPage from './pages/ContentCreationPromptsPage';
 import ClaudeMdCompoundingPage from './pages/ClaudeMdCompoundingPage';
+import AnatomyClaudePromptPage from './pages/AnatomyClaudePromptPage';
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
               <Route path="/prompts/manus-instagram-strategy" element={<ManusInstagramPage />} />
               <Route path="/prompts/content-creation-prompts" element={<ContentCreationPromptsPage />} />
               <Route path="/prompts/claude-md-compounding" element={<ClaudeMdCompoundingPage />} />
+              <Route path="/prompts/anatomy-of-a-claude-prompt" element={<AnatomyClaudePromptPage />} />
             </Routes>
           </main>
           <Footer />

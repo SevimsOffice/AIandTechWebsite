@@ -31,6 +31,15 @@ const promptCards = [
     metaTr: 'Araç: Claude Code',
     metaEn: 'Tool: Claude Code',
   },
+  {
+    slug: 'anatomy-of-a-claude-prompt',
+    titleTr: 'Claude Prompt\'unun Anatomisi',
+    titleEn: 'The Anatomy of a Claude Prompt',
+    descTr: 'Bir Claude promptu 10 bileşenden oluşur. Her birini nasıl yazacağınızı görsel ve örneklerle öğrenin.',
+    descEn: 'A Claude prompt has 10 building blocks. Learn how to write each one with visuals and examples.',
+    metaTr: 'Kaynak: Anthropic',
+    metaEn: 'Source: Anthropic',
+  },
 ];
 
 const PromptsSection = () => {
