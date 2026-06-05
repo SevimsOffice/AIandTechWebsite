@@ -49,6 +49,15 @@ const promptCards = [
     metaTr: 'Araç: Claude · ChatGPT',
     metaEn: 'Tool: Claude · ChatGPT',
   },
+  {
+    slug: 'profesyoneller-icin-claude',
+    titleTr: 'Profesyoneller için Claude',
+    titleEn: 'Claude for Professionals',
+    descTr: 'Eğitimden 5 hazır prompt — Project kurulumu, e-posta özeti, toplantı notları, veri analizi, karar desteği.',
+    descEn: '5 ready prompts from the training — project setup, email summary, meeting notes, data analysis, decision support.',
+    metaTr: 'Araç: Claude',
+    metaEn: 'Tool: Claude',
+  },
 ];
 
 const PromptsSection = () => {
