@@ -1,163 +1,132 @@
 import React from 'react';
-import { ExternalLink, BookOpen, Clock, Users } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Youtube, PlayCircle, ArrowRight } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
+const PLAYLIST_URL = 'https://www.youtube.com/watch?v=uks5PIYuxdA&list=PL_9-Sp98dzgzMe-Jo_slYDu5SZNsDMupo';
+const THUMBNAIL_URL = 'https://img.youtube.com/vi/uks5PIYuxdA/maxresdefault.jpg';
+
 const Training = () => {
-  const { t } = useLanguage();
+  const { language } = useLanguage();
+  const isTr = language === 'tr';
 
-  const courses = [
-    {
-      id: 1,
-      title: t('training.course1.title'),
-      description: t('training.course1.desc'),
-      image: 'https://images.pexels.com/photos/3184464/pexels-photo-3184464.jpeg',
-      duration: '6 weeks',
-      level: 'Beginner',
-      students: '2,450',
-      buyUrl: '#',
-    },
-    {
-      id: 2,
-      title: t('training.course2.title'),
-      description: t('training.course2.desc'),
-      image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg',
-      duration: '8 weeks',
-      level: 'Intermediate',
-      students: '1,850',
-      buyUrl: '#',
-    },
-    {
-      id: 3,
-      title: t('training.course3.title'),
-      description: t('training.course3.desc'),
-      image: 'https://images.pexels.com/photos/3944091/pexels-photo-3944091.jpeg',
-      duration: '10 weeks',
-      level: 'Advanced',
-      students: '3,200',
-      buyUrl: '#',
-    },
-    {
-      id: 4,
-      title: t('training.course4.title'),
-      description: t('training.course4.desc'),
-      image: 'https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg',
-      duration: '12 weeks',
-      level: 'Intermediate',
-      students: '2,750',
-      buyUrl: '#',
-    },
-    {
-      id: 5,
-      title: t('training.course5.title'),
-      description: t('training.course5.desc'),
-      image: 'https://images.pexels.com/photos/3861458/pexels-photo-3861458.jpeg',
-      duration: '8 weeks',
-      level: 'Advanced',
-      students: '1,650',
-      buyUrl: '#',
-    },
-    {
-      id: 6,
-      title: t('training.course6.title'),
-      description: t('training.course6.desc'),
-      image: 'https://images.pexels.com/photos/3184432/pexels-photo-3184432.jpeg',
-      duration: '4 weeks',
-      level: 'Beginner',
-      students: '3,100',
-      buyUrl: '#',
-    },
-  ];
-
-  const getLevelColor = (level: string) => {
-    switch (level) {
-      case t('training.level.beginner'):
-        return 'bg-green-500/20 text-green-400';
-      case t('training.level.intermediate'):
-        return 'bg-yellow-500/20 text-yellow-400';
-      case t('training.level.advanced'):
-        return 'bg-red-500/20 text-red-400';
-      default:
-        return 'bg-gray-500/20 text-gray-400';
-    }
+  const labels = {
+    badge: isTr ? 'Ücretsiz İçerik' : 'Free Content',
+    title: isTr ? 'Eğitim' : 'Training',
+    titleHighlight: isTr ? 'Kataloğu' : 'Catalog',
+    subtitle: isTr
+      ? 'Claude\'ı sıfırdan öğrenmek için hazır playlist. Ücretsiz, Türkçe, hemen başlayabilirsin.'
+      : 'A ready playlist to learn Claude from scratch. Free, in Turkish, start right now.',
+    playlistTitle: isTr ? 'Yeni Başlayanlar için Claude' : 'Claude for Beginners',
+    playlistDesc: isTr
+      ? 'Claude\'ı hiç kullanmamış olanlar için hazırladığım adım adım video serisi. Temel kullanımdan iş akışlarına kadar her şeyi pratik örneklerle öğrenin.'
+      : 'A step-by-step video series I prepared for those who have never used Claude. Learn everything from basic usage to workflows with practical examples.',
+    watch: isTr ? 'YouTube\'da İzle' : 'Watch on YouTube',
+    free: isTr ? 'Ücretsiz' : 'Free',
+    turkish: isTr ? 'Türkçe' : 'Turkish',
+    playlist: 'Playlist',
+    corporate: isTr ? 'Kurumsal Eğitimler' : 'Corporate Trainings',
+    corporateDesc: isTr
+      ? 'Bireysel verimlilik, takım programları ve birebir stratejik koçluk için.'
+      : 'For individual productivity, team programs, and 1-on-1 strategic coaching.',
+    viewAll: isTr ? 'Tüm Eğitimleri Gör' : 'View All Trainings',
   };
 
   return (
     <section id="training" className="py-24">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+
+        {/* Header */}
+        <div className="text-center mb-14">
+          <span className="inline-block bg-brand/10 text-brand text-sm font-semibold px-4 py-1.5 rounded-full mb-6 border border-brand/20">
+            {labels.badge}
+          </span>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-              {t('training.title')}{' '}
-            </span>
-            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-              {t('training.title.highlight')}
-            </span>
+            <span className="text-white">{labels.title} </span>
+            <span className="text-brand">{labels.titleHighlight}</span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            {t('training.subtitle')}
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            {labels.subtitle}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {courses.map((course) => (
-            <div
-              key={course.id}
-              className="group bg-gray-900/50 backdrop-blur-sm border border-gray-800 hover:border-brand/50 rounded-xl overflow-hidden transition-all duration-300 hover:transform hover:scale-105"
-            >
-              <div className="relative overflow-hidden">
-                <img
-                  src={course.image}
-                  alt={course.title}
-                  className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent"></div>
-                <div className="absolute top-4 right-4">
-                  <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getLevelColor(t(`training.level.${course.level.toLowerCase()}`))}`}>
-                    {t(`training.level.${course.level.toLowerCase()}`)}
-                  </span>
+        {/* YouTube Playlist Card */}
+        <div className="max-w-4xl mx-auto mb-14">
+          <a
+            href={PLAYLIST_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group block bg-gray-900 border border-gray-800 hover:border-brand/40 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand/10"
+          >
+            {/* Thumbnail */}
+            <div className="relative overflow-hidden">
+              <img
+                src={THUMBNAIL_URL}
+                alt={labels.playlistTitle}
+                className="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent" />
+
+              {/* Play button overlay */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="bg-red-600 group-hover:bg-red-500 transition-colors rounded-full p-5 shadow-2xl">
+                  <PlayCircle className="h-10 w-10 text-white" />
                 </div>
               </div>
 
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-brand-light transition-colors line-clamp-2">
-                  {course.title}
-                </h3>
-                
-                <p className="text-gray-400 mb-4 line-clamp-3">
-                  {course.description}
-                </p>
-
-                <div className="flex items-center justify-between text-sm text-gray-500 mb-6">
-                  <div className="flex items-center">
-                    <Clock className="h-4 w-4 mr-1" />
-                    {course.duration.replace('weeks', t('common.weeks'))}
-                  </div>
-                  <div className="flex items-center">
-                    <Users className="h-4 w-4 mr-1" />
-                    {course.students.replace('students', t('common.students'))}
-                  </div>
-                </div>
-
-                <a
-                  href={course.buyUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group/btn w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 px-6 py-3 rounded-lg text-white font-semibold transition-all duration-300 flex items-center justify-center"
-                >
-                  <BookOpen className="h-4 w-4 mr-2" />
-                  {t('training.view.course')}
-                  <ExternalLink className="h-4 w-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
-                </a>
+              {/* Tags */}
+              <div className="absolute top-4 left-4 flex gap-2">
+                <span className="bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
+                  <Youtube className="h-3 w-3" /> YouTube
+                </span>
+                <span className="bg-brand/90 text-white text-xs font-bold px-3 py-1 rounded-full">
+                  {labels.free}
+                </span>
               </div>
             </div>
-          ))}
+
+            {/* Content */}
+            <div className="p-8 md:flex md:items-center md:justify-between">
+              <div className="mb-5 md:mb-0">
+                <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-brand transition-colors">
+                  {labels.playlistTitle}
+                </h3>
+                <p className="text-gray-400 leading-relaxed max-w-xl">
+                  {labels.playlistDesc}
+                </p>
+                <div className="flex gap-2 mt-4">
+                  {[labels.free, labels.turkish, labels.playlist].map(tag => (
+                    <span key={tag} className="text-xs font-semibold text-brand bg-brand/10 border border-brand/20 px-3 py-1 rounded-full">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex-shrink-0">
+                <span className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white font-bold px-6 py-3 rounded-xl transition-colors">
+                  <Youtube className="h-5 w-5" />
+                  {labels.watch}
+                </span>
+              </div>
+            </div>
+          </a>
         </div>
 
-        <div className="text-center mt-16">
-          <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-brand/30 rounded-full">
-            <span className="text-brand font-semibold">{t('training.custom')}</span>
+        {/* Corporate training CTA */}
+        <div className="text-center">
+          <div className="inline-block bg-gray-900 border border-gray-800 rounded-2xl px-8 py-6">
+            <p className="text-white font-semibold mb-1">{labels.corporate}</p>
+            <p className="text-gray-500 text-sm mb-4">{labels.corporateDesc}</p>
+            <Link
+              to="/trainings"
+              className="inline-flex items-center gap-2 text-brand font-semibold hover:gap-3 transition-all text-sm"
+            >
+              {labels.viewAll} <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
+
       </div>
     </section>
   );
