@@ -31,6 +31,15 @@ const prompts = [
     toolTr: 'Araç: Claude Code',
     toolEn: 'Tool: Claude Code',
   },
+  {
+    slug: 'anatomy-of-a-claude-prompt',
+    titleTr: 'Claude Prompt\'unun Anatomisi',
+    titleEn: 'The Anatomy of a Claude Prompt',
+    descTr: 'Bir Claude promptu 10 bileşenden oluşur. Her birini nasıl yazacağınızı öğrenin — görev bağlamı, ton, kurallar, örnekler ve daha fazlası.',
+    descEn: 'A Claude prompt has 10 building blocks. Learn how to write each one — task context, tone, rules, examples, and more.',
+    toolTr: 'Kaynak: Anthropic',
+    toolEn: 'Source: Anthropic',
+  },
 ];
 
 const PromptsPage = () => {
