@@ -40,6 +40,15 @@ const prompts = [
     toolTr: 'Kaynak: Anthropic',
     toolEn: 'Source: Anthropic',
   },
+  {
+    slug: 'prompt-generator',
+    titleTr: 'Prompt Üreticisi',
+    titleEn: 'Prompt Generator',
+    descTr: 'Her kullanım senaryosu için yapılandırılmış, halüsinasyon oranı düşük prompt\'lar oluşturan meta-prompt sistemi. 6 meta-prompting ilkesi dahil.',
+    descEn: 'A meta-prompt system that creates well-structured, low-hallucination prompts for any use case. Includes 6 meta-prompting principles.',
+    toolTr: 'Araç: Claude · ChatGPT',
+    toolEn: 'Tool: Claude · ChatGPT',
+  },
 ];
 
 const PromptsPage = () => {
