@@ -94,21 +94,30 @@ const About = () => {
           ))}
         </div>
 
-        {/* Partner Logos Placeholder */}
+        {/* References */}
         <div className="text-center">
-          <h4 className="text-2xl font-bold text-white mb-8">{t('about.partners')}</h4>
-          <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-            <div className="bg-gradient-to-r from-gray-700 to-gray-600 px-8 py-4 rounded-lg">
-              <span className="text-white font-semibold">AWS</span>
+          <h4 className="text-2xl font-bold text-white mb-10">{t('about.partners')}</h4>
+          <div className="flex flex-wrap justify-center items-center gap-10">
+            <div className="bg-white rounded-xl px-8 py-4 flex items-center justify-center h-20 w-52">
+              <img
+                src="/logos/american-life.png"
+                alt="American LIFE Language Institute"
+                className="max-h-14 max-w-full object-contain"
+              />
             </div>
-            <div className="bg-gradient-to-r from-gray-700 to-gray-600 px-8 py-4 rounded-lg">
-              <span className="text-white font-semibold">Microsoft</span>
+            <div className="bg-white rounded-xl px-8 py-4 flex items-center justify-center h-20 w-52">
+              <img
+                src="/logos/wagenart.png"
+                alt="WagenArt Karavan"
+                className="max-h-14 max-w-full object-contain"
+              />
             </div>
-            <div className="bg-gradient-to-r from-gray-700 to-gray-600 px-8 py-4 rounded-lg">
-              <span className="text-white font-semibold">Google Cloud</span>
-            </div>
-            <div className="bg-gradient-to-r from-gray-700 to-gray-600 px-8 py-4 rounded-lg">
-              <span className="text-white font-semibold">OpenAI</span>
+            <div className="bg-white rounded-xl px-8 py-4 flex items-center justify-center h-20 w-52">
+              <img
+                src="/logos/atolye.png"
+                alt="Atölye"
+                className="max-h-14 max-w-full object-contain"
+              />
             </div>
           </div>
         </div>
