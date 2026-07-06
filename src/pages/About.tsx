@@ -100,14 +100,14 @@ const About = () => {
           <div className="flex flex-wrap justify-center items-center gap-10">
             <div className="bg-white rounded-xl px-8 py-4 flex items-center justify-center h-20 w-52">
               <img
-                src="/logos/american-life.png"
+                src="/logos/american-life.svg"
                 alt="American LIFE Language Institute"
                 className="max-h-14 max-w-full object-contain"
               />
             </div>
             <div className="bg-white rounded-xl px-8 py-4 flex items-center justify-center h-20 w-52">
               <img
-                src="/logos/wagenart.png"
+                src="/logos/wagenart.svg"
                 alt="WagenArt Karavan"
                 className="max-h-14 max-w-full object-contain"
               />
@@ -119,7 +119,7 @@ const About = () => {
               className="bg-white rounded-xl px-8 py-4 flex items-center justify-center h-20 w-52 hover:shadow-lg transition-shadow"
             >
               <img
-                src="/logos/atolye.png"
+                src="/logos/atolye.svg"
                 alt="Atölye"
                 className="max-h-14 max-w-full object-contain"
               />

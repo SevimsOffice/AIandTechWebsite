@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 60" width="180" height="60">
+  <!-- Eagle/bird wings - left wing -->
+  <path d="M90,8 C80,6 65,8 50,16 C60,14 72,15 82,22 C70,18 58,22 50,30 C62,24 76,23 86,28" fill="#111" opacity="0.9"/>
+  <!-- Eagle/bird wings - right wing -->
+  <path d="M90,8 C100,6 115,8 130,16 C120,14 108,15 98,22 C110,18 122,22 130,30 C118,24 104,23 94,28" fill="#111" opacity="0.9"/>
+  <!-- Center body -->
+  <ellipse cx="90" cy="22" rx="5" ry="8" fill="#111"/>
+  <!-- WagenArt text -->
+  <text x="90" y="46" font-family="Georgia, serif" font-size="14" font-weight="700" fill="#111" text-anchor="middle" letter-spacing="0.5">WagenArt</text>
+  <!-- KARAVAN text -->
+  <text x="90" y="58" font-family="Arial, sans-serif" font-size="8" font-weight="400" fill="#555" text-anchor="middle" letter-spacing="3">KARAVAN</text>
+</svg>
