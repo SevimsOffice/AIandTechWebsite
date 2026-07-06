@@ -114,11 +114,13 @@ Tüm template/prompt sayfaları aynı pattern'i izler:
 /templates/goal-operator-pack         → GoalOperatorPackPage ✅ Drive link var
 /templates/ai-branding-workflow       → AIBrandingWorkflowPage ✅ Drive link var
 
-/prompts                              → PromptsPage (4 prompt listelenir)
+/prompts                              → PromptsPage (6 prompt listelenir)
 /prompts/manus-instagram-strategy     → ManusInstagramPage (inline reveal, Drive yok)
 /prompts/content-creation-prompts     → ContentCreationPromptsPage ✅ Drive link var
 /prompts/claude-md-compounding        → ClaudeMdCompoundingPage ⚠️ PLACEHOLDER_DRIVE_URL
 /prompts/anatomy-of-a-claude-prompt   → AnatomyClaudePromptPage (eğitim sayfası, form yok)
+/prompts/prompt-generator             → PromptGeneratorPage (form → inline reveal)
+/prompts/profesyoneller-icin-claude   → WebinarPromptsPage (eğitim sayfası, form yok)
 ```
 
 ---
@@ -174,6 +176,8 @@ Drive linki geldiğinde: dosyayı aç, `PLACEHOLDER_DRIVE_URL`'yi gerçek link i
 | İçerik Üretimi Prompt Paketi | /prompts/content-creation-prompts | Claude / ChatGPT |
 | CLAUDE.md Bileşik Mühendislik | /prompts/claude-md-compounding | Claude Code |
 | Claude Prompt Anatomisi | /prompts/anatomy-of-a-claude-prompt | Eğitim sayfası |
+| Prompt Üreticisi | /prompts/prompt-generator | Claude · ChatGPT |
+| Profesyoneller için Claude | /prompts/profesyoneller-icin-claude | Eğitim sayfası — 5 prompt + 3 bonus |
 
 ---
 

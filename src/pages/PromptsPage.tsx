@@ -49,6 +49,15 @@ const prompts = [
     toolTr: 'Araç: Claude · ChatGPT',
     toolEn: 'Tool: Claude · ChatGPT',
   },
+  {
+    slug: 'profesyoneller-icin-claude',
+    titleTr: 'Profesyoneller için Claude',
+    titleEn: 'Claude for Professionals',
+    descTr: 'Eğitimde kullandığımız 5 temel prompt. Kopyala, yapıştır, dene — Project kurulumu, e-posta, toplantı özeti, analiz, karar desteği.',
+    descEn: '5 core prompts from the training. Copy, paste, try — project setup, email, meeting summary, analysis, decision support.',
+    toolTr: 'Araç: Claude',
+    toolEn: 'Tool: Claude',
+  },
 ];
 
 const PromptsPage = () => {
