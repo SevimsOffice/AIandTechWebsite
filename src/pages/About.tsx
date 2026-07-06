@@ -112,13 +112,18 @@ const About = () => {
                 className="max-h-14 max-w-full object-contain"
               />
             </div>
-            <div className="bg-white rounded-xl px-8 py-4 flex items-center justify-center h-20 w-52">
+            <a
+              href="https://proatolye.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white rounded-xl px-8 py-4 flex items-center justify-center h-20 w-52 hover:shadow-lg transition-shadow"
+            >
               <img
                 src="/logos/atolye.png"
                 alt="Atölye"
                 className="max-h-14 max-w-full object-contain"
               />
-            </div>
+            </a>
           </div>
         </div>
       </div>
