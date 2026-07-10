@@ -24,6 +24,7 @@ import ClaudeMdCompoundingPage from './pages/ClaudeMdCompoundingPage';
 import AnatomyClaudePromptPage from './pages/AnatomyClaudePromptPage';
 import PromptGeneratorPage from './pages/PromptGeneratorPage';
 import WebinarPromptsPage from './pages/WebinarPromptsPage';
+import ClaudeSkillGuidePage from './pages/ClaudeSkillGuidePage';
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
               <Route path="/prompts/anatomy-of-a-claude-prompt" element={<AnatomyClaudePromptPage />} />
               <Route path="/prompts/prompt-generator" element={<PromptGeneratorPage />} />
               <Route path="/prompts/profesyoneller-icin-claude" element={<WebinarPromptsPage />} />
+              <Route path="/prompts/3-ways-to-build-a-claude-skill" element={<ClaudeSkillGuidePage />} />
             </Routes>
           </main>
           <Footer />

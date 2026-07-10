@@ -58,6 +58,15 @@ const prompts = [
     toolTr: 'Araç: Claude',
     toolEn: 'Tool: Claude',
   },
+  {
+    slug: '3-ways-to-build-a-claude-skill',
+    titleTr: 'Bir Claude Skill\'i Oluşturmanın 3 Yolu',
+    titleEn: '3 Ways To Build A Claude Skill',
+    descTr: 'İki yol tahmin etmek, üçüncüsü gerçekten işe yarıyor. Skill\'i çalıştır, düzelt, kaydet döngüsü — 2 hazır prompt dahil.',
+    descEn: 'Two ways are guessing, the third actually works. The run-it-correct-it-save-it loop — includes 2 ready-to-use prompts.',
+    toolTr: 'Araç: Claude',
+    toolEn: 'Tool: Claude',
+  },
 ];
 
 const PromptsPage = () => {
