@@ -58,6 +58,15 @@ const promptCards = [
     metaTr: 'Araç: Claude',
     metaEn: 'Tool: Claude',
   },
+  {
+    slug: '3-ways-to-build-a-claude-skill',
+    titleTr: 'Bir Claude Skill\'i Oluşturmanın 3 Yolu',
+    titleEn: '3 Ways To Build A Claude Skill',
+    descTr: 'İki yol tahmin etmek, üçüncüsü gerçekten işe yarıyor. Çalıştır, düzelt, kaydet döngüsü — 2 hazır prompt dahil.',
+    descEn: 'Two ways are guessing, the third actually works. The run-it-correct-it-save-it loop — includes 2 ready prompts.',
+    metaTr: 'Araç: Claude',
+    metaEn: 'Tool: Claude',
+  },
 ];
 
 const PromptsSection = () => {
