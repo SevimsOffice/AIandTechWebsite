@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CLAUDE.md Compounding Engineering — aiandtech.cloud</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    background: #ffffff;
+    color: #111827;
+    font-size: 11pt;
+    line-height: 1.65;
+  }
+
+  /* ── Cover ── */
+  .cover {
+    page-break-after: always;
+    min-height: 100vh;
+    background: linear-gradient(160deg, #0f172a 0%, #1e293b 55%, #0e7490 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px 72px;
+    color: #fff;
+  }
+  .cover-badge {
+    background: rgba(34,211,238,0.15);
+    border: 1px solid rgba(34,211,238,0.4);
+    color: #22d3ee;
+    font-size: 9.5pt;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 100px;
+    display: inline-block;
+    margin-bottom: 32px;
+  }
+  .cover h1 {
+    font-size: 36pt;
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 12px;
+    color: #fff;
+  }
+  .cover h1 span { color: #22d3ee; }
+  .cover-sub {
+    font-size: 13.5pt;
+    color: #94a3b8;
+    max-width: 580px;
+    margin-bottom: 48px;
+    line-height: 1.6;
+  }
+  .cover-meta {
+    margin-top: auto;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .cover-meta-left strong { color: #e2e8f0; font-size: 12pt; display: block; }
+  .cover-meta-left p { color: #64748b; font-size: 10pt; margin-top: 4px; }
+  .cover-stats { display: flex; gap: 28px; }
+  .cover-stat { text-align: center; }
+  .cover-stat .num { font-size: 24pt; font-weight: 900; color: #22d3ee; display: block; }
+  .cover-stat .lbl { font-size: 8.5pt; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* ── Pages ── */
+  .page {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 60px 56px;
+    page-break-after: always;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  .section-label {
+    font-size: 8.5pt;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #22d3ee;
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    font-size: 22pt;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+  h2 span { color: #22d3ee; }
+
+  h3 {
+    font-size: 13pt;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 24px;
+    margin-bottom: 10px;
+  }
+
+  p { margin-bottom: 13px; color: #374151; }
+  ul, ol { padding-left: 20px; margin-bottom: 13px; color: #374151; }
+  li { margin-bottom: 5px; }
+  strong { color: #0f172a; }
+
+  .divider { border: none; border-top: 1px solid #e5e7eb; margin: 28px 0; }
+
+  /* ── Level badge ── */
+  .level-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 10pt;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .level-beginner { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+  .level-advanced { background: rgba(34,211,238,0.1); color: #0e7490; border: 1px solid rgba(34,211,238,0.3); }
+  .level-personal { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+  .level-skip { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+  .level-ritual { background: #f3e8ff; color: #6b21a8; border: 1px solid #e9d5ff; }
+
+  /* ── Code / prompt boxes ── */
+  .prompt-box {
+    background: #0f172a;
+    border-left: 4px solid #22d3ee;
+    border-radius: 12px;
+    padding: 22px 26px;
+    margin: 18px 0;
+    page-break-inside: avoid;
+  }
+  .prompt-box .prompt-label {
+    font-size: 8.5pt;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #22d3ee;
+    margin-bottom: 12px;
+  }
+  .prompt-box pre, .prompt-box p {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    color: #e2e8f0;
+    font-size: 9.5pt;
+    line-height: 1.75;
+    margin-bottom: 6px;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .prompt-box p { font-family: 'JetBrains Mono', 'Courier New', monospace; }
+
+  .command-box {
+    background: #0f172a;
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin: 16px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    page-break-inside: avoid;
+  }
+  .command-box .cmd-label {
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #22d3ee;
+    flex-shrink: 0;
+  }
+  .command-box code {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    color: #a5f3fc;
+    font-size: 14pt;
+    font-weight: 600;
+  }
+
+  /* ── Tip / info boxes ── */
+  .tip-box {
+    background: #f0fdff;
+    border: 1px solid #a5f3fc;
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin: 18px 0;
+    page-break-inside: avoid;
+  }
+  .tip-box .tip-title { font-size: 10pt; font-weight: 700; color: #0e7490; margin-bottom: 6px; }
+  .tip-box p { color: #164e63; font-size: 10pt; margin-bottom: 0; }
+
+  .warn-box {
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin: 18px 0;
+    page-break-inside: avoid;
+  }
+  .warn-box .warn-title { font-size: 10pt; font-weight: 700; color: #9a3412; margin-bottom: 6px; }
+  .warn-box p { color: #7c2d12; font-size: 10pt; margin-bottom: 0; }
+
+  /* ── 4-section grid ── */
+  .four-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 18px 0;
+  }
+  .grid-card {
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 18px;
+    page-break-inside: avoid;
+  }
+  .grid-card .gc-num {
+    font-size: 20pt;
+    font-weight: 900;
+    color: #22d3ee;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .grid-card .gc-title { font-size: 10pt; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
+  .grid-card p { font-size: 9pt; color: #6b7280; margin-bottom: 0; }
+
+  /* ── Day timeline ── */
+  .timeline { margin: 18px 0; }
+  .tl-item {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 16px;
+    page-break-inside: avoid;
+  }
+  .tl-dot {
+    width: 10px;
+    height: 10px;
+    background: #22d3ee;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+  .tl-item p { font-size: 10pt; color: #374151; margin-bottom: 0; }
+  .tl-item strong { color: #0f172a; }
+
+  /* ── Footer ── */
+  .page-footer {
+    margin-top: 44px;
+    padding-top: 18px;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .page-footer span { font-size: 8.5pt; color: #9ca3af; }
+  .page-footer .brand { font-weight: 700; color: #22d3ee; }
+
+  /* ── Highlight phrase ── */
+  .highlight-phrase {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin: 20px 0;
+    text-align: center;
+    page-break-inside: avoid;
+  }
+  .highlight-phrase p {
+    font-size: 14pt;
+    font-weight: 700;
+    color: #22d3ee;
+    margin-bottom: 0;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.02em;
+  }
+  .highlight-phrase .sub { font-size: 10pt; color: #94a3b8; margin-top: 8px; font-family: 'Inter', sans-serif; font-weight: 400; }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-badge">Free Guide · Claude Code</div>
+  <h1>CLAUDE.md<br /><span>Compounding Engineering</span></h1>
+  <p class="cover-sub">
+    Two ways to set up the one file that makes Claude Code actually understand your project —
+    the 30-second beginner version, then the advanced system where the file improves itself from every mistake.
+  </p>
+  <div class="cover-meta">
+    <div class="cover-meta-left">
+      <strong>Sevim Durmuş</strong>
+      <p>aiandtech.cloud · AI and Tech</p>
+    </div>
+    <div class="cover-stats">
+      <div class="cover-stat"><span class="num">2</span><span class="lbl">Levels</span></div>
+      <div class="cover-stat"><span class="num">4</span><span class="lbl">Templates</span></div>
+      <div class="cover-stat"><span class="num">14</span><span class="lbl">Days</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT IS CLAUDE.MD -->
+<div class="page">
+  <div class="section-label">What Is CLAUDE.md?</div>
+  <h2>Claude's <span>Memory</span> for Your Project</h2>
+  <p>
+    <strong>CLAUDE.md</strong> is a plain text file Claude reads at the start of every Claude Code session.
+    Think of it as permanent notes Claude carries into every conversation about your project.
+    Get it right and Claude stops making the same mistakes, stops guessing your setup, and stops
+    needing the same corrections over and over.
+  </p>
+  <p>
+    Without it: Claude forgets your conventions the moment a session ends.
+    With it: every session starts with full context — your tools, your style, your architecture, your gotchas.
+  </p>
+
+  <div class="four-grid">
+    <div class="grid-card">
+      <span class="gc-num">01</span>
+      <div class="gc-title">Beginner Path</div>
+      <p>Use <code>/init</code> or the 6-line starter. Working CLAUDE.md in 30 seconds.</p>
+    </div>
+    <div class="grid-card">
+      <span class="gc-num">02</span>
+      <div class="gc-title">Advanced Path</div>
+      <p>Compounding Engineering — the file writes itself from every mistake Claude makes.</p>
+    </div>
+    <div class="grid-card">
+      <span class="gc-num">03</span>
+      <div class="gc-title">Where It Lives</div>
+      <p>Root of your project as <code>CLAUDE.md</code>. Commit it — your whole team shares it.</p>
+    </div>
+    <div class="grid-card">
+      <span class="gc-num">04</span>
+      <div class="gc-title">Personal Layer</div>
+      <p><code>CLAUDE.local.md</code> — your personal rules, gitignored. Just for you.</p>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-title">The Only Rule That Matters at First</div>
+    <p>Before adding a line, ask: "Would leaving this out make Claude mess up?" If no, don't add it. A short file works better than a long one. Keep it under ~200 lines — a bloated CLAUDE.md gets half-ignored because the rules that matter get buried.</p>
+  </div>
+
+  <div class="page-footer">
+    <span><span class="brand">AI and Tech</span> · aiandtech.cloud</span>
+    <span>CLAUDE.md Compounding Engineering</span>
+  </div>
+</div>
+
+<!-- BEGINNER: /init -->
+<div class="page">
+  <div class="level-badge level-beginner">Beginner · Level 1</div>
+  <div class="section-label">The Easiest Way</div>
+  <h2>Let Claude <span>Write It for You</span></h2>
+  <p>
+    Open Claude Code inside your project and type one command.
+    Claude reads through your project, figures out how you build it, how you run tests,
+    and the conventions you already use — then writes a starter CLAUDE.md for you automatically.
+    Complete first version, done in about 30 seconds.
+  </p>
+
+  <div class="command-box">
+    <span class="cmd-label">Type this in Claude Code</span>
+    <code>/init</code>
+  </div>
+
+  <p style="color:#6b7280; font-size:10pt;">
+    If a CLAUDE.md already exists, <code>/init</code> suggests improvements instead of overwriting it.
+  </p>
+
+  <hr class="divider" />
+
+  <div class="section-label">If You'd Rather Write Your Own</div>
+  <h2>The <span>6-Line Starter</span></h2>
+  <p>
+    You only need two sections to start: how to run things, and how you like your code.
+    Drop this in the main folder of your project, save it as <code>CLAUDE.md</code>, and fill in the blanks.
+  </p>
+
+  <div class="prompt-box">
+    <div class="prompt-label">6-Line Starter — Save as CLAUDE.md</div>
+    <pre># Workflow
+
+- Run tests with: [your test command]
+- Typecheck when you're done making a set of changes
+- Prefer running one test at a time, not the whole suite
+
+# Code style
+
+- [One or two rules you actually care about]
+- Example: use 2-space indentation, not tabs</pre>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-title">The Fastest Way to Add Rules</div>
+    <p>You don't even have to open the file. Any time Claude does something you have to correct, just tell it in plain English: <strong>"add this to CLAUDE.md."</strong> Claude writes the rule itself. Newer versions of Claude Code also quietly save notes on their own as they learn your project — that's called auto memory.</p>
+  </div>
+
+  <div class="page-footer">
+    <span><span class="brand">AI and Tech</span> · aiandtech.cloud</span>
+    <span>CLAUDE.md Compounding Engineering</span>
+  </div>
+</div>
+
+<!-- ADVANCED: THE TRICK -->
+<div class="page">
+  <div class="level-badge level-advanced">Advanced · Level 2</div>
+  <div class="section-label">Compounding Engineering</div>
+  <h2>The File That <span>Improves Itself</span></h2>
+  <p>
+    Everything in Level 1 is enough to start. But once it's part of your routine, here's the system
+    Anthropic's own engineering team runs — where your CLAUDE.md stops being something you maintain
+    and starts writing itself from every mistake Claude makes.
+  </p>
+  <p>
+    Boris Cherny (lead on Claude Code) calls it <strong>Compounding Engineering</strong>,
+    and his team edits their CLAUDE.md multiple times a week. Every time Claude makes a mistake,
+    instead of just fixing it and moving on, you end your prompt with one specific sentence:
+  </p>
+
+  <div class="highlight-phrase">
+    <p>"Update CLAUDE.md so you don't repeat this."</p>
+    <p class="sub">Add this line to the end of every fix prompt. That's it.</p>
+  </div>
+
+  <p>
+    Claude writes itself a rule about the exact mistake it just made, in the exact phrasing the model
+    responds best to. Next session, Claude reads the rule and doesn't make the mistake.
+    Two weeks in, your CLAUDE.md is a curated list of every weird thing your project has —
+    written by the model, for the model.
+  </p>
+
+  <h3>What This Fixes</h3>
+  <ul>
+    <li>The same Claude mistake popping up in session after session</li>
+    <li>Onboarding new team members — they clone the repo and the whole accumulated practice ships with the code</li>
+    <li>Sloppy output you're tired of correcting by hand</li>
+    <li>The slow drift away from your team's conventions because nobody wrote them down</li>
+  </ul>
+
+  <div class="warn-box">
+    <div class="warn-title">Boris's Filter</div>
+    <p>Before every line stays in CLAUDE.md, ask: "Would removing this line cause Claude to make a mistake?" If the answer is no, cut it. CLAUDE.md is a guardrail, not a knowledge base. A 200-line file buries the rules that actually matter.</p>
+  </div>
+
+  <div class="page-footer">
+    <span><span class="brand">AI and Tech</span> · aiandtech.cloud</span>
+    <span>CLAUDE.md Compounding Engineering</span>
+  </div>
+</div>
+
+<!-- THE 4 SECTIONS -->
+<div class="page">
+  <div class="section-label">Structure</div>
+  <h2>The 4 Sections <span>That Work</span></h2>
+  <p>
+    The Claude Code team's own CLAUDE.md has four sections. That's the canonical structure — copy it.
+  </p>
+
+  <div class="four-grid">
+    <div class="grid-card">
+      <span class="gc-num">01</span>
+      <div class="gc-title"># Development Workflow</div>
+      <p>Build commands, test commands, lint commands. The exact order to run them. Anything Claude can't guess about your toolchain. (Bun vs npm. Pytest vs unittest. The one obscure flag your lint setup needs.)</p>
+    </div>
+    <div class="grid-card">
+      <span class="gc-num">02</span>
+      <div class="gc-title"># Code Style</div>
+      <p>The conventions Claude should follow. "Use ES modules, not CommonJS. Tabs not spaces. Named exports, not default." Only the rules that aren't standard for your language.</p>
+    </div>
+    <div class="grid-card">
+      <span class="gc-num">03</span>
+      <div class="gc-title"># Architecture</div>
+      <p>Structural rules. "All API routes go through src/api/middleware/auth.ts. New database queries go in src/db/queries/, no inline raw SQL." Decisions that compound when followed.</p>
+    </div>
+    <div class="grid-card">
+      <span class="gc-num">04</span>
+      <div class="gc-title"># Gotchas</div>
+      <p>Every "Update CLAUDE.md so you don't repeat this" entry. Started as a real mistake on a real change. This section grows over time — it's where the real value compounds.</p>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-title">What Goes Where</div>
+    <p>If you're not sure which section, put it in <strong>Gotchas</strong>. That section grows over time and is where the real value compounds. Examples from a real codebase: "User and UserRecord are distinct types — UserRecord is the DB row, User is the runtime object." / "formatCurrency assumes USD. For international use formatCurrencyByLocale."</p>
+  </div>
+
+  <div class="page-footer">
+    <span><span class="brand">AI and Tech</span> · aiandtech.cloud</span>
+    <span>CLAUDE.md Compounding Engineering</span>
+  </div>
+</div>
+
+<!-- FULL STARTER TEMPLATE -->
+<div class="page">
+  <div class="section-label">Template</div>
+  <h2>The Full Starter <span>Template</span></h2>
+  <p>
+    Drop this into the root of your repo as <code>CLAUDE.md</code>. Start replacing the placeholders
+    with your actual project details. The <code># Gotchas</code> section starts empty — that's by design.
+    It fills itself in over the next two weeks.
+  </p>
+
+  <div class="prompt-box">
+    <div class="prompt-label">Full CLAUDE.md Template — Copy & Paste</div>
+    <pre># Development Workflow
+
+**Always use [your package manager], not [the wrong one].**
+
+1. Make changes.
+2. Typecheck: `[your typecheck command]`
+3. Run tests: `[your test command]` (use `[single-test flag]` for a single suite)
+4. Lint before committing: `[your lint command]`
+5. Before opening a PR: `[your pre-PR command]`
+
+# Code Style
+
+- Use ES modules (import/export), not CommonJS (require)
+- [Your other style rules — only the ones that aren't standard]
+
+# Architecture
+
+- All API routes go through [your auth middleware path]
+- New database queries go in [your queries directory].
+  No inline raw SQL.
+- [Your other architectural rules]
+
+# Gotchas
+
+- [Empty for now. Claude will fill this in as you work.]
+
+---
+
+## How This File Gets Better
+
+Every time Claude makes a mistake in this project,
+end your fix prompt with:
+
+  Update CLAUDE.md so you don't repeat this.
+
+Claude will add a rule to the Gotchas section. Over two weeks
+this becomes the curated list of every quirk in your project,
+written in the exact phrasing the model responds to.
+
+Keep it short. If removing a line wouldn't cause a mistake, cut it.</pre>
+  </div>
+
+  <div class="page-footer">
+    <span><span class="brand">AI and Tech</span> · aiandtech.cloud</span>
+    <span>CLAUDE.md Compounding Engineering</span>
+  </div>
+</div>
+
+<!-- CLAUDE.LOCAL.MD -->
+<div class="page">
+  <div class="level-badge level-personal">Personal Layer</div>
+  <div class="section-label">Your Private Rules</div>
+  <h2>CLAUDE<span>.local.md</span></h2>
+  <p>
+    <code>CLAUDE.md</code> is team-shared (checked into git). But you'll have rules that are just
+    for you — PR feedback you keep getting, your own quirks to correct, personal preferences.
+    That goes in <strong>CLAUDE.local.md</strong>.
+  </p>
+  <p>
+    Same path, same auto-load behavior, but gitignored. It stays on your machine.
+    Add it to your <code>.gitignore</code> on day one.
+  </p>
+
+  <div class="tip-box">
+    <div class="tip-title">The Workflow That Makes This Compound</div>
+    <p>After every PR you open, copy any reviewer comments into CLAUDE.local.md the moment you read them. Group as <strong># From PR feedback</strong> and <strong># My own quirks to correct</strong> — mixing them makes the file harder to prune later. Loaded every session. Two weeks in, the same nitpick comments stop coming.</p>
+  </div>
+
+  <div class="prompt-box">
+    <div class="prompt-label">CLAUDE.local.md Template</div>
+    <pre># From PR feedback
+- New SQS consumers need a DLQ and alarms in the same PR
+- Use Optional&lt;T&gt; over null returns
+- Tests for new endpoints must include the auth-failure case
+
+# My own quirks to correct
+- Stop using console.log; use the project logger instead
+- Always update the OpenAPI spec when adding endpoints</pre>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="level-badge level-skip">What to Skip</div>
+  <h3>What NOT to Put in CLAUDE.md</h3>
+  <ul>
+    <li><strong>Standard language conventions</strong> Claude already knows (Python snake_case, JS camelCase, etc.)</li>
+    <li><strong>File-by-file codebase tours</strong> — Claude can read the code</li>
+    <li><strong>Long tutorials</strong> — use a /skills/ file instead or link to an external doc</li>
+    <li><strong>API documentation</strong> — changes too often and bloats the file</li>
+    <li><strong>Platitudes</strong> ("write clean code," "be thorough") — meaningless to the model</li>
+    <li><strong>Anything that changes frequently</strong> — CLAUDE.md should be stable</li>
+  </ul>
+
+  <div class="warn-box">
+    <div class="warn-title">The Word Weight Rule</div>
+    <p>Words like <strong>IMPORTANT</strong> or <strong>YOU MUST</strong> measurably improve Claude's adherence — but only if you use them sparingly. If every rule has YOU MUST, none of them do. Reserve them for the 1–2 rules that genuinely matter most.</p>
+  </div>
+
+  <div class="page-footer">
+    <span><span class="brand">AI and Tech</span> · aiandtech.cloud</span>
+    <span>CLAUDE.md Compounding Engineering</span>
+  </div>
+</div>
+
+<!-- 2-WEEK RITUAL -->
+<div class="page">
+  <div class="level-badge level-ritual">14-Day Ritual</div>
+  <div class="section-label">The Compounding Ritual</div>
+  <h2>Two Weeks. <span>That's the Investment.</span></h2>
+  <p>
+    The CLAUDE.md trick works because you apply it consistently for the first two weeks.
+    After that, the gains compound on their own.
+  </p>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <p><strong>Days 1–3:</strong> Set up CLAUDE.md from the full starter template. Get your build/test commands right. Replace the placeholders. Run a normal Claude Code session and notice the first time Claude does something wrong.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <p><strong>Days 4–14:</strong> Every. Single. Mistake. Ends with: <em>"Update CLAUDE.md so you don't repeat this."</em> No exceptions. Don't filter "is this big enough?" — trust the model to write the rule, you can prune later.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <p><strong>End of Week 1:</strong> Review the Gotchas section. Are entries phrased clearly? Any duplicates? If so, ask Claude: <em>"Reread the Gotchas section in CLAUDE.md and merge any duplicate or overlapping rules."</em></p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <p><strong>End of Week 2:</strong> Review again. By now you'll have 15–30 gotcha entries. Trim anything that's now muscle memory.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <p><strong>Ongoing:</strong> The habit becomes automatic. Use @claude in PR comments to commit a rule directly from a code review: <em>"@claude add to CLAUDE.md to never use enums, always prefer literal unions."</em></p>
+    </div>
+  </div>
+
+  <div class="highlight-phrase">
+    <p>"Update CLAUDE.md so you don't repeat this."</p>
+    <p class="sub">The one sentence that turns mistakes into permanent memory.</p>
+  </div>
+
+  <div class="page-footer">
+    <span><span class="brand">AI and Tech</span> · aiandtech.cloud</span>
+    <span>CLAUDE.md Compounding Engineering</span>
+  </div>
+</div>
+
+<!-- CLOSING -->
+<div class="page" style="page-break-after:auto;">
+  <div style="text-align:center; padding: 32px 0;">
+    <div style="background: linear-gradient(160deg, #0f172a 0%, #1e293b 100%); border-radius: 16px; padding: 48px 40px; color:#fff;">
+      <div class="cover-badge" style="margin-bottom:24px;">More Free Resources</div>
+      <h2 style="color:#fff; margin-bottom:16px;">More Free <span style="color:#22d3ee;">Templates &amp; Prompts</span></h2>
+      <p style="color:#94a3b8; max-width:480px; margin: 0 auto 24px;">
+        Claude Ecosystem Audit, AI Context Vault, /goal Operator Pack and more —
+        all free at aiandtech.cloud.
+      </p>
+      <div style="font-size:14pt; font-weight:700; color:#22d3ee;">aiandtech.cloud</div>
+      <p style="color:#64748b; font-size:10pt; margin-top:8px;">Sevim Durmuş · AI and Tech</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span><span class="brand">AI and Tech</span> · aiandtech.cloud</span>
+    <span>© 2025 Sevim Durmuş. Free to use.</span>
+  </div>
+</div>
+
+</body>
+</html>

@@ -34,7 +34,7 @@ Rules:
             <div className="container mx-auto px-6 relative z-10">
                 {/* Hero Section */}
                 <section className="text-center mb-32">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-sm font-medium mb-8 animate-fade-in">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-brand text-sm font-medium mb-8 animate-fade-in">
                         <Zap size={16} />
                         <span>The Modern Way to Code</span>
                     </div>
@@ -53,7 +53,7 @@ Rules:
                     <h2 className="text-3xl font-bold text-center mb-16">{t('vibecoding.principles.title')}</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {[
-                            { icon: <Target className="text-cyan-400" />, title: t('vibecoding.p1.title'), desc: t('vibecoding.p1.desc') },
+                            { icon: <Target className="text-brand" />, title: t('vibecoding.p1.title'), desc: t('vibecoding.p1.desc') },
                             { icon: <Layers className="text-blue-400" />, title: t('vibecoding.p2.title'), desc: t('vibecoding.p2.desc') },
                             { icon: <Code2 className="text-purple-400" />, title: t('vibecoding.p3.title'), desc: t('vibecoding.p3.desc') }
                         ].map((p, idx) => (
@@ -129,7 +129,7 @@ Rules:
 
                         <div className="relative group">
                             <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-40 transition-opacity"></div>
-                            <div className="relative bg-gray-950 rounded-xl p-6 font-mono text-sm text-cyan-400 border border-gray-800">
+                            <div className="relative bg-gray-950 rounded-xl p-6 font-mono text-sm text-brand border border-gray-800">
                                 <div className="flex justify-between items-center mb-4">
                                     <span className="text-gray-500 text-xs">system_prompt.txt</span>
                                     <button

@@ -21,6 +21,7 @@ const translations = {
     'nav.training': 'Training',
     'nav.contact': 'Contact',
     'nav.templates': 'Templates',
+    'nav.prompts': 'Prompts',
 
     // Home
     'home.badge': 'AI-Powered Transformation',
@@ -77,7 +78,7 @@ const translations = {
     'about.achievement3.desc': 'Advised Fortune 500 companies on AI transformation strategies',
     'about.achievement4.title': 'Industry Speaker',
     'about.achievement4.desc': 'Regular presenter at major tech conferences and events',
-    'about.partners': 'Trusted by Industry Leaders',
+    'about.partners': 'Our References',
 
     // Training
     'training.title': 'Training',
@@ -267,6 +268,7 @@ const translations = {
     'nav.training': 'Eğitim',
     'nav.contact': 'İletişim',
     'nav.templates': 'Şablonlar',
+    'nav.prompts': 'Promptlar',
 
     // Home
     'home.badge': 'AI Destekli Dönüşüm',
@@ -323,7 +325,7 @@ const translations = {
     'about.achievement3.desc': 'Fortune 500 şirketlerine AI dönüşüm stratejileri konusunda danışmanlık verdi',
     'about.achievement4.title': 'Sektör Konuşmacısı',
     'about.achievement4.desc': 'Büyük teknoloji konferans ve etkinliklerinde düzenli sunum yapan',
-    'about.partners': 'Sektör Liderlerinin Güvendiği',
+    'about.partners': 'Referanslarımız',
 
     // Training
     'training.title': 'Eğitim',

@@ -12,6 +12,19 @@ import VibeCoding     from './pages/VibeCoding';
 import NetWorthCalculator from './pages/NetWorthCalculator';
 import TemplatesPage  from './pages/TemplatesPage';
 import AIBaglamKasasiPage from './pages/AIBaglamKasasiPage';
+import AIDanismaKuruluPage from './pages/AIDanismaKuruluPage';
+import FoundersGuidePage from './pages/FoundersGuidePage';
+import ClaudeEcosystemAuditPage from './pages/ClaudeEcosystemAuditPage';
+import GoalOperatorPackPage from './pages/GoalOperatorPackPage';
+import AIBrandingWorkflowPage from './pages/AIBrandingWorkflowPage';
+import PromptsPage from './pages/PromptsPage';
+import ManusInstagramPage from './pages/ManusInstagramPage';
+import ContentCreationPromptsPage from './pages/ContentCreationPromptsPage';
+import ClaudeMdCompoundingPage from './pages/ClaudeMdCompoundingPage';
+import AnatomyClaudePromptPage from './pages/AnatomyClaudePromptPage';
+import PromptGeneratorPage from './pages/PromptGeneratorPage';
+import WebinarPromptsPage from './pages/WebinarPromptsPage';
+import ClaudeSkillGuidePage from './pages/ClaudeSkillGuidePage';
 
 function App() {
   return (
@@ -30,6 +43,19 @@ function App() {
               <Route path="/products/ainetvalue"       element={<NetWorthCalculator />} />
               <Route path="/templates"                 element={<TemplatesPage />} />
               <Route path="/templates/ai-baglam-kasasi" element={<AIBaglamKasasiPage />} />
+              <Route path="/templates/ai-danisma-kurulu" element={<AIDanismaKuruluPage />} />
+              <Route path="/templates/founders-guide-to-claude" element={<FoundersGuidePage />} />
+              <Route path="/templates/claude-ecosystem-audit" element={<ClaudeEcosystemAuditPage />} />
+              <Route path="/templates/goal-operator-pack" element={<GoalOperatorPackPage />} />
+              <Route path="/templates/ai-branding-workflow" element={<AIBrandingWorkflowPage />} />
+              <Route path="/prompts"                   element={<PromptsPage />} />
+              <Route path="/prompts/manus-instagram-strategy" element={<ManusInstagramPage />} />
+              <Route path="/prompts/content-creation-prompts" element={<ContentCreationPromptsPage />} />
+              <Route path="/prompts/claude-md-compounding" element={<ClaudeMdCompoundingPage />} />
+              <Route path="/prompts/anatomy-of-a-claude-prompt" element={<AnatomyClaudePromptPage />} />
+              <Route path="/prompts/prompt-generator" element={<PromptGeneratorPage />} />
+              <Route path="/prompts/profesyoneller-icin-claude" element={<WebinarPromptsPage />} />
+              <Route path="/prompts/3-ways-to-build-a-claude-skill" element={<ClaudeSkillGuidePage />} />
             </Routes>
           </main>
           <Footer />

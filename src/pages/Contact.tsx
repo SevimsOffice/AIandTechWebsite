@@ -35,7 +35,7 @@ const Contact = () => {
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
                 <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-lg">
-                  <Calendar className="h-6 w-6 text-cyan-400" />
+                  <Calendar className="h-6 w-6 text-brand" />
                 </div>
                 <div>
                   <h4 className="text-white font-semibold mb-1">{t('contact.schedule.title')}</h4>
@@ -44,7 +44,7 @@ const Contact = () => {
                     href="https://calendly.com/sevim/ai-for-business-discovery-call" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-cyan-400 hover:text-cyan-300 transition-colors"
+                    className="text-brand hover:text-brand-light transition-colors"
                   >
                     {t('contact.schedule.link')}
                   </a>
@@ -53,7 +53,7 @@ const Contact = () => {
 
               <div className="flex items-start space-x-4">
                 <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-lg">
-                  <MessageSquare className="h-6 w-6 text-cyan-400" />
+                  <MessageSquare className="h-6 w-6 text-brand" />
                 </div>
                 <div>
                   <h4 className="text-white font-semibold mb-1">{t('contact.questions.title')}</h4>

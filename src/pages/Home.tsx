@@ -23,8 +23,8 @@ const Home = () => {
       <div className="container mx-auto px-6 text-center relative z-10">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center justify-center mb-6">
-            <Sparkles className="h-6 w-6 text-cyan-400 mr-2" />
-            <span className="text-cyan-400 font-semibold">{t('home.badge')}</span>
+            <Sparkles className="h-6 w-6 text-brand mr-2" />
+            <span className="text-brand font-semibold">{t('home.badge')}</span>
           </div>
           
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
@@ -50,7 +50,7 @@ const Home = () => {
             </button>
             <button
               onClick={() => scrollToSection('training')}
-              className="group border-2 border-cyan-400 hover:border-cyan-300 px-8 py-4 rounded-full text-cyan-400 hover:text-cyan-300 font-semibold transition-all duration-300 hover:bg-cyan-400/10 flex items-center"
+              className="group border-2 border-brand hover:border-cyan-300 px-8 py-4 rounded-full text-brand hover:text-brand-light font-semibold transition-all duration-300 hover:bg-brand/10 flex items-center"
             >
               {t('home.cta.training')}
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />

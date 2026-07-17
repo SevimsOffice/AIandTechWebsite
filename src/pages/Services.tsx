@@ -54,13 +54,13 @@ const Services = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="group bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-sm border border-gray-700 hover:border-cyan-400/50 rounded-2xl p-8 transition-all duration-300 hover:transform hover:scale-105"
+              className="group bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-sm border border-gray-700 hover:border-brand/50 rounded-2xl p-8 transition-all duration-300 hover:transform hover:scale-105"
             >
               <div className="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-2xl mb-8 group-hover:from-cyan-500/30 group-hover:to-blue-600/30 transition-all duration-300">
-                <service.icon className="h-10 w-10 text-cyan-400" />
+                <service.icon className="h-10 w-10 text-brand" />
               </div>
               
-              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-cyan-300 transition-colors">
+              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-brand-light transition-colors">
                 {service.title}
               </h3>
               
@@ -72,7 +72,7 @@ const Services = () => {
                 {service.details}
               </p>
 
-              <div className="flex items-center text-cyan-400 group-hover:text-cyan-300 transition-colors cursor-pointer">
+              <div className="flex items-center text-brand group-hover:text-brand-light transition-colors cursor-pointer">
                 <span className="font-semibold">{t('services.learn.more')}</span>
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </div>

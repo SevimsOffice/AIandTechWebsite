@@ -5,15 +5,64 @@ import { Download, ArrowRight } from 'lucide-react';
 
 const templates = [
   {
+    slug: 'claude-ecosystem-audit',
+    titleTr: 'Claude Ekosistem Denetimi',
+    titleEn: 'Claude Ecosystem Audit',
+    descTr: 'Claude\'u %100 kapasiteyle kullanıyor musunuz? Tek bir prompt ile 5.000+ kelimelik stratejik rapor alın.',
+    descEn: 'Are you using Claude at full capacity? One prompt delivers a 5,000+ word strategic intelligence report.',
+    badge: 'Ücretsiz · Free',
+    pages: 7,
+    prompts: 1,
+  },
+  {
+    slug: 'founders-guide-to-claude',
+    titleTr: 'Kurucunun Claude Rehberi',
+    titleEn: "The Founder's Guide to Claude",
+    descTr: 'Modeller, kurulum, prompting, araçlar ve her şeyi tıklatan ifadeler. İlk günden doğru kullanmak için yazıldı.',
+    descEn: 'Models, setup, prompting, tools, and the phrases that make it all click. Written to get it right from day one.',
+    badge: 'Ücretsiz · Free',
+    pages: 30,
+    prompts: 12,
+  },
+  {
     slug: 'ai-baglam-kasasi',
     titleTr: 'AI Bağlam Kasası',
     titleEn: 'AI Context Vault',
     descTr: 'Claude\'un gerçekten sizi anlamasını sağlayacak 8 kopyala-yapıştır prompt. Bağlam belgeleri oluşturun, AI\'yı stratejik iş ortağınıza dönüştürün.',
     descEn: '8 copy-paste prompts that make Claude truly understand you. Build context documents and transform AI into your strategic partner.',
     badge: 'Ücretsiz · Free',
-    color: 'cyan',
     pages: 14,
     prompts: 8,
+  },
+  {
+    slug: 'ai-danisma-kurulu',
+    titleTr: 'AI Danışma Kurulu',
+    titleEn: 'AI Advisory Council',
+    descTr: 'Claude\'a sormayı bırakın, kurulu çalıştırın. 5 farklı danışman, anonim eş değerlendirme ve başkanın net kararı — tek sohbette.',
+    descEn: 'Stop asking Claude. Run the council. 5 distinct advisers, anonymous peer review, and the chairman\'s clear call — all in one chat.',
+    badge: 'Ücretsiz · Free',
+    pages: 8,
+    prompts: 1,
+  },
+  {
+    slug: 'goal-operator-pack',
+    titleTr: '/goal Operatör Paketi',
+    titleEn: 'The /goal Operator Pack',
+    descTr: 'Claude Code /goal ile otonom çalıştırma. Koşul oluşturucu prompt, sürükleme kontrol noktası ve 5 hazır şablon.',
+    descEn: 'Run autonomous Claude Code /goal sessions. Condition builder prompt, drift checkpoint, and 5 ready-to-paste templates.',
+    badge: 'Ücretsiz · Free',
+    pages: 7,
+    prompts: 5,
+  },
+  {
+    slug: 'ai-branding-workflow',
+    titleTr: 'Tam AI Marka İş Akışı',
+    titleEn: 'Full AI Branding Workflow',
+    descTr: 'Sadece logodan tam marka kimliği, sosyal medya görselleri ve sinematik reklam filmi. CapCut + ChatGPT + Seedance 2.0.',
+    descEn: 'From one logo to a full brand identity, social media creatives, and a cinematic ad. ChatGPT + CapCut + Seedance 2.0.',
+    badge: 'Ücretsiz · Free',
+    pages: 6,
+    prompts: 3,
   },
 ];
 
@@ -43,7 +92,7 @@ const TemplatesPage = () => {
       <section className="pt-32 pb-16 px-6">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-14">
-            <span className="inline-block bg-cyan-400/10 text-cyan-400 text-sm font-semibold px-4 py-1.5 rounded-full mb-6 border border-cyan-400/20">
+            <span className="inline-block bg-brand/10 text-brand text-sm font-semibold px-4 py-1.5 rounded-full mb-6 border border-brand/20">
               {labels.badge}
             </span>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
@@ -58,19 +107,19 @@ const TemplatesPage = () => {
             {templates.map(tpl => (
               <div
                 key={tpl.slug}
-                className="bg-gray-900 border border-gray-800 hover:border-cyan-400/40 rounded-2xl p-7 transition-all group cursor-pointer"
+                className="bg-gray-900 border border-gray-800 hover:border-brand/40 rounded-2xl p-7 transition-all group cursor-pointer"
                 onClick={() => navigate(`/templates/${tpl.slug}`)}
               >
                 <div className="flex items-start justify-between mb-5">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-cyan-400/10 border border-cyan-400/20">
-                    <Download className="h-5 w-5 text-cyan-400" />
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-brand/10 border border-brand/20">
+                    <Download className="h-5 w-5 text-brand" />
                   </div>
-                  <span className="text-xs font-semibold text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 px-3 py-1 rounded-full">
+                  <span className="text-xs font-semibold text-brand bg-brand/10 border border-brand/20 px-3 py-1 rounded-full">
                     {labels.free}
                   </span>
                 </div>
 
-                <h2 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
+                <h2 className="text-xl font-bold text-white mb-3 group-hover:text-brand transition-colors">
                   {isTr ? tpl.titleTr : tpl.titleEn}
                 </h2>
                 <p className="text-gray-400 text-sm leading-relaxed mb-5">
@@ -84,7 +133,7 @@ const TemplatesPage = () => {
                   </div>
                   <button
                     onClick={e => { e.stopPropagation(); navigate(`/templates/${tpl.slug}`); }}
-                    className="flex items-center gap-1.5 text-cyan-400 text-sm font-semibold hover:gap-3 transition-all"
+                    className="flex items-center gap-1.5 text-brand text-sm font-semibold hover:gap-3 transition-all"
                   >
                     {labels.download} <ArrowRight className="h-4 w-4" />
                   </button>
@@ -93,7 +142,7 @@ const TemplatesPage = () => {
             ))}
 
             {/* Coming soon placeholder */}
-            <div className="bg-gray-900/50 border border-dashed border-gray-700 rounded-2xl p-7 flex flex-col items-center justify-center text-center min-h-[220px]">
+            <div className="bg-gray-900/50 border border-dashed border-gray-700 rounded-2xl p-7 flex flex-col items-center justify-center text-center min-h-[220px] md:col-span-2">
               <div className="text-3xl mb-3">🔜</div>
               <h3 className="text-white font-semibold mb-2">{labels.more}</h3>
               <p className="text-gray-500 text-sm">{labels.moreDesc}</p>

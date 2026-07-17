@@ -15,7 +15,7 @@ function TrainingCard({ training, lang }: { training: Training; lang: string }) 
   return (
     <Link
       to={`/trainings/${training.slug}`}
-      className="group relative flex flex-col bg-gray-900/50 backdrop-blur-sm border border-gray-800 hover:border-cyan-400/50 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-cyan-500/5"
+      className="group relative flex flex-col bg-gray-900/50 backdrop-blur-sm border border-gray-800 hover:border-brand/50 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-cyan-500/5"
     >
       <div className="h-1 w-full bg-gradient-to-r from-cyan-500/60 to-teal-500/60 group-hover:from-cyan-400 group-hover:to-teal-400 transition-all" />
       <div className="p-6 flex flex-col flex-1">
@@ -23,7 +23,7 @@ function TrainingCard({ training, lang }: { training: Training; lang: string }) 
           <div className="flex items-center gap-2 flex-wrap">
             <span className="text-xs font-bold text-gray-500 font-mono">#{training.number}</span>
             {training.badge && (
-              <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-cyan-500/15 text-cyan-400 border border-cyan-500/30">
+              <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-cyan-500/15 text-brand border border-cyan-500/30">
                 {training.badge}
               </span>
             )}
@@ -33,7 +33,7 @@ function TrainingCard({ training, lang }: { training: Training; lang: string }) 
           </span>
         </div>
 
-        <h3 className="text-lg font-bold text-white mb-2 leading-snug group-hover:text-cyan-300 transition-colors">
+        <h3 className="text-lg font-bold text-white mb-2 leading-snug group-hover:text-brand-light transition-colors">
           {title}
         </h3>
         <p className="text-sm text-gray-400 mb-4 line-clamp-2 leading-relaxed">{hook}</p>
@@ -41,7 +41,7 @@ function TrainingCard({ training, lang }: { training: Training; lang: string }) 
         <ul className="space-y-1.5 mb-5 flex-1">
           {outcomes.slice(0, 3).map((o, i) => (
             <li key={i} className="flex items-start gap-2 text-sm text-gray-300">
-              <span className="text-cyan-400 mt-0.5 flex-shrink-0">&#10003;</span>
+              <span className="text-brand mt-0.5 flex-shrink-0">&#10003;</span>
               <span className="line-clamp-1">{o}</span>
             </li>
           ))}
@@ -57,7 +57,7 @@ function TrainingCard({ training, lang }: { training: Training; lang: string }) 
                 : (lang === 'en' ? 'In-person' : 'Yüz yüze')}
             </span>
           </div>
-          <span className="flex items-center gap-1 text-xs font-semibold text-cyan-400 group-hover:gap-2 transition-all">
+          <span className="flex items-center gap-1 text-xs font-semibold text-brand group-hover:gap-2 transition-all">
             {lang === 'en' ? 'Details' : 'Detaylar'} <ChevronRight size={13} />
           </span>
         </div>
@@ -101,7 +101,7 @@ export default function TrainingsPage() {
                 onClick={() => setActiveFilter(key)}
                 className={`flex flex-col items-center gap-2 p-4 rounded-xl border text-center transition-all cursor-pointer ${
                   activeFilter === key
-                    ? 'bg-cyan-500/15 border-cyan-500/40 text-cyan-300'
+                    ? 'bg-cyan-500/15 border-cyan-500/40 text-brand-light'
                     : 'bg-gray-900/40 border-gray-800 text-gray-400 hover:border-gray-600 hover:text-gray-200'
                 }`}
               >
@@ -163,7 +163,7 @@ export default function TrainingsPage() {
       {/* RECOMMENDED PATH */}
       <section className="px-4 py-16 border-t border-gray-800 bg-gray-900/30">
         <div className="max-w-4xl mx-auto text-center mb-10">
-          <p className="text-xs font-bold text-cyan-400 uppercase tracking-widest mb-3">
+          <p className="text-xs font-bold text-brand uppercase tracking-widest mb-3">
             {t('trainings.catalog.recommended.label')}
           </p>
           <h2 className="text-2xl sm:text-3xl font-black text-white mb-3">
@@ -199,7 +199,7 @@ export default function TrainingsPage() {
           <div className="relative bg-gradient-to-br from-gray-900 to-gray-900/80 border border-gray-700 rounded-2xl p-10 text-center overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-teal-500/5 pointer-events-none" />
             <div className="relative">
-              <span className="text-xs font-bold text-cyan-400 uppercase tracking-widest">
+              <span className="text-xs font-bold text-brand uppercase tracking-widest">
                 {t('trainings.catalog.corporate.badge')}
               </span>
               <h2 className="text-2xl sm:text-3xl font-black text-white mt-3 mb-4">
@@ -212,7 +212,7 @@ export default function TrainingsPage() {
               <div className="flex items-center justify-center gap-3 flex-wrap">
                 <button
                   onClick={handleContact}
-                  className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-gray-950 font-bold px-6 py-3 rounded-xl transition-all hover:-translate-y-0.5"
+                  className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-brand text-gray-950 font-bold px-6 py-3 rounded-xl transition-all hover:-translate-y-0.5"
                 >
                   <Calendar size={16} />
                   {t('trainings.catalog.corporate.cta')}

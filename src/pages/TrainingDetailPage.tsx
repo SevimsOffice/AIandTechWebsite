@@ -44,7 +44,7 @@ export default function TrainingDetailPage() {
       {/* Breadcrumb */}
       <div className="border-b border-gray-800/60">
         <div className="max-w-5xl mx-auto px-4 py-4 flex items-center gap-2 text-sm text-gray-500">
-          <Link to="/trainings" className="hover:text-cyan-400 transition-colors flex items-center gap-1">
+          <Link to="/trainings" className="hover:text-brand transition-colors flex items-center gap-1">
             <ArrowLeft size={14} /> {t('trainings.detail.back')}
           </Link>
           <ChevronRight size={12} />
@@ -61,7 +61,7 @@ export default function TrainingDetailPage() {
               {t('trainings.detail.prefix')}{training.number}
             </span>
             {training.badge && (
-              <span className="text-xs font-bold px-3 py-1 rounded-full bg-cyan-500/15 text-cyan-400 border border-cyan-500/30">
+              <span className="text-xs font-bold px-3 py-1 rounded-full bg-cyan-500/15 text-brand border border-cyan-500/30">
                 {training.badge}
               </span>
             )}
@@ -76,14 +76,14 @@ export default function TrainingDetailPage() {
           <p className="text-lg sm:text-xl text-gray-400 mb-8 leading-relaxed max-w-3xl">{hookSub}</p>
 
           <div className="flex items-center gap-6 flex-wrap text-sm text-gray-400 mb-10">
-            <span className="flex items-center gap-2"><Clock size={15} className="text-cyan-400" />{training.duration}</span>
-            <span className="flex items-center gap-2"><Monitor size={15} className="text-cyan-400" />{training.format}</span>
-            <span className="flex items-center gap-2"><Users size={15} className="text-cyan-400" />{training.audience.split(',')[0]}</span>
+            <span className="flex items-center gap-2"><Clock size={15} className="text-brand" />{training.duration}</span>
+            <span className="flex items-center gap-2"><Monitor size={15} className="text-brand" />{training.format}</span>
+            <span className="flex items-center gap-2"><Users size={15} className="text-brand" />{training.audience.split(',')[0]}</span>
           </div>
 
           <button
             onClick={handleContact}
-            className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-gray-950 font-bold px-7 py-3.5 rounded-xl transition-all hover:-translate-y-0.5 text-base"
+            className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-brand text-gray-950 font-bold px-7 py-3.5 rounded-xl transition-all hover:-translate-y-0.5 text-base"
           >
             <Calendar size={16} /> {t('trainings.detail.cta.hero')}
           </button>
@@ -106,7 +106,7 @@ export default function TrainingDetailPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {outcomes.map((o, i) => (
                 <div key={i} className="flex items-start gap-3 bg-gray-900/50 border border-gray-800 rounded-xl p-4">
-                  <CheckCircle2 size={18} className="text-cyan-400 mt-0.5 flex-shrink-0" />
+                  <CheckCircle2 size={18} className="text-brand mt-0.5 flex-shrink-0" />
                   <span className="text-gray-200 text-sm leading-snug">{o}</span>
                 </div>
               ))}
@@ -120,7 +120,7 @@ export default function TrainingDetailPage() {
                 <div key={i} className="border border-gray-800 rounded-xl overflow-hidden">
                   <div className="bg-gray-900/70 px-5 py-3 flex items-center gap-3">
                     {mod.time && (
-                      <span className="text-xs font-bold text-cyan-400 font-mono bg-cyan-500/10 px-2 py-0.5 rounded">
+                      <span className="text-xs font-bold text-brand font-mono bg-cyan-500/10 px-2 py-0.5 rounded">
                         {mod.time}
                       </span>
                     )}
@@ -180,10 +180,10 @@ export default function TrainingDetailPage() {
                   <Link
                     key={tr.id}
                     to={`/trainings/${tr.slug}`}
-                    className="group flex flex-col bg-gray-900/40 border border-gray-800 hover:border-cyan-400/40 rounded-xl p-4 transition-all hover:-translate-y-0.5"
+                    className="group flex flex-col bg-gray-900/40 border border-gray-800 hover:border-brand/40 rounded-xl p-4 transition-all hover:-translate-y-0.5"
                   >
                     <span className="text-xs font-mono text-gray-600 mb-1">#{tr.number}</span>
-                    <p className="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors leading-snug mb-2">
+                    <p className="text-sm font-bold text-white group-hover:text-brand-light transition-colors leading-snug mb-2">
                       {otherTitle}
                     </p>
                     <span className="text-xs text-gray-500 mt-auto">{tr.durationShort} &middot; {otherLevel}</span>
@@ -222,7 +222,7 @@ export default function TrainingDetailPage() {
                 <ul className="space-y-2">
                   {includes.map((inc, i) => (
                     <li key={i} className="flex items-start gap-2 text-sm text-gray-300">
-                      <span className="text-cyan-400 mt-0.5 flex-shrink-0">&#10003;</span>{inc}
+                      <span className="text-brand mt-0.5 flex-shrink-0">&#10003;</span>{inc}
                     </li>
                   ))}
                 </ul>
@@ -231,7 +231,7 @@ export default function TrainingDetailPage() {
 
             <button
               onClick={handleContact}
-              className="w-full bg-cyan-500 hover:bg-cyan-400 text-gray-950 font-bold py-3 rounded-xl transition-all hover:-translate-y-0.5 flex items-center justify-center gap-2"
+              className="w-full bg-cyan-500 hover:bg-brand text-gray-950 font-bold py-3 rounded-xl transition-all hover:-translate-y-0.5 flex items-center justify-center gap-2"
             >
               <Calendar size={15} /> {t('trainings.detail.sidebar.cta')}
             </button>
