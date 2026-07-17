@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Steal These Fable 5 Prompting Hacks — aiandtech.cloud</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    background: #ffffff;
+    color: #111827;
+    font-size: 11pt;
+    line-height: 1.6;
+  }
+
+  .cover {
+    page-break-after: always;
+    min-height: 100vh;
+    background: linear-gradient(160deg, #0f172a 0%, #1e293b 60%, #0e7490 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px 72px;
+    color: #fff;
+  }
+  .cover-badge {
+    background: rgba(34,211,238,0.15);
+    border: 1px solid rgba(34,211,238,0.4);
+    color: #22d3ee;
+    font-size: 10pt;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 100px;
+    display: inline-block;
+    margin-bottom: 32px;
+  }
+  .cover h1 {
+    font-size: 38pt;
+    font-weight: 900;
+    line-height: 1.08;
+    margin-bottom: 24px;
+    color: #ffffff;
+  }
+  .cover h1 span { color: #22d3ee; }
+  .cover-sub {
+    font-size: 14pt;
+    color: #94a3b8;
+    max-width: 560px;
+    margin-bottom: 56px;
+    line-height: 1.6;
+  }
+  .cover-meta {
+    margin-top: auto;
+    padding-top: 48px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .cover-meta-left p { color: #94a3b8; font-size: 10pt; margin-top: 4px; }
+  .cover-meta-left strong { color: #e2e8f0; font-size: 12pt; }
+  .cover-stats { display: flex; gap: 32px; }
+  .cover-stat { text-align: center; }
+  .cover-stat .num { font-size: 26pt; font-weight: 900; color: #22d3ee; display: block; }
+  .cover-stat .label { font-size: 9pt; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; }
+
+  .page {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 64px 56px;
+    page-break-after: always;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  .section-label {
+    font-size: 9pt;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #22d3ee;
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    font-size: 24pt;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  h2 span { color: #22d3ee; }
+
+  h3 {
+    font-size: 14pt;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 10px;
+    margin-top: 24px;
+  }
+
+  p { margin-bottom: 14px; color: #374151; }
+  ul, ol { padding-left: 20px; margin-bottom: 14px; color: #374151; }
+  li { margin-bottom: 6px; }
+
+  .divider { border: none; border-top: 1px solid #e5e7eb; margin: 32px 0; }
+
+  .prompt-box {
+    background: #0f172a;
+    border-left: 4px solid #22d3ee;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin: 20px 0;
+    page-break-inside: avoid;
+    font-family: 'Courier New', monospace;
+  }
+  .prompt-box .prompt-label {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 9pt;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #22d3ee;
+    margin-bottom: 14px;
+  }
+  .prompt-box p {
+    color: #e2e8f0;
+    font-size: 10pt;
+    line-height: 1.7;
+    margin-bottom: 10px;
+  }
+  .prompt-box p:last-child { margin-bottom: 0; }
+
+  .info-box {
+    background: #f0fdff;
+    border: 1px solid #a5f3fc;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    page-break-inside: avoid;
+  }
+  .info-box .info-title {
+    font-size: 10pt;
+    font-weight: 700;
+    color: #0e7490;
+    margin-bottom: 8px;
+  }
+  .info-box p { color: #164e63; font-size: 10pt; margin-bottom: 0; }
+
+  .warning-box {
+    background: #fefce8;
+    border: 1px solid #fde68a;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    page-break-inside: avoid;
+  }
+  .warning-box .warning-title {
+    font-size: 10pt;
+    font-weight: 700;
+    color: #92400e;
+    margin-bottom: 8px;
+  }
+  .warning-box p { color: #78350f; font-size: 10pt; margin-bottom: 0; }
+
+  .steps { margin: 20px 0; }
+  .step {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-bottom: 18px;
+    page-break-inside: avoid;
+  }
+  .step-num {
+    background: #22d3ee;
+    color: #0f172a;
+    font-size: 9pt;
+    font-weight: 800;
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-content .step-title { font-weight: 700; color: #0f172a; font-size: 10.5pt; margin-bottom: 4px; }
+  .step-content p { font-size: 10pt; color: #4b5563; margin-bottom: 0; }
+
+  .page-footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .page-footer span { font-size: 9pt; color: #9ca3af; }
+  .page-footer .brand { font-weight: 700; color: #22d3ee; }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-badge">Free Prompting Guide</div>
+  <h1>Steal These<br /><span>Fable 5 Prompting Hacks</span></h1>
+  <p class="cover-sub">
+    Anthropic dropped a prompting guide for Fable 5, their newest and most powerful model.
+    Here are the three shifts that change how you use it — each with a copy-paste prompt.
+  </p>
+  <div class="cover-meta">
+    <div class="cover-meta-left">
+      <strong>Sevim Durmuş</strong>
+      <p>aiandtech.cloud · AI and Tech</p>
+    </div>
+    <div class="cover-stats">
+      <div class="cover-stat">
+        <span class="num">3</span>
+        <span class="label">Hacks</span>
+      </div>
+      <div class="cover-stat">
+        <span class="num">3</span>
+        <span class="label">Prompts</span>
+      </div>
+      <div class="cover-stat">
+        <span class="num">1</span>
+        <span class="label">Source</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 1: INTRO + HACK 1 -->
+<div class="page">
+  <div class="section-label">Why This Matters</div>
+  <h2>Fable 5 Behaves <span>Differently</span></h2>
+  <p>
+    Fable 5 behaves differently than Opus 4.8. The prompting guide calls out a handful of shifts,
+    and these three are the ones that will change your results today. Drop the matching prompt
+    into your instructions and it steers the behavior for you.
+  </p>
+  <p>
+    Every prompt below comes straight from Anthropic's official Fable 5 prompting guide. We just
+    pulled out the three shifts that matter most and showed you exactly when to use each.
+  </p>
+
+  <div class="warning-box">
+    <div class="warning-title">⚠ HEADS UP</div>
+    <p>
+      Fable 5 is included in your plan until July 7th, then it moves to pay-per-use. It is more
+      advanced than previous models, but you still have to direct it. These three prompts are how.
+    </p>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="section-label">Hack 1</div>
+  <h2>Longer Turns <span>By Default</span></h2>
+  <p>
+    Hard tasks run longer on Fable 5 than on previous models by default. That is great when the
+    work is genuinely complex, but on an ambiguous task it can over-plan and survey options
+    instead of just acting. To keep it moving, add this:
+  </p>
+
+  <div class="prompt-box">
+    <div class="prompt-label">Prompt · Stop Over-Planning</div>
+    <p>
+      When you have enough information to act, act. Do not re-derive facts already established in
+      the conversation, re-litigate a decision the user has already made, or narrate options you
+      will not pursue in user-facing messages. If you are weighing a choice, give a
+      recommendation, not an exhaustive survey. This does not apply to thinking blocks.
+    </p>
+  </div>
+
+  <div class="page-footer">
+    <span class="brand">aiandtech.cloud</span>
+    <span>Fable 5 Prompting Hacks · 01</span>
+  </div>
+</div>
+
+<!-- PAGE 2: HACK 2 + HACK 3 -->
+<div class="page">
+  <div class="section-label">Hack 2</div>
+  <h2>State The <span>Boundaries</span></h2>
+  <p>
+    Fable 5 can occasionally take actions you did not ask for, like drafting an email when you
+    were only thinking out loud. Define what it should and should not do so it reports back
+    instead of running off:
+  </p>
+
+  <div class="prompt-box">
+    <div class="prompt-label">Prompt · Set The Boundaries</div>
+    <p>
+      When the user is describing a problem, asking a question, or thinking out loud rather than
+      requesting a change, the deliverable is your assessment. Report your findings and stop.
+      Don't apply a fix until they ask for one. Before running a command that changes system
+      state (restarts, deletes, config edits), check that the evidence actually supports that
+      specific action. A signal that pattern-matches to a known failure may have a different cause.
+    </p>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="section-label">Hack 3</div>
+  <h2>Parallel <span>Subagents</span></h2>
+  <p>
+    Fable 5 spins up parallel subagents more readily than prior models. Lean into it, but tell it
+    when delegation is actually appropriate so it does not fan out on tiny tasks:
+  </p>
+
+  <div class="prompt-box">
+    <div class="prompt-label">Prompt · Guide Delegation</div>
+    <p>
+      Delegate independent subtasks to subagents and keep working while they run. Intervene if a
+      subagent goes off track or is missing relevant context.
+    </p>
+  </div>
+
+  <div class="info-box">
+    <div class="info-title">MAKE THEM STICK</div>
+    <p>
+      Save these three where Fable can see them (your project instructions or a memory file) and
+      they keep working every session. That is the whole game: the model got smarter, so your job
+      shifts from typing perfect questions to setting clear rules.
+    </p>
+  </div>
+
+  <div class="page-footer">
+    <span class="brand">aiandtech.cloud</span>
+    <span>Fable 5 Prompting Hacks · 02</span>
+  </div>
+</div>
+
+<!-- PAGE 3: SOURCE + CTA -->
+<div class="page">
+  <div class="section-label">The Source</div>
+  <h2>Want Every Shift, <span>Not Just These 3?</span></h2>
+  <p>
+    These prompts and behaviors are all pulled from Anthropic's official Fable 5 prompting guide.
+    If you want to go deeper, they cover more shifts, effort levels, memory, and long-run tips.
+  </p>
+
+  <div class="info-box">
+    <div class="info-title">READ ANTHROPIC'S FULL FABLE 5 GUIDE</div>
+    <p>
+      platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5
+    </p>
+  </div>
+
+  <div style="margin-top: 48px;">
+    <div style="background: linear-gradient(160deg, #0f172a 0%, #1e293b 60%, #0e7490 100%); border-radius: 20px; padding: 56px 48px; color: #fff; text-align: center;">
+      <div class="cover-badge" style="margin-bottom:24px;">Want to Go Further?</div>
+      <h2 style="color:#fff; margin-bottom:16px;">Master Claude with <span style="color:#22d3ee;">AI and Tech</span></h2>
+      <p style="color:#94a3b8; font-size:11pt; max-width:480px; margin: 0 auto 32px;">
+        Free templates, prompt packs, and hands-on trainings — everything you need to work
+        smarter with Claude, from first prompt to full workflows.
+      </p>
+      <p style="color:#22d3ee; font-weight:700; font-size:13pt; margin-bottom: 8px;">aiandtech.cloud/templates</p>
+      <p style="color:#64748b; font-size:10pt; margin-top:8px;">Sevim Durmuş · AI and Tech</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="brand">aiandtech.cloud</span>
+    <span>© 2026 Sevim Durmuş. Free to use.</span>
+  </div>
+</div>
+
+</body>
+</html>

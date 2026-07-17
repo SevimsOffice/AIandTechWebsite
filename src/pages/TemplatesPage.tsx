@@ -5,6 +5,16 @@ import { Download, ArrowRight } from 'lucide-react';
 
 const templates = [
   {
+    slug: 'fable-5-prompting-hacks',
+    titleTr: 'Fable 5 Prompt Taktikleri',
+    titleEn: 'Fable 5 Prompting Hacks',
+    descTr: 'Anthropic\'in resmi Fable 5 rehberinden en çok fark yaratan 3 davranış değişikliği — her biri kopyala-yapıştır bir prompt ile.',
+    descEn: 'The 3 shifts that matter most from Anthropic\'s official Fable 5 guide — each with a copy-paste prompt.',
+    badge: 'Ücretsiz · Free',
+    pages: 4,
+    prompts: 3,
+  },
+  {
     slug: 'vibe-coding-starter-guide',
     titleTr: 'Vibe Coding Başlangıç Rehberi',
     titleEn: 'Vibe Coding Starter Guide',
