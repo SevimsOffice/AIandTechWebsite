@@ -25,6 +25,7 @@ import AnatomyClaudePromptPage from './pages/AnatomyClaudePromptPage';
 import PromptGeneratorPage from './pages/PromptGeneratorPage';
 import WebinarPromptsPage from './pages/WebinarPromptsPage';
 import ClaudeSkillGuidePage from './pages/ClaudeSkillGuidePage';
+import VibeCodingStarterGuidePage from './pages/VibeCodingStarterGuidePage';
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
               <Route path="/templates/claude-ecosystem-audit" element={<ClaudeEcosystemAuditPage />} />
               <Route path="/templates/goal-operator-pack" element={<GoalOperatorPackPage />} />
               <Route path="/templates/ai-branding-workflow" element={<AIBrandingWorkflowPage />} />
+              <Route path="/templates/vibe-coding-starter-guide" element={<VibeCodingStarterGuidePage />} />
               <Route path="/prompts"                   element={<PromptsPage />} />
               <Route path="/prompts/manus-instagram-strategy" element={<ManusInstagramPage />} />
               <Route path="/prompts/content-creation-prompts" element={<ContentCreationPromptsPage />} />

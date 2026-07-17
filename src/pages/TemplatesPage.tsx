@@ -5,6 +5,16 @@ import { Download, ArrowRight } from 'lucide-react';
 
 const templates = [
   {
+    slug: 'vibe-coding-starter-guide',
+    titleTr: 'Vibe Coding Başlangıç Rehberi',
+    titleEn: 'Vibe Coding Starter Guide',
+    descTr: 'Claude Code ile herhangi bir uygulamayı inşa etmenin 3 adımlı süreci — kod bilgisi gerekmez. Çerçeve, hazır promptlar ve tam araç seti.',
+    descEn: 'The exact 3-step process to build any app with Claude Code — no coding required. The framework, exact prompts, and complete tool stack.',
+    badge: 'Ücretsiz · Free',
+    pages: 7,
+    prompts: 5,
+  },
+  {
     slug: 'claude-ecosystem-audit',
     titleTr: 'Claude Ekosistem Denetimi',
     titleEn: 'Claude Ecosystem Audit',
