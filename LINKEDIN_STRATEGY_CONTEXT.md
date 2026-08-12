@@ -233,6 +233,63 @@ A single prompt for Manus.im (autonomous AI agent) that produces a full Instagra
 
 ---
 
+### Resource 9 — Vibe Coding Starter Guide
+**URL:** aiandtech.cloud/templates/vibe-coding-starter-guide
+**Category:** Guide (gated, TR/EN printable HTML)
+**Format:** 3-step Plan > Build > Test framework with 5 copy-paste prompts
+**Stats:** 7 pages, 5 prompts, 6 tools
+
+**What it does:**
+The exact 3-step process to build any app with Claude Code with no coding required: scope a PRD in Claude, build phase-by-phase in Claude Code plan mode, test and polish with Stitch. Includes the full tool stack, common mistakes, a worked example, and a troubleshooting guide.
+
+**Pain points it solves:**
+- "I prompt, get errors, paste them back, get more errors — for hours" (the death loop)
+- "I want to build an app but I can't code"
+- "My AI-built app looks like every other AI-built app"
+
+**Who it's for:** Non-technical founders and professionals who want to ship a real app with AI.
+
+**Hook angles:**
+- "Kod bilmeden uygulama yapanların %90'ı aynı döngüde sıkışıyor: prompt → hata → prompt → hata."
+- "Claude Code ile uygulama inşa etmenin 3 adımı var. Çoğu insan 1.'yi atlıyor — ve bu yüzden batıyor."
+- "PRD olmadan vibe coding yapmak, müteahhite çizimsiz ev yaptırmak gibi."
+
+---
+
+### Resource 10 — Fable 5 Prompting Hacks
+**URL:** aiandtech.cloud/templates/fable-5-prompting-hacks
+**Category:** Guide (gated, TR/EN printable HTML)
+**Format:** 3 behavior shifts + 3 copy-paste prompts from Anthropic's official Fable 5 guide
+**Stats:** 4 pages, 3 prompts
+
+**What it does:**
+The three shifts that change how you use Anthropic's newest model — longer turns by default, unrequested actions, parallel subagents — each with the exact official prompt that steers the behavior. Save them to project instructions and they work every session.
+
+**Pain points it solves:**
+- "The new model over-plans instead of acting"
+- "Claude did something I didn't ask for"
+- "I upgraded models but my results didn't improve"
+
+**Who it's for:** Anyone using Fable 5 / the newest Claude models daily.
+
+**Hook angles:**
+- "Model akıllandı. Senin işin artık mükemmel soru yazmak değil, net kural koymak."
+- "Anthropic'in resmi rehberinden 3 prompt — bugün sonuçlarını değiştirir."
+- "Fable 5 Opus'tan farklı davranıyor. Yönlendirmezsen gücü aleyhine işler."
+
+---
+
+### Diğer sayfalar (ikincil CTA hedefleri)
+| Sayfa | URL | Not |
+|---|---|---|
+| CLAUDE.md Bileşik Mühendislik | /prompts/claude-md-compounding | Drive linki bekliyor |
+| Claude Prompt Anatomisi | /prompts/anatomy-of-a-claude-prompt | Eğitim sayfası, form yok — pain post kaynağı |
+| Prompt Üreticisi | /prompts/prompt-generator | Form → inline reveal |
+| Profesyoneller için Claude | /prompts/profesyoneller-icin-claude | Eğitim sayfası — webinar içeriği |
+| Bir Claude Skill'i Oluşturmanın 3 Yolu | /prompts/3-ways-to-build-a-claude-skill | Form → tam makale |
+
+---
+
 ## 3. LinkedIn Strategy Notes
 
 ### Platform Rules to Always Follow
@@ -259,6 +316,38 @@ Recorded in Google Sheet (automatic)
 ### Post Types in Rotation
 1. **Pain Post** — No link. Pure value or observation. Goal: follows + comments + saves.
 2. **CTA Post** — Link in first comment. Goal: clicks + form fills + email leads.
+
+### Post Anatomy (her post bu iskeleti izler)
+```
+Satır 1: Hook — merak/acı, maksimum 12 kelime, soru veya iddia
+(boş satır)
+2-4 kısa paragraf — her biri 1-2 cümle, aralarında boş satır
+Somut detay şart: sayı, süre, önce/sonra
+(boş satır)
+Kapanış: Pain post → gerçek bir soru | CTA post → "Yorumda link var 👇"
+```
+
+### Örnek CTA Post (referans kalite — bu tonda yaz)
+```
+Claude'a her gün aynı şeyi mi anlatıyorsun?
+
+Her sohbete "ben X yapıyorum, kitlem Y, tonum Z" diye
+başlıyorsan bir context sistemin yok demektir.
+
+8 hazır prompt ile bir kere bağlam belgesi kuruyorsun.
+Sonrasında Claude seni her oturumda tanıyor —
+sıfırdan anlatmak yok, jenerik cevap yok.
+
+Ben bunu 6 aydır kullanıyorum. Kurulum: 1 saat.
+Kazanç: her gün 10-15 dakika + çok daha isabetli çıktılar.
+
+Ücretsiz, yorumda link var 👇
+```
+İlk yorum: `aiandtech.cloud/templates/ai-baglam-kasasi — isim + email ile ücretsiz indir.`
+
+### Örnek Pain Post açılışları (link yok, tartışma hedefli)
+- "Claude hep sana katılıyorsa, bu bir özellik değil, bir bug."
+- "AI'dan kötü sonuç alanların çoğu kötü prompt yazmıyor. Bağlam vermiyor."
 
 ### 8-Week Schedule (2 posts/week)
 | Week | Pain Post Topic | CTA Post Topic (Template) |
@@ -298,6 +387,8 @@ Each template gets 2 angles total (spread across 8 weeks). Second-month posts hi
 | Full AI Branding Workflow | aiandtech.cloud/templates/ai-branding-workflow |
 | Content Creation Prompt Pack | aiandtech.cloud/prompts/content-creation-prompts |
 | Instagram Strategy with Manus.im | aiandtech.cloud/prompts/manus-instagram-strategy |
+| Vibe Coding Starter Guide | aiandtech.cloud/templates/vibe-coding-starter-guide |
+| Fable 5 Prompting Hacks | aiandtech.cloud/templates/fable-5-prompting-hacks |
 | All Templates | aiandtech.cloud/templates |
 | All Prompts | aiandtech.cloud/prompts |
 
@@ -315,4 +406,4 @@ Each template gets 2 angles total (spread across 8 weeks). Second-month posts hi
 
 ---
 
-*File generated for use in AI-assisted LinkedIn strategy tools. Last updated: June 2025.*
+*File generated for use in AI-assisted LinkedIn strategy tools. Last updated: July 2026 — resources 9-10 added, post anatomy + example posts added.*
