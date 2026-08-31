@@ -136,10 +136,17 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center">
+        <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col sm:flex-row items-center justify-center gap-4 text-center">
           <p className="text-gray-400">
             © {currentYear} {t('footer.copyright')}
           </p>
+          <span className="hidden sm:inline text-gray-700">·</span>
+          <button
+            onClick={() => handleNavigation('/privacy-policy')}
+            className="text-gray-400 hover:text-brand transition-colors text-sm"
+          >
+            Privacy Policy
+          </button>
         </div>
       </div>
     </footer>

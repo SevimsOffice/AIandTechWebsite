@@ -28,6 +28,7 @@ import ClaudeSkillGuidePage from './pages/ClaudeSkillGuidePage';
 import VibeCodingStarterGuidePage from './pages/VibeCodingStarterGuidePage';
 import Fable5PromptingHacksPage from './pages/Fable5PromptingHacksPage';
 import TeklifPage from './pages/TeklifPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
               <Route path="/vibecoding"                element={<VibeCoding />} />
               <Route path="/products/ainetvalue"       element={<NetWorthCalculator />} />
               <Route path="/teklif"                    element={<TeklifPage />} />
+              <Route path="/privacy-policy"            element={<PrivacyPolicyPage />} />
               <Route path="/templates"                 element={<TemplatesPage />} />
               <Route path="/templates/ai-baglam-kasasi" element={<AIBaglamKasasiPage />} />
               <Route path="/templates/ai-danisma-kurulu" element={<AIDanismaKuruluPage />} />
