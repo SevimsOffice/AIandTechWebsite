@@ -5,6 +5,16 @@ import { Download, ArrowRight } from 'lucide-react';
 
 const templates = [
   {
+    slug: 'building-your-first-ai-agent',
+    titleTr: 'İlk AI Ajanınızı Kurun',
+    titleEn: 'Building Your First AI Agent',
+    descTr: 'KOBİ yöneticileri için uygulamalı rehber. İşinizi haritalayın, ilk üçünüzü puanlayın, Ajan Mimarı promptuyla birincisini kurun.',
+    descEn: 'A working guide for SME leaders. Map your work, score your top three, and build the first one with the Agent Architect prompt.',
+    badge: 'Ücretsiz · Free',
+    pages: 8,
+    prompts: 1,
+  },
+  {
     slug: 'fable-5-prompting-hacks',
     titleTr: 'Fable 5 Prompt Taktikleri',
     titleEn: 'Fable 5 Prompting Hacks',
