@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>İlk AI Ajanınızı Kurun — aiandtech.cloud</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', Arial, sans-serif; background: #ffffff; color: #111827; font-size: 11pt; line-height: 1.6; }
+  .cover { page-break-after: always; min-height: 100vh; background: linear-gradient(160deg, #0f172a 0%, #1e293b 60%, #0e7490 100%);
+    display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 80px 72px; color: #fff; }
+  .cover-badge { background: rgba(34,211,238,0.15); border: 1px solid rgba(34,211,238,0.4); color: #22d3ee; font-size: 10pt;
+    font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 18px; border-radius: 100px; display: inline-block; margin-bottom: 32px; }
+  .cover h1 { font-size: 38pt; font-weight: 900; line-height: 1.08; margin-bottom: 24px; color: #ffffff; }
+  .cover h1 span { color: #22d3ee; }
+  .cover-sub { font-size: 14pt; color: #94a3b8; max-width: 560px; margin-bottom: 56px; line-height: 1.6; }
+  .cover-meta { margin-top: auto; padding-top: 48px; border-top: 1px solid rgba(255,255,255,0.12); width: 100%;
+    display: flex; justify-content: space-between; align-items: flex-end; }
+  .cover-meta-left p { color: #94a3b8; font-size: 10pt; margin-top: 4px; }
+  .cover-meta-left strong { color: #e2e8f0; font-size: 12pt; }
+  .cover-stats { display: flex; gap: 32px; }
+  .cover-stat { text-align: center; }
+  .cover-stat .num { font-size: 26pt; font-weight: 900; color: #22d3ee; display: block; }
+  .cover-stat .label { font-size: 9pt; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; }
+  .page { max-width: 720px; margin: 0 auto; padding: 64px 56px; page-break-after: always; }
+  .page:last-child { page-break-after: auto; }
+  .section-label { font-size: 9pt; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #22d3ee; margin-bottom: 8px; }
+  h2 { font-size: 24pt; font-weight: 800; color: #0f172a; margin-bottom: 16px; line-height: 1.2; }
+  h2 span { color: #22d3ee; }
+  h3 { font-size: 14pt; font-weight: 700; color: #0f172a; margin-bottom: 10px; margin-top: 24px; }
+  p { margin-bottom: 14px; color: #374151; }
+  ul, ol { padding-left: 20px; margin-bottom: 14px; color: #374151; }
+  li { margin-bottom: 6px; }
+  .divider { border: none; border-top: 1px solid #e5e7eb; margin: 32px 0; }
+  .prompt-box { background: #0f172a; border-left: 4px solid #22d3ee; border-radius: 12px; padding: 24px 28px; margin: 20px 0;
+    page-break-inside: avoid; font-family: 'Courier New', monospace; }
+  .prompt-box .prompt-label { font-family: 'Inter', Arial, sans-serif; font-size: 9pt; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: #22d3ee; margin-bottom: 14px; }
+  .prompt-box p { color: #e2e8f0; font-size: 9.5pt; line-height: 1.7; margin-bottom: 10px; }
+  .prompt-box p:last-child { margin-bottom: 0; }
+  .info-box { background: #f0fdff; border: 1px solid #a5f3fc; border-radius: 10px; padding: 20px 24px; margin: 20px 0; page-break-inside: avoid; }
+  .info-box .info-title { font-size: 10pt; font-weight: 700; color: #0e7490; margin-bottom: 8px; }
+  .info-box p { color: #164e63; font-size: 10pt; margin-bottom: 0; }
+  .warning-box { background: #fefce8; border: 1px solid #fde68a; border-radius: 10px; padding: 20px 24px; margin: 20px 0; page-break-inside: avoid; }
+  .warning-box .warning-title { font-size: 10pt; font-weight: 700; color: #92400e; margin-bottom: 8px; }
+  .warning-box p { color: #78350f; font-size: 10pt; margin-bottom: 0; }
+  .steps { margin: 20px 0; }
+  .step { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 18px; page-break-inside: avoid; }
+  .step-num { background: #22d3ee; color: #0f172a; font-size: 9pt; font-weight: 800; width: 28px; height: 28px; border-radius: 7px;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .step-content .step-title { font-weight: 700; color: #0f172a; font-size: 10.5pt; margin-bottom: 4px; }
+  .step-content p { font-size: 10pt; color: #4b5563; margin-bottom: 0; }
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; page-break-inside: avoid; font-size: 9.5pt; }
+  th { background: #0f172a; color: #fff; text-align: left; padding: 10px 12px; font-size: 9pt; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em; }
+  td { border: 1px solid #e5e7eb; padding: 12px; color: #4b5563; height: 34px; }
+  .fill { background: #f8fafc; }
+  .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .card { background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 10px; padding: 18px; }
+  .card .card-num { font-size: 14pt; font-weight: 900; color: #22d3ee; display: block; margin-bottom: 4px; }
+  .card .card-title { font-size: 10pt; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
+  .card p { font-size: 9pt; color: #6b7280; margin-bottom: 0; }
+  .page-footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid #e5e7eb; display: flex; justify-content: space-between; align-items: center; }
+  .page-footer span { font-size: 9pt; color: #9ca3af; }
+  .page-footer .brand { font-weight: 700; color: #22d3ee; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="cover-badge">Uygulamalı Rehber · KOBİ Yöneticileri İçin</div>
+  <h1>İlk AI Ajanınızı<br /><span>Kurun</span></h1>
+  <p class="cover-sub">
+    Dağınık denemelerden çalışan bir sisteme. İşinizi haritalayın, ilk üçünüzü sıralayın,
+    birincisini kurun. Bu rehber okunmak için değil, doldurulmak için hazırlandı.
+  </p>
+  <div class="cover-meta">
+    <div class="cover-meta-left">
+      <strong>Sevim Durmuş</strong>
+      <p>aiandtech.cloud · AI and Tech</p>
+    </div>
+    <div class="cover-stats">
+      <div class="cover-stat"><span class="num">3</span><span class="label">Çalışma Kağıdı</span></div>
+      <div class="cover-stat"><span class="num">5</span><span class="label">Aşama</span></div>
+      <div class="cover-stat"><span class="num">90</span><span class="label">Dakika</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-label">Bu Rehber Size Ne Kazandırır</div>
+  <h2>Bugün <span>sahip olmadığınız</span> üç şey</h2>
+
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-content">
+      <div class="step-title">İşiniz tek sayfada</div>
+      <p>Altında kendi hesapladığınız bir sayıyla: haftada kaç saat sizin hatırlamanıza bağlı çalışıyor.</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-content">
+      <div class="step-title">Sıralanmış ilk üçünüz</div>
+      <p>Sezgiyle değil, dört parçalı bir puanlamayla seçilmiş.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-content">
+      <div class="step-title">Kurulmuş ve çalışan ilk ajan</div>
+      <p>Not değil. İşi gerçekten yapan bir şey.</p></div></div>
+  </div>
+
+  <h3>Nasıl çalışılır</h3>
+  <p>
+    Rehberin tamamı yaklaşık 90 dakikalık bir iş. Tek oturuşta bitirmek zorunda değilsiniz, ama
+    1. ve 2. çalışma kağıtları gerçek sayılarla doldurulmalı. Boş bıraktığınız her satır, bir
+    sonraki adımı zayıflatır.
+  </p>
+  <p>
+    <strong>Kimin için.</strong> Yaklaşık 10–250 kişilik şirketlerde bir sürecin sahibi olan
+    yöneticiler. Teknik altyapı gerekmez. Tek gereken, ekibinizin haftasını neyin doldurduğuna
+    dair dürüst bir liste.
+  </p>
+
+  <div class="warning-box">
+    <div class="warning-title">BAŞLAMADAN ÖNCE ÜÇ KURAL</div>
+    <p>
+      <strong>1 · Küçük başlayın.</strong> Tek bir süreç. Bir departman değil, bir proje değil — tekrar eden tek bir iş.<br />
+      <strong>2 · Onay kapısını asla kaldırmayın.</strong> Kurduğunuz her ajan taslağı hazırlar ve sizin onayınızı bekler.<br />
+      <strong>3 · Gerçek işte test edin.</strong> Örnek senaryoda değil. Bu hafta gerçekten masanızda olan bir işte.
+    </p>
+  </div>
+
+  <p style="font-style: italic; color: #6b7280;">
+    Bu rehberi bitirdiğinizde çalışan bir şey yoksa, bir sayfayı atlamışsınızdır.
+  </p>
+
+  <div class="page-footer"><span class="brand">aiandtech.cloud</span><span>İlk AI Ajanınızı Kurun · 01</span></div>
+</div>
+
+<div class="page">
+  <div class="section-label">Beş Aşama</div>
+  <h2>Hiç kimse dağınıklıktan sisteme <span>tek adımda</span> geçmez</h2>
+
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-content">
+      <div class="step-title">Sormak</div>
+      <p>Bir sohbet penceresi açıp soru yazarsınız. Çıktı iyi olabilir, ama her şey sizin aklınıza gelmesine bağlıdır. Çoğu şirket buradan hiç çıkmaz.</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-content">
+      <div class="step-title">Kayıtlı asistanlar</div>
+      <p>Şablonlar, özel talimatlar, saklanan promptlar. Tekrar kullanılabilir, ama her birini yine elle siz başlatırsınız.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-content">
+      <div class="step-title">Ajanlar</div>
+      <p>Tanımlı bir rolü, kuralları ve çıktı formatı olan bir şey kararı verir ve taslağı üretir. Bu rehberin hedeflediği aşama budur.</p></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-content">
+      <div class="step-title">Otomatik akışlar</div>
+      <p>İşi bir olay veya bir zamanlama başlatır. Siz yalnızca geleni onaylarsınız.</p></div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-content">
+      <div class="step-title">Şirket geneli sistem</div>
+      <p>Birbirine bağlı ajanlar bütün bir departmanı taşır; sahiplik, ölçüm ve gözetim tanımlıdır.</p></div></div>
+  </div>
+
+  <div class="info-box">
+    <div class="info-title">BUGÜN NEREDESİNİZ?</div>
+    <p>
+      Şirketlerin büyük çoğunluğu 1 veya 2'de. Bu rehber tam olarak oradan başlıyor.
+      Haftanızı değiştiren fark, 2'den 3'e geçiştir.
+    </p>
+  </div>
+
+  <table>
+    <tr><th colspan="2">Nerede durduğunuzu yazın</th></tr>
+    <tr><td style="width:45%;">Bugünkü aşamam</td><td class="fill"></td></tr>
+    <tr><td>Tek bir sonraki hamlem</td><td class="fill"></td></tr>
+  </table>
+
+  <div class="page-footer"><span class="brand">aiandtech.cloud</span><span>İlk AI Ajanınızı Kurun · 02</span></div>
+</div>
+
+<div class="page">
+  <div class="section-label">Çalışma Kağıdı 1 / 3</div>
+  <h2>Harita<span>.</span></h2>
+  <p>
+    Ayda birden fazla tekrar eden her işi yazın. Filtrelemeyin, düzenlemeyin, güzel göstermeye
+    çalışmayın. Yanına haftalık saat tahmini koyun. Sonra her satır için tek soru: bunun sahibi kim?
+    Dürüst cevabınız "duruma göre değişir" veya "otomatik ama her seferinde kontrol ediyorum" ise
+    HİÇ KİMSE'yi işaretleyin.
+  </p>
+
+  <table>
+    <tr>
+      <th style="width:34%;">Ne yapıyoruz</th><th>Sıklık</th><th>Saat / hafta</th><th>Ben</th><th>Ekip</th><th>Hiç kimse</th>
+    </tr>
+    <tr><td>Müşteri işi ve teslimat</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>Pazarlama ve içerik</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>Satış, teklif ve takip</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>İdari işler ve finans</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>Diğer her şey</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+  </table>
+
+  <div class="warning-box">
+    <div class="warning-title">"HİÇ KİMSE" SATIRLARININ SAATLERİNİ TOPLAYIN</div>
+    <p>İşimin, benim hatırlamama bağlı çalıştığı haftalık saat: ________</p>
+  </div>
+
+  <div class="page-footer"><span class="brand">aiandtech.cloud</span><span>İlk AI Ajanınızı Kurun · 03</span></div>
+</div>
+
+<div class="page">
+  <div class="section-label">Çalışma Kağıdı 2 / 3 · Tahmin Değil, Puan</div>
+  <h2>Puan<span>.</span></h2>
+  <p>
+    En büyük altı "HİÇ KİMSE" satırını buraya taşıyın. Her birini dört soruda 1–5 arası puanlayın,
+    sonra satırı toplayın.
+  </p>
+  <ul>
+    <li><strong>T · Tekrar</strong> — ne sıklıkla geliyor?</li>
+    <li><strong>Y · Yük</strong> — her seferinde ne kadar sürüyor?</li>
+    <li><strong>B · Bağımsızlık</strong> — bilgilendirilmiş biri yapabilir mi?</li>
+    <li><strong>H · Hata toleransı</strong> — ilk taslak biraz yanlışsa ne olur? (5 = düzeltir geçerim.)</li>
+  </ul>
+
+  <table>
+    <tr><th style="width:40%;">Aday iş</th><th>T /5</th><th>Y /5</th><th>B /5</th><th>H /5</th><th>Toplam /20</th></tr>
+    <tr><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
+  </table>
+
+  <div class="info-box">
+    <div class="info-title">EN YÜKSEK TOPLAM İLK KURULUR</div>
+    <p>Hata toleransından 1 alan iş, üzerinde öğreneceğiniz iş değildir — onu üçüncü sıraya itin.</p>
+  </div>
+
+  <h3>Üçünü isimlendirin · görev değil, unvan</h3>
+  <p>
+    "Fatura takibi" değil, <strong>Tahsilat Takip Asistanı</strong>. Kartvizite basabiliyorsanız,
+    doğru isimlendirmişsiniz.
+  </p>
+
+  <table>
+    <tr><th style="width:12%;">#</th><th>Sıralanmış ilk üçüm</th><th style="width:26%;">Geri kazanılan saat / hafta</th></tr>
+    <tr><td>01</td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>02</td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>03</td><td class="fill"></td><td class="fill"></td></tr>
+  </table>
+
+  <div class="page-footer"><span class="brand">aiandtech.cloud</span><span>İlk AI Ajanınızı Kurun · 04</span></div>
+</div>
+
+<div class="page">
+  <div class="section-label">Çalışma Kağıdı 3 / 3 · Ajan Mimarı</div>
+  <h2>Bunu yapıştırın, sonra sadece <span>konuşun</span></h2>
+  <p>
+    Asistanınızı siz yazmayacaksınız. Onun için sizinle röportaj yapılacak. Aşağıdaki metnin
+    tamamını Claude veya ChatGPT'de bir projeye yapıştırın; gerisini o devralır.
+  </p>
+
+  <div class="prompt-box">
+    <div class="prompt-label">Ajan Mimarı · Olduğu gibi kopyalayın</div>
+    <p>Sen benim Ajan Mimarımsın. Görevin, işimde tekrar eden bir süreci çalışan bir AI asistanına dönüştürmek ve onu çalıştırmam için gereken dosyaları üretmek. Yazma işini sen yapacaksın, ben yalnızca sorularını cevaplayacağım. Aşağıdaki beş adımı sırayla ilerlet ve ileri atlama.</p>
+    <p>1 · Teşhis. İşim hakkında ve haftamı neyin yediği hakkında soru sor. Bir süreç seçtiysem onu sınav et: gerçekten en iyi aday mı? Seçmediysem, adaylarımı 1–5 arasında şu kriterlerle puanlat: ne sıklıkla tekrar ettiği, zaman yükü, özellikle bana ne kadar bağlı olduğu ve ilk taslak biraz yanlış olursa oluşacak risk. Yüksek riskli olmayan en yüksek puanlıyı öner ve nedenini tek cümlede söyle.</p>
+    <p>2 · Benimle röportaj yap. Her seferinde tek soru. Yalnızca adımları değil, her kararı nasıl ve neden verdiğimi öğren: hangi durumda ne yaptığımı, yeni başlayan birine söyleyeceğim ama hiç yazmadığım şeyleri. İyi çıktıya dair iki üç gerçek örnek iste, asla olmaması gereken şeyleri sor ve onayımın gerektiği noktayı belirle. Kendi ifadelerimi ve kullandığım terimleri kaydet.</p>
+    <p>3 · Dosyaları yaz. İki ayrı dosya üret. ASİSTAN DOSYASI: rol, kimlik, kime hizmet ettiği, kalite standartlarım, asla aşmayacağı sınırlar. SÜREÇ DOSYASI: rol, tetikleyici, bağlam, süreç adımları, kurallar (onayım olmadan hiçbir şeyin dışarı çıkmaması dahil) ve çıktı formatı. Benim sesimle yaz ve iyi uygulamalardan kendi eklediğin her şeyi işaretle.</p>
+    <p>4 · Kurulumu adım adım anlat. Hangi aracı kullandığımı sor, sonra o araca özel net adımlar ver: her dosyayı nereye kaydedeceğim, ne sıklıkla çalışacak ve taslaklar onay için bana nasıl ulaşacak. Jargon yok.</p>
+    <p>5 · Test et ve ölç. Bu haftadan gerçek bir işle birlikte çalıştır. Çıktıyı üç soruyla değerlendirmemi sağla: benim sesim mi, bilgiler benim mi, onayımı bekliyor mu. Sonra bu asistanı nasıl ölçeceğimi tek bir sayıya indir. Bir şeyi düzelt, tekrar çalıştır. Sonraki iki asistanımın kurulum sırasını önererek ve takvimime iki adet 30 dakikalık kurulum bloğu koymamı söyleyerek bitir.</p>
+    <p>Kuralların: her seferinde tek soru, asla soru yığını değil. İşim hakkında asla bilgi uydurma. Emin değilsen tahmin etme, sor. Takılırsam, en küçük tek sonraki adımı ver.</p>
+  </div>
+
+  <div class="page-footer"><span class="brand">aiandtech.cloud</span><span>İlk AI Ajanınızı Kurun · 05</span></div>
+</div>
+
+<div class="page">
+  <div class="section-label">Çalışma Kağıdı 3 / 3 · İlk Çalıştırma</div>
+  <h2>Şimdi <span>ne olacak</span></h2>
+
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-content">
+      <div class="step-title">İşiniz için bir proje açın</div>
+      <p>Claude veya ChatGPT'de. Kurduğunuz her şey onun içinde yaşayacak.</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-content">
+      <div class="step-title">Ajan Mimarı'nı yapıştırın</div>
+      <p>2. çalışma kağıdında birinci sıraya koyduğunuz işi söyleyin.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-content">
+      <div class="step-title">Tek tek cevaplayın</div>
+      <p>Dürüst ve spesifik olmak, cilalı olmaktan iyidir. Değerli olan sizin muhakemeniz.</p></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-content">
+      <div class="step-title">İki dosyayı yazdırın, sonra okuyun</div>
+      <p>Size ait gibi durmayan her cümleyi düzeltin. Editör sizsiniz.</p></div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-content">
+      <div class="step-title">Kaydedin, zamanlamayı kurun, çalıştırın</div>
+      <p>Örnek veriyle değil. Bu haftanın gerçek işiyle.</p></div></div>
+  </div>
+
+  <h3>İlk çıktıyı bir editör gibi işaretleyin</h3>
+  <div class="card-grid">
+    <div class="card"><div class="card-title">Benim sesim mi?</div>
+      <p>Basın bülteni gibi okunuyorsa, dosyaya kendi yazınızdan iki gerçek örnek ekleyin.</p></div>
+    <div class="card"><div class="card-title">Bilgiler benim mi?</div>
+      <p>Her isim, sayı ve iddia, ona verdiğiniz bağlamdan gelmeli.</p></div>
+  </div>
+  <div class="card" style="margin-bottom:20px;"><div class="card-title">Onay kapısı nerede?</div>
+    <p>Taslak hazırlayıp beklediğini doğrulayın. Sizin onayınız olmadan hiçbir şey çıkmaz.</p></div>
+
+  <table>
+    <tr><th colspan="2">İlk çalıştırmam</th></tr>
+    <tr><td style="width:45%;">Bir numaralı asistan</td><td class="fill"></td></tr>
+    <tr><td>Düzelttiğim tek şey</td><td class="fill"></td></tr>
+    <tr><td>Zamanlaması</td><td class="fill"></td></tr>
+    <tr><td>Başarı ölçüsü (tek sayı)</td><td class="fill"></td></tr>
+  </table>
+
+  <p style="font-style: italic; color: #6b7280;">
+    İlk çalıştırmada mükemmel olmayacak. Olmamalı da. Burada öğrendiğiniz şey yazmak değil,
+    yönetmek: işaretleyin, bir şeyi düzeltin, tekrar çalıştırın.
+  </p>
+
+  <div class="page-footer"><span class="brand">aiandtech.cloud</span><span>İlk AI Ajanınızı Kurun · 06</span></div>
+</div>
+
+<div class="page">
+  <div class="section-label">Referans · Bir Bileşenin Anatomisi</div>
+  <h2>Altı parça. <span>Her seferinde</span></h2>
+  <p>
+    Çalışan her AI bileşeninin aynı iskeleti vardır. Ajan Mimarı bunları sizin için yazar, ama
+    okuyabilmeniz gerekir — çünkü ürettiği her dosyanın editörü sizsiniz.
+  </p>
+
+  <div class="card-grid">
+    <div class="card"><span class="card-num">01</span><div class="card-title">Rol</div>
+      <p>Bunu hangi iş için işe alıyorum? Bir unvan ve tek cümle.</p></div>
+    <div class="card"><span class="card-num">02</span><div class="card-title">Tetikleyici</div>
+      <p>Ne zaman harekete geçer: bir gün, bir saat, bir olay veya yapıştırdığınız bir şey.</p></div>
+    <div class="card"><span class="card-num">03</span><div class="card-title">Bağlam</div>
+      <p>Bu işi sizin gibi yapmak için bilmesi gerekenler: müşteriler, teklifler, iyi örnekler, yeni başlayana anlatacağınız şeyler.</p></div>
+    <div class="card"><span class="card-num">04</span><div class="card-title">Süreç</div>
+      <p>Adımlar, sade bir dille. Sesli söyleyebiliyorsanız, kurulabilir.</p></div>
+    <div class="card"><span class="card-num">05</span><div class="card-title">Kurallar</div>
+      <p>Her zaman yaptığı ve asla yapmadığı şeyler. Herkesin atladığı ve onu güvenilir kılan parça.</p></div>
+    <div class="card"><span class="card-num">06</span><div class="card-title">Çıktı</div>
+      <p>Ne üretiyor, hangi formatta ve size ne zaman ulaşıyor.</p></div>
+  </div>
+
+  <div class="warning-box">
+    <div class="warning-title">İKİSİ NEREDEYSE HER ZAMAN ZAYIF KALIR</div>
+    <p>
+      BAĞLAM, çünkü insanlar çok az yazar; ve KURALLAR, çünkü insanlar hiç yazmaz. Kurallar boşsa,
+      kendinize sorun: onun ne yapmasından tedirgin olurdunuz? İlk kuralınız budur.
+    </p>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="section-label">Referans · Yapı Neden İpuçlarını Yener</div>
+  <h2>Biri tükenir. Biri <span>birikir</span></h2>
+
+  <div class="card-grid">
+    <div class="card"><div class="card-title">Tek seferlik çıktı</div>
+      <p>Bir sonuçtur · siz tetiklersiniz · bir kez çalışır · hatırlamak zorundasınız · araç değişince biter.</p></div>
+    <div class="card"><div class="card-title">Kalıcı yapı</div>
+      <p>Bir yapıdır · kendi kendini tetikler · üst üste birikir · sizin yerinize hatırlar · araç değişse de yaşar.</p></div>
+  </div>
+
+  <div class="info-box">
+    <div class="info-title">SAYFANIZI BİTİRMENİN DÜRÜST MATEMATİĞİ</div>
+    <p>
+      Bugün bir asistan kurdunuz. 1. çalışma kağıdında kalan "HİÇ KİMSE" satırlarını sayın ve
+      gerçekçi olun: haftada bir, hiç aksatmadan, yaklaşık 6 ay. Çoğu şirket için gerçekçi olan
+      ayda bir ise yaklaşık 2 yıl — üstelik bu, her birinin ilk seferde çalıştığını varsayar ki çalışmayacak.
+    </p>
+  </div>
+
+  <div class="page-footer"><span class="brand">aiandtech.cloud</span><span>İlk AI Ajanınızı Kurun · 07</span></div>
+</div>
+
+<div class="page">
+  <div class="section-label">Bundan Sonra</div>
+  <h2>Başladığınız işi <span>bitirin</span></h2>
+  <p>Haritanız var. Üçünüz seçildi. Birincisi çalışıyor. Buradan sonra iki yol var.</p>
+
+  <h3>Kendi başınıza · 30 günlük plan</h3>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-content">
+      <div class="step-title">Haftada iki adet 30 dakikalık kurulum bloğu ayırın</div>
+      <p>Ajan Mimarı, listenizdeki her iş için çalışır.</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-content">
+      <div class="step-title">Kendi sıranıza göre kurun</div>
+      <p>Önce ikinci, sonra üçüncü. Bir öncekini gerçek işte test etmeden sonrakine başlamayın.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-content">
+      <div class="step-title">Onay kapısını asla gevşetmeyin</div>
+      <p>Her yeni asistan taslak hazırlar ve bekler. Bu kural değişmez.</p></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-content">
+      <div class="step-title">Ay sonunda tek sayıyı ölçün</div>
+      <p>Dört hafta sonra 1. çalışma kağıdındaki saat rakamına ne oldu?</p></div></div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <div style="background: linear-gradient(160deg, #0f172a 0%, #1e293b 60%, #0e7490 100%); border-radius: 20px; padding: 48px 44px; color: #fff;">
+      <div class="cover-badge" style="margin-bottom:20px;">Bizimle · AIandTECH</div>
+      <p style="color:#e2e8f0; font-size:11pt; margin-bottom:20px;">
+        Endüstri mühendisliği geçmişi ve AWS sertifikalı bulut mimarlığıyla Sevim Durmuş; üretim,
+        lojistik, tekstil ve e-ticaret şirketlerine uygulamalı yapay zeka eğitimi ve süreç
+        otomasyonu sunuyor.
+      </p>
+      <p style="color:#94a3b8; font-size:10pt; margin-bottom:8px;"><strong style="color:#22d3ee;">Uygulamalı eğitim programları.</strong> Kısa atölyelerden çok haftalı koçluğa, kendi süreçleriniz üzerinden işlenir.</p>
+      <p style="color:#94a3b8; font-size:10pt; margin-bottom:8px;"><strong style="color:#22d3ee;">Ajan ve süreç otomasyonu kurulumları.</strong> Bu rehberdeki adımlar, şirketinizin gerçek verisiyle uçtan uca kurulur.</p>
+      <p style="color:#94a3b8; font-size:10pt; margin-bottom:24px;"><strong style="color:#22d3ee;">Kurumsal AI dönüşüm programı.</strong> Departman düzeyinde sıralama, ölçüm ve yönetişim.</p>
+      <p style="color:#22d3ee; font-weight:700; font-size:11pt; margin-bottom:4px;">aiandtech.cloud</p>
+      <p style="color:#94a3b8; font-size:10pt; margin-bottom:4px;">Ücretsiz keşif görüşmesi: calendly.com/sevim/ai-for-business-discovery-call</p>
+      <p style="color:#94a3b8; font-size:10pt;">Hazırlığınızı ölçün: assessment.aiandtech.cloud</p>
+    </div>
+  </div>
+
+  <div class="page-footer"><span class="brand">aiandtech.cloud</span><span>© 2026 Sevim Durmuş. Ücretsiz kullanım.</span></div>
+</div>
+
+</body>
+</html>

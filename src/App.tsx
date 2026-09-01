@@ -27,6 +27,7 @@ import WebinarPromptsPage from './pages/WebinarPromptsPage';
 import ClaudeSkillGuidePage from './pages/ClaudeSkillGuidePage';
 import VibeCodingStarterGuidePage from './pages/VibeCodingStarterGuidePage';
 import Fable5PromptingHacksPage from './pages/Fable5PromptingHacksPage';
+import BuildingFirstAgentPage from './pages/BuildingFirstAgentPage';
 import TeklifPage from './pages/TeklifPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 
@@ -56,6 +57,7 @@ function App() {
               <Route path="/templates/ai-branding-workflow" element={<AIBrandingWorkflowPage />} />
               <Route path="/templates/vibe-coding-starter-guide" element={<VibeCodingStarterGuidePage />} />
               <Route path="/templates/fable-5-prompting-hacks" element={<Fable5PromptingHacksPage />} />
+              <Route path="/templates/building-your-first-ai-agent" element={<BuildingFirstAgentPage />} />
               <Route path="/prompts"                   element={<PromptsPage />} />
               <Route path="/prompts/manus-instagram-strategy" element={<ManusInstagramPage />} />
               <Route path="/prompts/content-creation-prompts" element={<ContentCreationPromptsPage />} />
